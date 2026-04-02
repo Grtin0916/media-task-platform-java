@@ -6,6 +6,9 @@
 
 ## Verified Scope
 
+
+- 已完成 PostgreSQL JDBC 依赖接入与 Spring Boot JDBC 最小链路打通
+- 已完成 PostgreSQL Testcontainers smoke test：可拉起真实 PostgreSQL 容器、建立 DataSource 连接并执行最小 SQL 查询
 当前已验证能力：
 
 - Java 21 + Maven Wrapper 环境可用
@@ -22,14 +25,14 @@
 
 ## Not Yet Verified
 
+
+- 正式数据库 schema 设计与持久化落地
 当前尚未验证或尚未接入：
 
-- 数据库（MySQL / PostgreSQL）
 - Flyway / Liquibase 迁移
 - JPA / MyBatis
 - Spring Security / JWT
 - Redis / Kafka
-- Testcontainers 真容器集成测试
 - Prometheus / Micrometer / tracing
 - Docker / Compose / Kubernetes 部署
 

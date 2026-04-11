@@ -1,39 +1,67 @@
-# ADR 0001: Database choice for week05 groundwork
+# ADR 0001: Database and migration choice for week05 groundwork
 
 ## Status
 Accepted
 
 ## Context
-The repository already has a minimal Spring Boot skeleton, actuator health endpoint, and basic media-task CRUD.
-For the next step, we need a real database-backed smoke path before entering full schema migration work in Week05.
+The project has moved beyond a JDBC smoke-only stage.
+
+At the current Week05 stage, the repository already contains:
+- PostgreSQL runtime dependency
+- Flyway-based schema migration
+- JdbcClient-based repository persistence
+- RepositoryIT using Testcontainers PostgreSQL
+- `/actuator/prometheus` exposure for Cloud-side scraping
+
+The decision we need to freeze is no longer "whether to try a database smoke path",
+but "which database + migration + persistence baseline should become the current engineering default".
 
 ## Decision
-We choose PostgreSQL as the first relational database for this project.
-For the current step, we only verify:
-1. Spring Boot test context can start successfully
-2. A real PostgreSQL container can be started by Testcontainers
-3. The application can obtain a real DataSource connection and execute a minimal SQL query
+We choose the following Week05 baseline:
 
-We intentionally do not introduce full JPA modeling, Flyway/Liquibase migrations, or final repository persistence design in this step.
+1. PostgreSQL as the first relational database
+2. Flyway as the schema migration mechanism
+3. JdbcClient + explicit repository layer as the current persistence baseline
+4. Testcontainers PostgreSQL as the integration-test verification path
+5. Spring Boot Actuator + Prometheus registry as the metrics exposure baseline
 
 ## Rationale
-- PostgreSQL is a mainstream production-grade relational database
-- Testcontainers provides a dedicated PostgreSQL module
-- Spring Boot provides direct SQL support and Testcontainers integration
-- A JDBC-level smoke test is the shortest path to verify real DB connectivity before ORM and migration decisions
+
+### Why PostgreSQL
+- It is a mainstream production-grade relational database
+- It has strong ecosystem support in Spring Boot and Testcontainers
+- It is a better long-term baseline than an embedded database for later service evolution
+
+### Why Flyway
+- We need versioned, replayable schema changes
+- Flyway gives a small and explicit migration surface for the current stage
+- The project needs migration history that can be verified in integration tests
+
+### Why JdbcClient first, not full JPA now
+- Current schema and domain model are still evolving
+- JdbcClient keeps SQL behavior explicit and easy to debug
+- It is the shortest path to verify real persistence before introducing a heavier ORM model
+
+### Why RepositoryIT
+- We need proof of real persistence against a real PostgreSQL container
+- RepositoryIT verifies migration + insert/query/delete behavior together
+- This gives Cloud-side observability work a stable backend target
+
+### Why expose `/actuator/prometheus`
+- Cloud observability this week depends on a scrapeable application target
+- Metrics exposure converts the Java line from "DB-connected" to "Cloud-observable"
 
 ## Consequences
-Short term:
-- We add PostgreSQL runtime dependency
-- We add Testcontainers-based integration smoke test
-- We keep persistence design lightweight for now
 
-Deferred to Week05:
-- schema migration via Flyway or Liquibase
-- entity/table design
-- repository persistence implementation
+### Verified in Week05
+- `V1__init.sql` defines the current minimal schema baseline
+- `RepositoryIT` verifies real PostgreSQL-backed persistence
+- `/actuator/prometheus` returns scrapeable metrics text
+- Cloud-side Prometheus can scrape the Java target
 
-Deferred to later:
-- Security
-- Redis/Kafka
+### Deferred to later
+- richer domain modeling
+- security and auth
+- Redis / Kafka integration
 - production deployment topology
+- whether to adopt JPA for more complex domain access later

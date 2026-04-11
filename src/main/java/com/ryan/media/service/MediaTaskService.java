@@ -2,51 +2,46 @@ package com.ryan.media.service;
 
 import com.ryan.media.model.CreateMediaTaskRequest;
 import com.ryan.media.model.MediaTaskResponse;
+import com.ryan.media.repository.MediaTaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class MediaTaskService {
 
-    private final ConcurrentHashMap<String, MediaTaskResponse> store = new ConcurrentHashMap<>();
+    private final MediaTaskRepository mediaTaskRepository;
+
+    public MediaTaskService(MediaTaskRepository mediaTaskRepository) {
+        this.mediaTaskRepository = mediaTaskRepository;
+    }
 
     public MediaTaskResponse create(CreateMediaTaskRequest request) {
-        String id = UUID.randomUUID().toString();
         MediaTaskResponse task = new MediaTaskResponse(
-                id,
+                UUID.randomUUID().toString(),
                 request.title(),
                 request.mediaType(),
                 "CREATED",
                 Instant.now()
         );
-        store.put(id, task);
+        mediaTaskRepository.save(task);
         return task;
     }
 
     public List<MediaTaskResponse> list() {
-        return store.values()
-                .stream()
-                .sorted(Comparator.comparing(MediaTaskResponse::createdAt).reversed())
-                .toList();
+        return mediaTaskRepository.findAll();
     }
 
     public MediaTaskResponse getById(String id) {
-        MediaTaskResponse task = store.get(id);
-        if (task == null) {
-            throw new IllegalArgumentException("media task not found: " + id);
-        }
-        return task;
+        return mediaTaskRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("media task not found: " + id));
     }
 
     public void deleteById(String id) {
-        MediaTaskResponse removed = store.remove(id);
-        if (removed == null) {
+        int rows = mediaTaskRepository.deleteById(id);
+        if (rows == 0) {
             throw new IllegalArgumentException("media task not found: " + id);
         }
     }

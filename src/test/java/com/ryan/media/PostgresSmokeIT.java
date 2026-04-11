@@ -1,4 +1,4 @@
-package com.grt.media;
+package com.ryan.media;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,9 +12,6 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-// 如果 MediaTaskApplication 不在 com.grt.media 包下，改成真实 import
-// import your.real.package.MediaTaskApplication;
 
 @SpringBootTest(classes = MediaTaskApplication.class)
 @Testcontainers
@@ -43,5 +40,36 @@ class PostgresSmokeIT {
     void should_execute_simple_sql_against_postgres() {
         Integer one = jdbcClient.sql("select 1").query(Integer.class).single();
         assertThat(one).isEqualTo(1);
+    }
+
+    @Test
+    void should_run_flyway_migration_and_create_core_tables() {
+        Integer mediaTaskTable =
+                jdbcClient.sql("""
+                        select count(*)
+                        from information_schema.tables
+                        where table_schema = 'public'
+                          and table_name = 'media_task'
+                        """).query(Integer.class).single();
+
+        Integer mediaAssetTable =
+                jdbcClient.sql("""
+                        select count(*)
+                        from information_schema.tables
+                        where table_schema = 'public'
+                          and table_name = 'media_asset'
+                        """).query(Integer.class).single();
+
+        Integer mediaTagTable =
+                jdbcClient.sql("""
+                        select count(*)
+                        from information_schema.tables
+                        where table_schema = 'public'
+                          and table_name = 'media_tag'
+                        """).query(Integer.class).single();
+
+        assertThat(mediaTaskTable).isEqualTo(1);
+        assertThat(mediaAssetTable).isEqualTo(1);
+        assertThat(mediaTagTable).isEqualTo(1);
     }
 }

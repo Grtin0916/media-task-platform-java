@@ -1,7 +1,9 @@
 package com.ryan.media;
 
+import com.ryan.media.repository.MediaTaskRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(
         properties = {
@@ -9,6 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
         }
 )
 class SmokeTest {
+
+    @MockBean
+    private MediaTaskRepository mediaTaskRepository;
 
     @Test
     void contextLoads() {

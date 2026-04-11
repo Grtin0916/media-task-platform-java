@@ -1,0 +1,40 @@
+10:42:41.955 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.controller.MediaTaskControllerTest]: MediaTaskControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:42:42.144 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.controller.MediaTaskControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-04-11T10:42:42.558+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : Starting MediaTaskControllerTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:42:42.560+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : No active profile set, falling back to 1 default profile: "default"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-04-11T10:42:44.500+08:00  INFO 65750 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-04-11T10:42:44.504+08:00  INFO 65750 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-04-11T10:42:44.507+08:00  INFO 65750 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-04-11T10:42:44.538+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : Started MediaTaskControllerTest in 2.332 seconds (process running for 3.261)
+2026-04-11T10:42:44.802+08:00  INFO 65750 --- [media-task-platform-java] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.ryan.media.SmokeTest]: SmokeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-11T10:42:44.823+08:00  INFO 65750 --- [media-task-platform-java] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.SmokeTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-04-11T10:42:44.869+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:42:44.869+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
+2026-04-11T10:42:46.026+08:00  INFO 65750 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-11T10:42:46.085+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Started SmokeTest in 1.254 seconds (process running for 4.807)

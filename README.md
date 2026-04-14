@@ -77,21 +77,18 @@
 
     src/main/java/com/ryan/media/
     ├── MediaTaskApplication.java
+    ├── auth
+    │   └── AuthController.java
     ├── controller
     │   ├── HealthController.java
     │   └── MediaTaskController.java
     ├── model
     │   ├── CreateMediaTaskRequest.java
     │   └── MediaTaskResponse.java
+    ├── repository
+    │   └── MediaTaskRepository.java
+    ├── security
+    │   └── SecurityConfig.java
     └── service
         └── MediaTaskService.java
 
-## Next Hard Milestone
-
-下一阶段目标：
-
-1. 固化 PostgreSQL 路线并引入 Flyway 做第一版 schema migration
-2. 将内存版 `MediaTaskService` 替换为持久化实现
-3. 增加 repository / service / controller 更明确分层
-4. 为接口补齐 integration test 与错误响应约束
-5. 为后续 Spring Security / JWT 留出清晰边界

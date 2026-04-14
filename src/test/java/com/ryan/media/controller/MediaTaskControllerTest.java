@@ -1,25 +1,29 @@
 package com.ryan.media.controller;
 
 import com.ryan.media.service.MediaTaskService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest(MediaTaskController.class)
 class MediaTaskControllerTest {
 
-    @Autowired
     private MockMvc mockMvc;
 
-    @org.springframework.boot.test.mock.mockito.MockBean
-    private MediaTaskService mediaTaskService;
+    @BeforeEach
+    void setUp() {
+        MediaTaskService mediaTaskService = mock(MediaTaskService.class);
+        MediaTaskController controller = new MediaTaskController(mediaTaskService);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+    }
 
     @Test
     void list_shouldReturn200() throws Exception {
         mockMvc.perform(get("/api/media-tasks"))
-                .andExpect(status().isOk());
+            .andExpect(status().isOk());
     }
 }

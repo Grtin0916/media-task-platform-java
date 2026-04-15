@@ -49,7 +49,7 @@
 下一阶段目标：
 
 1. 把当前 auth skeleton 推进为真正可运行的最小 JWT 闭环
-2. 至少选择一个现有 media-task API 切入受保护边界
+2. 继续把更多现有 media-task API 切入受保护边界
 3. 为认证相关路径补更完整的 integration test 与错误响应校验
 4. 同步 README / 日志 / 测试证据，避免代码推进快于仓库叙事
 

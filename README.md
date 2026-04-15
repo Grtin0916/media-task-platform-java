@@ -18,10 +18,15 @@
 - 已完成最小认证骨架：
   - `POST /auth/login` 为公开入口
   - `GET /auth/me` 为受保护入口
-- 已补 `AuthIT`，验证：
-  - login 公开访问可用
+- 已补最小认证骨架：
+  - `POST /auth/login` 为公开入口
+  - `GET /auth/me` 为受保护入口
+- 已补认证相关测试，验证：
   - 未认证访问 `/auth/me` 返回 401
-  - 认证态访问 `/auth/me` 可返回 principal 信息
+  - 认证态访问 `/auth/me` 返回 200
+  - 未认证访问 `GET /api/media-tasks` 返回 401
+  - 认证态访问 `GET /api/media-tasks` 返回 200
+- 已将 `GET /api/media-tasks` 切入受保护边界
 
 一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，Week06 的 auth 主线已经真正起盘。
 
@@ -30,7 +35,7 @@
 以下内容仍未进入“已验证”范围，当前不能写满：
 
 - 真正的 JWT 签发 / 解析 / 校验闭环
-- 真实 media-task 业务接口切到受保护边界后的完整验证
+- 更多 media-task 业务接口（如 `POST /api/media-tasks`）切到受保护边界后的完整验证
 - 更完整的角色模型与权限控制
 - Redis / Kafka
 - tracing / OTel

@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/auth/me").authenticated()
 .requestMatchers(HttpMethod.GET, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").authenticated()
                 .anyRequest().permitAll());
 
         return http.build();

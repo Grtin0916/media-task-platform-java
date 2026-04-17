@@ -7,51 +7,43 @@
 ## Verified Scope
 
 当前仓库已完成并留有证据的范围如下：
+- 已引入 Spring Security 并形成最小 auth skeleton
+- `POST /auth/login` 为公开入口
+- `GET /auth/me` 为受保护入口
+- `GET /api/media-tasks` 已进入受保护边界
+- `POST /api/media-tasks` 已进入受保护边界
+- 未认证访问 `/auth/me` 返回 401
+- 认证态访问 `/auth/me` 返回 200
+- 未认证访问 `GET /api/media-tasks` 返回 401
+- 认证态访问 `GET /api/media-tasks` 返回 200
+- 未认证访问 `POST /api/media-tasks` 返回 401
+- 认证态访问 `POST /api/media-tasks` 时，当前非法 payload 会进入业务校验并返回 400
+- 已补 `src/test/java/com/ryan/media/AuthIT.java`
+- 已保留 `artifacts/logs/week06_authit_004.log` 作为 Week06 最小认证测试证据
 
-- 已完成 PostgreSQL JDBC 依赖接入与 Spring Boot JDBC 最小链路打通
-- 已完成 PostgreSQL Testcontainers smoke test
-- 已完成 Flyway 第一版 schema migration 落地（`src/main/resources/db/migration/V1__init.sql`）
-- 已补数据库路线 ADR（`docs/adr/0001-db-choice.md`）
-- 已补 RepositoryIT，能够覆盖数据库地基验证
-- 已暴露 `/actuator/prometheus`，为 Cloud 侧抓取提供最小指标入口
-- 已完成 Week06 最小认证路线 ADR（`docs/adr/0002-auth-strategy.md`）
-- 已完成最小认证骨架：
-  - `POST /auth/login` 为公开入口
-  - `GET /auth/me` 为受保护入口
-- 已补最小认证骨架：
-  - `POST /auth/login` 为公开入口
-  - `GET /auth/me` 为受保护入口
-- 已补认证相关测试，验证：
-  - 未认证访问 `/auth/me` 返回 401
-  - 认证态访问 `/auth/me` 返回 200
-  - 未认证访问 `GET /api/media-tasks` 返回 401
-  - 认证态访问 `GET /api/media-tasks` 返回 200
-- 已将 `GET /api/media-tasks` 切入受保护边界
-
-一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，Week06 的 auth 主线已经真正起盘。
+一句话说，当前仓库已经不只是“安全边界骨架存在”，而是已经用 AuthIT 把公开入口、受保护入口，以及一个写接口的最小认证行为测实。
 
 ## Not Yet Verified
 
 以下内容仍未进入“已验证”范围，当前不能写满：
 
 - 真正的 JWT 签发 / 解析 / 校验闭环
-- 更多 media-task 业务接口（如 `POST /api/media-tasks`）切到受保护边界后的完整验证
-- 更完整的角色模型与权限控制
-- Redis / Kafka
-- tracing / OTel
-- Docker / Compose / Kubernetes 部署
-- 更完整的错误响应约束与生产级安全配置
-
-这些方向已经进入路线规划，但截至当前仓库状态，还不应写成“已完成”。
+- 基于角色的 403 区分与更细粒度授权
+- `GET /api/media-tasks/{id}`、`DELETE /api/media-tasks/{id}` 等更多接口切入受保护边界后的完整验证
+- 认证态下合法 `POST /api/media-tasks` 请求返回 201 的完整 happy path
+- 更统一的认证失败 / 校验失败错误响应格式
 
 ## Next Hard Milestone
 
-下一阶段目标：
+接下来的硬里程碑按顺序是：
 
-1. 把当前 auth skeleton 推进为真正可运行的最小 JWT 闭环
-2. 继续把更多现有 media-task API 切入受保护边界
-3. 为认证相关路径补更完整的 integration test 与错误响应校验
-4. 同步 README / 日志 / 测试证据，避免代码推进快于仓库叙事
+1. Week06 收口：README / ADR / AuthIT / 日志证据同步
+   - 确保 README、`0002-auth-strategy.md`、`AuthIT.java`、`week06_authit_004.log` 一致
+   - 把当前最小认证证据固定成可引用资产
+
+2. 随后：把 auth skeleton 推进为真正可运行的最小 JWT 闭环
+   - 补 token issuing / parsing / validation
+   - 再把更多 media-task 业务接口推进到受保护边界
 
 ## Tech Stack
 

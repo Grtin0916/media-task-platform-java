@@ -7,43 +7,46 @@
 ## Verified Scope
 
 当前仓库已完成并留有证据的范围如下：
-- 已引入 Spring Security 并形成最小 auth skeleton
-- `POST /auth/login` 为公开入口
-- `GET /auth/me` 为受保护入口
-- `GET /api/media-tasks` 已进入受保护边界
-- `POST /api/media-tasks` 已进入受保护边界
-- 未认证访问 `/auth/me` 返回 401
-- 认证态访问 `/auth/me` 返回 200
-- 未认证访问 `GET /api/media-tasks` 返回 401
-- 认证态访问 `GET /api/media-tasks` 返回 200
-- 未认证访问 `POST /api/media-tasks` 返回 401
-- 认证态访问 `POST /api/media-tasks` 时，当前非法 payload 会进入业务校验并返回 400
-- 已补 `src/test/java/com/ryan/media/AuthIT.java`
-- 已保留 `artifacts/logs/week06_authit_004.log` 作为 Week06 最小认证测试证据
 
-一句话说，当前仓库已经不只是“安全边界骨架存在”，而是已经用 AuthIT 把公开入口、受保护入口，以及一个写接口的最小认证行为测实。
+- 已完成 PostgreSQL + Flyway 的最小数据库地基
+- 已完成媒体任务最小 CRUD 路径
+- 已完成 Spring Security 最小认证壳
+- 已完成 `POST /auth/login` 与 `GET /auth/me`
+- 已将 `GET /api/media-tasks` 与 `POST /api/media-tasks` 切入受保护边界
+- 已保留 `AuthIT` 与 Week06 认证相关日志证据
+- 已新增 Redis 依赖（`spring-boot-starter-data-redis`）
+- 已补 eventing 选型 ADR（`docs/adr/0003-eventing-choice.md`）
+- 已新增 `messaging/Producer.java`，定义 `MediaTaskCreated` 事件与最小 stream append 骨架
+- 已新增 `messaging/Consumer.java`，固定 stream key / consumer group / consumer name，并保留 Week07 TODO
+
+一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，并在 Week07 开始进入最小 eventing skeleton 阶段；当前仓库已经不再只是认证壳，而是开始具备“任务创建 -> 事件发布 -> 状态更新”的异步链路入口。
 
 ## Not Yet Verified
 
 以下内容仍未进入“已验证”范围，当前不能写满：
 
-- 真正的 JWT 签发 / 解析 / 校验闭环
-- 基于角色的 403 区分与更细粒度授权
-- `GET /api/media-tasks/{id}`、`DELETE /api/media-tasks/{id}` 等更多接口切入受保护边界后的完整验证
-- 认证态下合法 `POST /api/media-tasks` 请求返回 201 的完整 happy path
-- 更统一的认证失败 / 校验失败错误响应格式
+- Redis Streams 当前仅到 ADR + Producer / Consumer skeleton，尚未完成本地 event flow smoke、group 创建、read/ack 与状态更新闭环
+- 完整 JWT 签发 / 解析 / 校验闭环
+- 更完整的任务状态机、幂等、重试、补偿与失败恢复
+- Kafka 或更重消息平台的落地与对比
+- 更系统的 observability / tracing / load test 闭环
+
+这些方向已经进入路线规划，但截至当前仓库状态，还不应写成“已完成”。
 
 ## Next Hard Milestone
 
 接下来的硬里程碑按顺序是：
 
-1. Week06 收口：README / ADR / AuthIT / 日志证据同步
-   - 确保 README、`0002-auth-strategy.md`、`AuthIT.java`、`week06_authit_004.log` 一致
-   - 把当前最小认证证据固定成可引用资产
-
-2. 随后：把 auth skeleton 推进为真正可运行的最小 JWT 闭环
-   - 补 token issuing / parsing / validation
-   - 再把更多 media-task 业务接口推进到受保护边界
+1. Week07：最小 eventing skeleton 落盘
+   - 固定 Redis Streams 选型与事件字段
+   - 保留 `Producer.java` / `Consumer.java` 最小骨架
+   - 为后续“任务创建 -> 事件发布 -> 状态更新”异步链做入口
+2. Week07：补最小 event-flow smoke
+   - 至少完成 1 次本地 Redis append / consume 验证
+   - 留下日志或文档证据
+3. W8 阶段验收预热
+   - 同步 README / 测试 / ADR / 日志证据
+   - 为后续 SQL tuning、eventing 深化与 observability 链接入口
 
 ## Tech Stack
 

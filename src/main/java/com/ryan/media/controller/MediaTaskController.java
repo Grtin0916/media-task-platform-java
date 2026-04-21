@@ -1,5 +1,6 @@
 package com.ryan.media.controller;
 
+import com.ryan.media.messaging.Consumer;
 import com.ryan.media.model.CreateMediaTaskRequest;
 import com.ryan.media.model.MediaTaskResponse;
 import com.ryan.media.service.MediaTaskService;
@@ -15,9 +16,11 @@ import java.util.Map;
 public class MediaTaskController {
 
     private final MediaTaskService mediaTaskService;
+    private final Consumer consumer;
 
-    public MediaTaskController(MediaTaskService mediaTaskService) {
+    public MediaTaskController(MediaTaskService mediaTaskService, Consumer consumer) {
         this.mediaTaskService = mediaTaskService;
+        this.consumer = consumer;
     }
 
     @PostMapping
@@ -40,6 +43,18 @@ public class MediaTaskController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable String id) {
         mediaTaskService.deleteById(id);
+    }
+
+    @PostMapping("/eventing/smoke-consume")
+    public Map<String, Object> smokeConsume() {
+        String result = consumer.consumeOneForWeek07Smoke();
+        return Map.of(
+                "code", "EVENTING_SMOKE_RESULT",
+                "result", result,
+                "streamKey", consumer.streamKey(),
+                "consumerGroup", consumer.consumerGroup(),
+                "consumerName", consumer.consumerName()
+        );
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

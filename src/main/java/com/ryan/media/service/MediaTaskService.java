@@ -1,5 +1,6 @@
 package com.ryan.media.service;
 
+import com.ryan.media.messaging.Producer;
 import com.ryan.media.model.CreateMediaTaskRequest;
 import com.ryan.media.model.MediaTaskResponse;
 import com.ryan.media.repository.MediaTaskRepository;
@@ -13,9 +14,11 @@ import java.util.UUID;
 public class MediaTaskService {
 
     private final MediaTaskRepository mediaTaskRepository;
+    private final Producer producer;
 
-    public MediaTaskService(MediaTaskRepository mediaTaskRepository) {
+    public MediaTaskService(MediaTaskRepository mediaTaskRepository, Producer producer) {
         this.mediaTaskRepository = mediaTaskRepository;
+        this.producer = producer;
     }
 
     public MediaTaskResponse create(CreateMediaTaskRequest request) {
@@ -27,6 +30,14 @@ public class MediaTaskService {
                 Instant.now()
         );
         mediaTaskRepository.save(task);
+
+        producer.publishMediaTaskCreated(
+                task.id(),
+                "week07-user",
+                task.status(),
+                "trace-" + task.id()
+        );
+
         return task;
     }
 

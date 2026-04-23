@@ -19,13 +19,17 @@
 - 已新增 `messaging/Producer.java`，定义 `MediaTaskCreated` 事件与最小 stream append 骨架
 - 已新增 `messaging/Consumer.java`，固定 stream key / consumer group / consumer name，并保留 Week07 TODO
 
-一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，并在 Week07 开始进入最小 eventing skeleton 阶段；当前仓库已经不再只是认证壳，而是开始具备“任务创建 -> 事件发布 -> 状态更新”的异步链路入口。
+- 已完成 1 次本地 Redis Streams event-flow smoke，保留了 create / XRANGE / consume / ack 相关日志证据
+
+- 已验证在 consumer group 存在后，新进入 stream 的 `MediaTaskCreated` 事件可被 consume 并 ack
+
+一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，并在 Week07 开始进入最小 eventing skeleton 阶段；当前仓库已经不再只是认证壳，而是开始具备“任务创建 -> 事件发布 -> consume / ack”的最小异步链路入口。
 
 ## Not Yet Verified
 
 以下内容仍未进入“已验证”范围，当前不能写满：
 
-- Redis Streams 当前仅到 ADR + Producer / Consumer skeleton，尚未完成本地 event flow smoke、group 创建、read/ack 与状态更新闭环
+- Redis Streams 已完成最小本地 smoke，当前已验证 append / consume / ack；但建组前 backlog 的消费语义与任务状态更新闭环仍未完成
 - 完整 JWT 签发 / 解析 / 校验闭环
 - 更完整的任务状态机、幂等、重试、补偿与失败恢复
 - Kafka 或更重消息平台的落地与对比
@@ -37,16 +41,15 @@
 
 接下来的硬里程碑按顺序是：
 
-1. Week07：最小 eventing skeleton 落盘
-   - 固定 Redis Streams 选型与事件字段
-   - 保留 `Producer.java` / `Consumer.java` 最小骨架
-   - 为后续“任务创建 -> 事件发布 -> 状态更新”异步链做入口
-2. Week07：补最小 event-flow smoke
-   - 至少完成 1 次本地 Redis append / consume 验证
-   - 留下日志或文档证据
-3. W8 阶段验收预热
-   - 同步 README / 测试 / ADR / 日志证据
-   - 为后续 SQL tuning、eventing 深化与 observability 链接入口
+1. Week07：收口 event-flow smoke 证据与 README / loadtest / weekly 入口
+   - 同步 README 顶部三段与已验证边界
+   - 固化 `loadtest/event-flow-smoke.md` 与本地日志证据
+   - 让 Java 仓在 W8 阶段验收前具备可直接引用的最小 eventing smoke 入口
+
+2. W8 预热：明确 consumer group 首次偏移策略与更稳定的状态更新语义
+   - 评估建组前 backlog 的消费语义
+   - 明确状态更新与事件消费之间的责任边界
+   - 为后续 SQL tuning、observability 与 eventing 深化留入口
 
 ## Tech Stack
 

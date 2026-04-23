@@ -1,5 +1,26 @@
 nohup: 忽略输入
+Picked up JAVA_TOOL_OPTIONS: 
 [INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+Progress (1): 234 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/flywaydb/maven-metadata.xml (234 B at 124 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml
+Progress (1): 398 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/jooq/maven-metadata.xml (398 B at 1.4 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml
+Progress (1): 375 BProgress (2): 375 B | 243 B                           Downloaded from central: https://repo.maven.apache.org/maven2/org/cyclonedx/maven-metadata.xml (243 B at 98 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml
+Progress (2): 375 B | 394 B                           Downloaded from central: https://repo.maven.apache.org/maven2/org/liquibase/maven-metadata.xml (394 B at 1.4 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml
+Progress (2): 375 B | 242 B                           Downloaded from central: https://repo.maven.apache.org/maven2/org/graalvm/buildtools/maven-metadata.xml (242 B at 837 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+Progress (2): 375 B | 255 B                           Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 81 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+Progress (2): 375 B | 4.6 kBProgress (2): 375 B | 9.7 kBProgress (2): 375 B | 14 kB                            Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (14 kB at 15 kB/s)
+Progress (2): 375 B | 3.1 kBProgress (2): 375 B | 7.7 kBProgress (2): 375 B | 12 kB Progress (2): 375 B | 17 kBProgress (2): 375 B | 20 kBProgress (2): 375 B | 21 kB                           Downloaded from central: https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/maven-metadata.xml (375 B at 160 B/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (21 kB at 15 kB/s)
+Progress (1): 249 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 23 B/s)
 [INFO] 
 [INFO] --------------< com.ryan.media:media-task-platform-java >---------------
 [INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
@@ -26,6 +47,7 @@ nohup: 忽略输入
 [INFO] 
 [INFO] --- spring-boot:3.5.13:run (default-cli) @ media-task-platform-java ---
 [INFO] Attaching agents: []
+Picked up JAVA_TOOL_OPTIONS: 
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -36,50 +58,36 @@ nohup: 忽略输入
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-22T15:14:36.230+08:00  INFO 314252 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 314252 (/home/GRT/work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/media-task-platform-java)
-2026-04-22T15:14:36.233+08:00  INFO 314252 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : No active profile set, falling back to 1 default profile: "default"
-2026-04-22T15:14:37.174+08:00  INFO 314252 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2026-04-22T15:14:37.177+08:00  INFO 314252 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2026-04-22T15:14:37.202+08:00  INFO 314252 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2026-04-22T15:14:37.732+08:00  INFO 314252 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-04-22T15:14:37.746+08:00  INFO 314252 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-22T15:14:37.746+08:00  INFO 314252 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
-2026-04-22T15:14:37.784+08:00  INFO 314252 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-22T15:14:37.785+08:00  INFO 314252 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1512 ms
-2026-04-22T15:14:37.967+08:00  WARN 314252 --- [media-task-platform-java] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskController' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/controller/MediaTaskController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskService' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/service/MediaTaskService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flyway' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Failed to instantiate [org.flywaydb.core.Flyway]: Factory method 'flyway' threw exception with message: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
-2026-04-22T15:14:37.970+08:00  INFO 314252 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2026-04-22T15:14:37.988+08:00  INFO 314252 --- [media-task-platform-java] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2026-04-23T13:53:10.371+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 972102 (/home/GRT/work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-23T13:53:10.373+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-04-23T13:53:11.137+08:00  INFO 972102 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-23T13:53:11.139+08:00  INFO 972102 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-23T13:53:11.168+08:00  INFO 972102 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2026-04-23T13:53:11.669+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-04-23T13:53:11.682+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-23T13:53:11.683+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-23T13:53:11.719+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-23T13:53:11.720+08:00  INFO 972102 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1314 ms
+2026-04-23T13:53:12.044+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-23T13:53:12.214+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e7bb00e
+2026-04-23T13:53:12.216+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-23T13:53:12.245+08:00  INFO 972102 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://127.0.0.1:5432/media_task_db (PostgreSQL 16.13)
+2026-04-23T13:53:12.299+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
+2026-04-23T13:53:12.303+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.019s)
+2026-04-23T13:53:12.334+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "public"."flyway_schema_history" ...
+2026-04-23T13:53:12.593+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": << Empty Schema >>
+2026-04-23T13:53:12.609+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "public" to version "1 - init"
+2026-04-23T13:53:12.761+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "public", now at version v1 (execution time 00:00.134s)
+2026-04-23T13:53:13.385+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-23T13:53:13.416+08:00  WARN 972102 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-04-22T15:14:37.999+08:00 ERROR 314252 --- [media-task-platform-java] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+Using generated security password: 4c5c02f9-4a3c-49af-a772-2ed19871ff46
 
-***************************
-APPLICATION FAILED TO START
-***************************
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-Description:
-
-Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
-
-Reason: Failed to determine a suitable driver class
-
-
-Action:
-
-Consider the following:
-	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
-	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
-
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.701 s
-[INFO] Finished at: 2026-04-22T15:14:38+08:00
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.13:run (default-cli) on project media-task-platform-java: Process terminated with exit code: 1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+2026-04-23T13:53:13.423+08:00  INFO 972102 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-23T13:53:13.818+08:00  INFO 972102 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-04-23T13:53:13.832+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Started MediaTaskApplication in 3.755 seconds (process running for 3.976)
+2026-04-23T13:53:14.521+08:00  INFO 972102 --- [media-task-platform-java] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-23T13:53:14.522+08:00  INFO 972102 --- [media-task-platform-java] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-23T13:53:14.523+08:00  INFO 972102 --- [media-task-platform-java] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

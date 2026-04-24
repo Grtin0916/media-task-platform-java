@@ -1,1 +1,1 @@
-{"streamKey":"media-task-events","result":"CONSUMED eventName=MediaTaskCreated taskId=week07-smoke-002 recordId=1776844017813-0 acked=1","consumerGroup":"media-task-group","code":"EVENTING_SMOKE_RESULT","consumerName":"week07-consumer"}
+{"result":"NO_MESSAGE","streamKey":"media-task-events","consumerName":"week07-consumer","code":"EVENTING_SMOKE_RESULT","consumerGroup":"media-task-group"}

@@ -1,6 +1,7 @@
 package com.ryan.media.controller;
 
 import com.ryan.media.service.MediaTaskService;
+import com.ryan.media.messaging.Consumer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,7 +18,8 @@ class MediaTaskControllerTest {
     @BeforeEach
     void setUp() {
         MediaTaskService mediaTaskService = mock(MediaTaskService.class);
-        MediaTaskController controller = new MediaTaskController(mediaTaskService);
+        Consumer consumer = mock(Consumer.class);
+        MediaTaskController controller = new MediaTaskController(mediaTaskService, consumer);
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 

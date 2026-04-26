@@ -1,0 +1,4 @@
+Limit  (cost=0.28..1.08 rows=20 width=54) (actual time=0.029..0.038 rows=20 loops=1)
+  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..199.28 rows=5000 width=54) (actual time=0.027..0.032 rows=20 loops=1)
+Planning Time: 0.600 ms
+Execution Time: 0.074 ms

@@ -30,6 +30,8 @@
 - 已完成 Week08 `QueryPlanIT` 集成测试：`src/test/java/com/ryan/media/QueryPlanIT.java` 可通过 Testcontainers PostgreSQL 16-alpine seed 数据、执行 `ANALYZE`、输出三组 `EXPLAIN ANALYZE` 日志。
 - 已完成 2026-04-28 本地复验：`artifacts/logs/week08_db_query_plan_it_rerun_20260428.log`、`week08_db_explain_summary_rerun_20260428.log` 与三份 `*_rerun_20260428.log` 已保留。当前 Query A 与 Query C 命中预期索引；Query B 使用 `idx_media_task_created_at_desc` 并通过 status filter，不声明 `idx_media_task_status_created_at_desc` 在当前 seed 分布下被选中。
 
+- 已完成 2026-04-29 周三复验：`QueryPlanIT` 重新通过，`artifacts/logs/week08_db_query_plan_it_rerun_20260429.log` 与 `artifacts/logs/week08_db_explain_summary_rerun_20260429.log` 已保留；Query A 继续命中 `idx_media_task_created_at_desc`，Query C 继续命中 `idx_media_asset_task_id_created_at_desc`，Query B 仍使用 `idx_media_task_created_at_desc` 并执行 status filter，不声明 `idx_media_task_status_created_at_desc` 在当前 seed 分布下被 planner 选中。
+
 ## Not Yet Verified
 
 以下内容仍未进入“已验证”范围，当前不能写满：

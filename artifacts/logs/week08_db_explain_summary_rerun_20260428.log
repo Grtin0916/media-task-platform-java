@@ -1,0 +1,10 @@
+artifacts/logs/week08_db_explain_query_a_recent_tasks.log:2:  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..199.28 rows=5000 width=54) (actual time=0.015..0.019 rows=20 loops=1)
+artifacts/logs/week08_db_explain_query_a_recent_tasks.log:3:Planning Time: 0.345 ms
+artifacts/logs/week08_db_explain_query_a_recent_tasks.log:4:Execution Time: 0.042 ms
+artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log:2:  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..211.78 rows=1666 width=54) (actual time=0.015..0.024 rows=20 loops=1)
+artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log:4:        Rows Removed by Filter: 40
+artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log:5:Planning Time: 0.058 ms
+artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log:6:Execution Time: 0.044 ms
+artifacts/logs/week08_db_explain_query_c_task_assets.log:2:  ->  Index Scan using idx_media_asset_task_id_created_at_desc on media_asset  (cost=0.27..32.46 rows=300 width=65) (actual time=0.020..0.023 rows=20 loops=1)
+artifacts/logs/week08_db_explain_query_c_task_assets.log:4:Planning Time: 0.300 ms
+artifacts/logs/week08_db_explain_query_c_task_assets.log:5:Execution Time: 0.042 ms

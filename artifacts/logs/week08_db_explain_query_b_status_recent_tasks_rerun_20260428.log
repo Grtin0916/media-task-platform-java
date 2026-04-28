@@ -1,0 +1,6 @@
+Limit  (cost=0.28..2.82 rows=20 width=54) (actual time=0.016..0.027 rows=20 loops=1)
+  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..211.78 rows=1666 width=54) (actual time=0.015..0.024 rows=20 loops=1)
+        Filter: ((status)::text = 'CREATED'::text)
+        Rows Removed by Filter: 40
+Planning Time: 0.058 ms
+Execution Time: 0.044 ms

@@ -25,6 +25,11 @@
 
 一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，并在 Week07 开始进入最小 eventing skeleton 阶段；当前仓库已经不再只是认证壳，而是开始具备“任务创建 -> 事件发布 -> consume / ack”的最小异步链路入口。
 
+- 已完成 Week08 DB EXPLAIN baseline：`docs/benchmarks/db_explain_week08.md` 已记录 Query A / Query B / Query C 三类查询形态、索引选择、Planning Time、Execution Time 与证据边界。
+- 已完成 Week08 索引迁移：`src/main/resources/db/migration/V2__indexes.sql` 新增 `idx_media_task_created_at_desc`、`idx_media_task_status_created_at_desc`、`idx_media_asset_task_id_created_at_desc`，并明确每个索引必须绑定具体 EXPLAIN-backed query。
+- 已完成 Week08 `QueryPlanIT` 集成测试：`src/test/java/com/ryan/media/QueryPlanIT.java` 可通过 Testcontainers PostgreSQL 16-alpine seed 数据、执行 `ANALYZE`、输出三组 `EXPLAIN ANALYZE` 日志。
+- 已完成 2026-04-28 本地复验：`artifacts/logs/week08_db_query_plan_it_rerun_20260428.log`、`week08_db_explain_summary_rerun_20260428.log` 与三份 `*_rerun_20260428.log` 已保留。当前 Query A 与 Query C 命中预期索引；Query B 使用 `idx_media_task_created_at_desc` 并通过 status filter，不声明 `idx_media_task_status_created_at_desc` 在当前 seed 分布下被选中。
+
 ## Not Yet Verified
 
 以下内容仍未进入“已验证”范围，当前不能写满：
@@ -37,19 +42,20 @@
 
 这些方向已经进入路线规划，但截至当前仓库状态，还不应写成“已完成”。
 
+- Week08 DB baseline 只验证了本地 Testcontainers PostgreSQL 16-alpine 下的固定 seed 查询，不代表生产性能提升。
+- Query B 当前没有选择 `idx_media_task_status_created_at_desc`，后续需要在更高 status selectivity、更深分页或更真实数据分布下重新评估。
+- 当前还没有完成正式分页 / 排序 API contract，也没有把 SQL plan 指标接入 Actuator / Prometheus。
+
 ## Next Hard Milestone
 
-接下来的硬里程碑按顺序是：
+1. Week08：收口 SQL explain 证据链
+   * 固定 `V2__indexes.sql`、`QueryPlanIT` 与 `docs/benchmarks/db_explain_week08.md`
+   * 保留 2026-04-28 rerun 证据日志
+   * 明确 Query A / Query C 是当前可引用索引命中证据，Query B 只作为“优化器选择与数据分布相关”的边界案例
 
-1. Week07：收口 event-flow smoke 证据与 README / loadtest / weekly 入口
-   - 同步 README 顶部三段与已验证边界
-   - 固化 `loadtest/event-flow-smoke.md` 与本地日志证据
-   - 让 Java 仓在 W8 阶段验收前具备可直接引用的最小 eventing smoke 入口
-
-2. W8 预热：明确 consumer group 首次偏移策略与更稳定的状态更新语义
-   - 评估建组前 backlog 的消费语义
-   - 明确状态更新与事件消费之间的责任边界
-   - 为后续 SQL tuning、observability 与 eventing 深化留入口
+2. Week09：转入 Java observability / JVM 可观测预热
+   * 将 Actuator metrics、SQL query evidence 与后续 Java runtime 指标衔接
+   * 不继续无依据堆索引
 
 ## Tech Stack
 

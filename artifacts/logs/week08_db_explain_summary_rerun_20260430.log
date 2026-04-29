@@ -1,0 +1,30 @@
+Week08 DB QueryPlanIT rerun summary
+Date: 2026-04-30
+Source:
+- artifacts/logs/week08_db_query_plan_it_rerun_20260430.log
+- artifacts/logs/week08_db_explain_query_a_recent_tasks.log
+- artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log
+- artifacts/logs/week08_db_explain_query_c_task_assets.log
+
+=== Maven / QueryPlanIT result ===
+2026-04-29T14:40:48.910+08:00  INFO 27678 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:36007/test?loggerLevel=OFF (PostgreSQL 16.13)
+2026-04-29T14:40:49.255+08:00  INFO 27678 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "public", now at version v2 (execution time 00:00.044s)
+2026-04-29T14:40:51.588+08:00  INFO 27678 --- [media-task-platform-java] [           main] com.ryan.media.QueryPlanIT               : Started QueryPlanIT in 7.85 seconds (process running for 21.55)
+
+=== Query A: recent tasks ===
+  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..199.28 rows=5000 width=54) (actual time=0.020..0.024 rows=20 loops=1)
+Planning Time: 0.471 ms
+Execution Time: 0.053 ms
+
+=== Query B: status-filtered recent tasks ===
+  ->  Index Scan using idx_media_task_created_at_desc on media_task  (cost=0.28..211.78 rows=1666 width=54) (actual time=0.028..0.041 rows=20 loops=1)
+        Filter: ((status)::text = 'CREATED'::text)
+        Rows Removed by Filter: 40
+Planning Time: 0.150 ms
+Execution Time: 0.076 ms
+
+=== Query C: task-scoped assets ===
+  ->  Index Scan using idx_media_asset_task_id_created_at_desc on media_asset  (cost=0.27..32.46 rows=300 width=65) (actual time=0.025..0.028 rows=20 loops=1)
+        Index Cond: ((task_id)::text = 'task-000001'::text)
+Planning Time: 0.471 ms
+Execution Time: 0.055 ms

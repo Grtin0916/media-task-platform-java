@@ -32,6 +32,7 @@
 
 - 已完成 2026-04-29 周三复验：`QueryPlanIT` 重新通过，`artifacts/logs/week08_db_query_plan_it_rerun_20260429.log` 与 `artifacts/logs/week08_db_explain_summary_rerun_20260429.log` 已保留；Query A 继续命中 `idx_media_task_created_at_desc`，Query C 继续命中 `idx_media_asset_task_id_created_at_desc`，Query B 仍使用 `idx_media_task_created_at_desc` 并执行 status filter，不声明 `idx_media_task_status_created_at_desc` 在当前 seed 分布下被 planner 选中。
 - 已完成 2026-04-30 周四复验：`QueryPlanIT` 重新通过，`artifacts/logs/week08_db_query_plan_it_rerun_20260430.log` 与 `artifacts/logs/week08_db_explain_summary_rerun_20260430.log` 已保留；Query A 继续命中 `idx_media_task_created_at_desc`，Query C 继续命中 `idx_media_asset_task_id_created_at_desc`，Query B 仍使用 `idx_media_task_created_at_desc` 并执行 status filter，`Rows Removed by Filter: 40`，不声明 `idx_media_task_status_created_at_desc` 在当前 seed 分布下被 planner 选中。
+- 已完成 S1 阶段总结：`docs/weekly/2026-05-01_stage_s1_java.md` 已收口 W4-W8 的 Spring Boot baseline、PostgreSQL/Flyway、Security、Redis Streams eventing 与 Week08 SQL EXPLAIN tuning 证据，并明确 Query B 的 planner / seed distribution 边界。
 
 ## Not Yet Verified
 

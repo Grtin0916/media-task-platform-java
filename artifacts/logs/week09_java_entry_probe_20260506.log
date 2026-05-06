@@ -1,0 +1,245 @@
+
+===== git status =====
+## main...origin/main
+?? artifacts/logs/week09_java_entry_probe_20260506.log
+
+===== recent commits =====
+02fef1b (HEAD -> main, origin/main) docs(java): close stage s1 summary
+1c720d7 docs(java): add week08 db rerun evidence
+f5f2f6a test(java): rerun week08 query plan baseline
+a29cf7c docs(java): document week08 db explain baseline
+eb6ed1d test(java): rerun week08 db explain evidence
+
+===== project tree level 3 =====
+./artifacts/logs/week02_java_metrics_smoke.log
+./artifacts/logs/week05_repository_it.log
+./artifacts/logs/week06_authit_clean.log
+./artifacts/logs/week06_authit.log
+./artifacts/logs/week06_otel_java_agent.log
+./artifacts/logs/week06_otel_java_agent_run_002.log
+./artifacts/logs/week06_otel_java_agent_run_003.log
+./artifacts/logs/week06_otel_java_agent_run_004.log
+./artifacts/logs/week07_event_flow_app_local.log
+./artifacts/logs/week07_event_flow_app.log
+./artifacts/logs/week07_event_flow_create_response_after_group.json
+./artifacts/logs/week07_event_flow_create_response.json
+./artifacts/logs/week07_event_flow_groups.log
+./artifacts/logs/week07_event_flow_health.json
+./artifacts/logs/week07_event_flow_pending.log
+./artifacts/logs/week07_event_flow_smoke_step1.json
+./artifacts/logs/week07_event_flow_smoke_step2.json
+./artifacts/logs/week07_event_flow_smoke_step3.json
+./artifacts/logs/week07_event_flow_xadd.log
+./artifacts/logs/week07_event_flow_xinfo_groups_after_step3.log
+./artifacts/logs/week07_event_flow_xinfo_groups.log
+./artifacts/logs/week07_event_flow_xpending_after_step3.log
+./artifacts/logs/week07_event_flow_xpending.log
+./artifacts/logs/week07_event_flow_xrange_after_consume.log
+./artifacts/logs/week07_event_flow_xrange_after_step3.log
+./artifacts/logs/week07_event_flow_xrange.log
+./artifacts/logs/week08_db_explain_query_a_recent_tasks.log
+./artifacts/logs/week08_db_explain_query_a_recent_tasks_rerun_20260428.log
+./artifacts/logs/week08_db_explain_query_a_recent_tasks_rerun_20260429.log
+./artifacts/logs/week08_db_explain_query_b_status_recent_tasks.log
+./artifacts/logs/week08_db_explain_query_b_status_recent_tasks_rerun_20260428.log
+./artifacts/logs/week08_db_explain_query_b_status_recent_tasks_rerun_20260429.log
+./artifacts/logs/week08_db_explain_query_c_task_assets.log
+./artifacts/logs/week08_db_explain_query_c_task_assets_rerun_20260428.log
+./artifacts/logs/week08_db_explain_query_c_task_assets_rerun_20260429.log
+./artifacts/logs/week08_db_explain_summary_rerun_20260428.log
+./artifacts/logs/week08_db_explain_summary_rerun_20260429.log
+./artifacts/logs/week08_db_explain_summary_rerun_20260430.log
+./artifacts/logs/week08_db_final_validation.log
+./artifacts/logs/week08_db_index_migration_test.log
+./artifacts/logs/week08_db_query_plan_it_after_analyze.log
+./artifacts/logs/week08_db_query_plan_it_rerun_20260428.log
+./artifacts/logs/week08_db_query_plan_it_rerun_20260429.log
+./artifacts/logs/week08_db_query_plan_it_rerun_20260430.log
+./artifacts/logs/week09_java_entry_probe_20260506.log
+./artifacts_week05_java_light_tests.log
+./artifacts_week05_postgres_smoke_retry4.log
+./artifacts_week05_repository_it.log
+./docs/adr/0001-db-choice.md
+./docs/adr/0002-auth-strategy.md
+./docs/adr/0003-eventing-choice.md
+./docs/benchmarks/db_explain_week08.md
+./docs/weekly/2026-04-03_week01_java.md
+./docs/weekly/2026-04-10_week02_java.md
+./docs/weekly/2026-04-23_week07_day04_java.md
+./docs/weekly/2026-04-24_week07_eventing_summary.md
+./docs/weekly/2026-05-01_stage_s1_java.md
+./.gitattributes
+./.gitignore
+./HELP.md
+./loadtest/event-flow-smoke.md
+./mvnw
+./mvnw.cmd
+./.mvn/wrapper/maven-wrapper.properties
+./pom.xml
+./README.md
+./tools/otel/opentelemetry-javaagent.jar
+
+===== pom actuator / micrometer / testcontainers / redis / security =====
+pom.xml:22:        <testcontainers.version>2.0.4</testcontainers.version>
+pom.xml:28:            <artifactId>spring-boot-starter-actuator</artifactId>
+pom.xml:32:            <groupId>io.micrometer</groupId>
+pom.xml:33:            <artifactId>micrometer-registry-prometheus</artifactId>
+pom.xml:53:            <groupId>org.flywaydb</groupId>
+pom.xml:54:            <artifactId>flyway-core</artifactId>
+pom.xml:58:            <groupId>org.flywaydb</groupId>
+pom.xml:59:            <artifactId>flyway-database-postgresql</artifactId>
+pom.xml:64:            <groupId>org.postgresql</groupId>
+pom.xml:65:            <artifactId>postgresql</artifactId>
+pom.xml:84:            <artifactId>spring-boot-testcontainers</artifactId>
+pom.xml:90:            <groupId>org.testcontainers</groupId>
+pom.xml:91:            <artifactId>testcontainers-junit-jupiter</artifactId>
+pom.xml:92:            <version>${testcontainers.version}</version>
+pom.xml:98:            <groupId>org.testcontainers</groupId>
+pom.xml:99:            <artifactId>testcontainers-postgresql</artifactId>
+pom.xml:100:            <version>${testcontainers.version}</version>
+pom.xml:106:            <artifactId>spring-boot-starter-security</artifactId>
+pom.xml:115:      <artifactId>spring-boot-starter-data-redis</artifactId>
+src/test/java/com/ryan/media/PostgresSmokeIT.java:10:import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+src/test/java/com/ryan/media/PostgresSmokeIT.java:12:import org.testcontainers.containers.PostgreSQLContainer;
+src/test/java/com/ryan/media/PostgresSmokeIT.java:13:import org.testcontainers.junit.jupiter.Container;
+src/test/java/com/ryan/media/PostgresSmokeIT.java:14:import org.testcontainers.junit.jupiter.Testcontainers;
+src/test/java/com/ryan/media/PostgresSmokeIT.java:46:    void should_run_flyway_migration_and_create_core_tables() {
+src/test/java/com/ryan/media/RepositoryIT.java:9:import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+src/test/java/com/ryan/media/RepositoryIT.java:11:import org.testcontainers.containers.PostgreSQLContainer;
+src/test/java/com/ryan/media/RepositoryIT.java:12:import org.testcontainers.junit.jupiter.Container;
+src/test/java/com/ryan/media/RepositoryIT.java:13:import org.testcontainers.junit.jupiter.Testcontainers;
+src/test/java/com/ryan/media/QueryPlanIT.java:12:import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+src/test/java/com/ryan/media/QueryPlanIT.java:14:import org.testcontainers.containers.PostgreSQLContainer;
+src/test/java/com/ryan/media/QueryPlanIT.java:15:import org.testcontainers.junit.jupiter.Container;
+src/test/java/com/ryan/media/QueryPlanIT.java:16:import org.testcontainers.junit.jupiter.Testcontainers;
+src/main/java/com/ryan/media/messaging/Producer.java:7:import org.springframework.data.redis.connection.stream.RecordId;
+src/main/java/com/ryan/media/messaging/Producer.java:8:import org.springframework.data.redis.connection.stream.StreamRecords;
+src/main/java/com/ryan/media/messaging/Producer.java:9:import org.springframework.data.redis.core.StringRedisTemplate;
+src/main/java/com/ryan/media/messaging/Consumer.java:8:import org.springframework.data.redis.connection.stream.MapRecord;
+src/main/java/com/ryan/media/messaging/Consumer.java:9:import org.springframework.data.redis.connection.stream.ReadOffset;
+src/main/java/com/ryan/media/messaging/Consumer.java:10:import org.springframework.data.redis.connection.stream.StreamOffset;
+src/main/java/com/ryan/media/messaging/Consumer.java:11:import org.springframework.data.redis.connection.stream.StreamReadOptions;
+src/main/java/com/ryan/media/messaging/Consumer.java:12:import org.springframework.data.redis.core.StringRedisTemplate;
+src/main/java/com/ryan/media/messaging/Consumer.java:71:                org.springframework.data.redis.connection.stream.Consumer.from(GROUP, CONSUMER_NAME),
+src/main/resources/application-local.properties:1:spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/media_task
+src/main/resources/application-local.properties:4:spring.datasource.driver-class-name=org.postgresql.Driver
+src/main/resources/application-local.properties:5:spring.flyway.enabled=true
+src/main/resources/application.properties:4:management.endpoints.web.exposure.include=health,info,prometheus
+docs/adr/0001-db-choice.md:14:- `/actuator/prometheus` exposure for Cloud-side scraping
+docs/adr/0001-db-choice.md:50:### Why expose `/actuator/prometheus`
+docs/adr/0001-db-choice.md:59:- `/actuator/prometheus` returns scrapeable metrics text
+docs/adr/0002-auth-strategy.md:7:Week05 has already landed the PostgreSQL + Flyway + RepositoryIT + `/actuator/prometheus` baseline.
+docs/weekly/2026-05-01_stage_s1_java.md:110:- JVM profiling, JFR, GC analysis, or virtual thread benchmark
+docs/weekly/2026-05-01_stage_s1_java.md:134:- Add at least one concurrency or virtual-thread experiment.
+docs/weekly/2026-04-10_week02_java.md:10:- `/actuator/prometheus` exposure
+docs/weekly/2026-04-10_week02_java.md:29:`/actuator/prometheus` returns scrapeable metrics text and is available for Cloud-side Prometheus scraping.
+docs/benchmarks/db_explain_week08.md:102:    export DATABASE_URL='postgresql://media:media@127.0.0.1:5432/media_task'
+loadtest/event-flow-smoke.md:18:docker run -d --name week07-redis -p 6379:6379 redis:7-alpine
+loadtest/event-flow-smoke.md:35:SPRING_DATASOURCE_URL=jdbc:postgresql://127.0.0.1:5432/media_task_db \
+loadtest/event-flow-smoke.md:57:docker exec week07-redis redis-cli XRANGE media-task-events - + COUNT 10
+loadtest/event-flow-smoke.md:94:docker exec week07-redis redis-cli XPENDING media-task-events media-task-group
+loadtest/event-flow-smoke.md:95:docker exec week07-redis redis-cli XINFO GROUPS media-task-events
+
+===== application config =====
+src/main/resources/db/migration/V1__init.sql
+create table if not exists media_task (
+    id varchar(36) primary key,
+    title varchar(100) not null,
+    media_type varchar(30) not null,
+    status varchar(20) not null,
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now()
+);
+
+create table if not exists media_asset (
+    id varchar(36) primary key,
+    task_id varchar(36) not null references media_task(id) on delete cascade,
+    asset_path varchar(512) not null,
+    asset_kind varchar(30) not null,
+    created_at timestamptz not null default now()
+);
+
+create table if not exists media_tag (
+    id varchar(36) primary key,
+    task_id varchar(36) not null references media_task(id) on delete cascade,
+    tag_name varchar(50) not null,
+    created_at timestamptz not null default now()
+);
+
+create index if not exists idx_media_asset_task_id on media_asset(task_id);
+create index if not exists idx_media_tag_task_id on media_tag(task_id);
+src/main/resources/db/migration/V2__indexes.sql
+-- Week08 SQL tuning baseline indexes.
+-- Each index is tied to one explicit query shape in docs/benchmarks/db_explain_week08.md.
+-- Keep this migration narrow: do not add broad indexes without EXPLAIN-backed queries.
+
+create index if not exists idx_media_task_created_at_desc
+    on media_task (created_at desc);
+
+create index if not exists idx_media_task_status_created_at_desc
+    on media_task (status, created_at desc);
+
+create index if not exists idx_media_asset_task_id_created_at_desc
+    on media_asset (task_id, created_at desc);
+src/main/resources/application-local.properties
+spring.datasource.url=jdbc:postgresql://127.0.0.1:5432/media_task
+spring.datasource.username=media
+spring.datasource.password=media
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.flyway.enabled=true
+src/main/resources/application.properties
+spring.application.name=media-task-platform-java
+server.port=8080
+
+management.endpoints.web.exposure.include=health,info,prometheus
+management.endpoint.health.show-details=never
+
+===== main java files =====
+src/main/java/com/ryan/media/auth/AuthController.java
+src/main/java/com/ryan/media/controller/HealthController.java
+src/main/java/com/ryan/media/controller/MediaTaskController.java
+src/main/java/com/ryan/media/MediaTaskApplication.java
+src/main/java/com/ryan/media/messaging/Consumer.java
+src/main/java/com/ryan/media/messaging/Producer.java
+src/main/java/com/ryan/media/model/CreateMediaTaskRequest.java
+src/main/java/com/ryan/media/model/MediaTaskResponse.java
+src/main/java/com/ryan/media/repository/MediaTaskRepository.java
+src/main/java/com/ryan/media/security/SecurityConfig.java
+src/main/java/com/ryan/media/service/MediaTaskService.java
+
+===== test java files =====
+src/test/java/com/ryan/media/AuthIT.java
+src/test/java/com/ryan/media/AuthSecurityTest.java
+src/test/java/com/ryan/media/controller/MediaTaskControllerTest.java
+src/test/java/com/ryan/media/PostgresSmokeIT.java
+src/test/java/com/ryan/media/QueryPlanIT.java
+src/test/java/com/ryan/media/RepositoryIT.java
+src/test/java/com/ryan/media/SmokeTest.java
+
+===== actuator / metrics / concurrency grep =====
+src/main/resources/application.properties:4:management.endpoints.web.exposure.include=health,info,prometheus
+docs/adr/0001-db-choice.md:14:- `/actuator/prometheus` exposure for Cloud-side scraping
+docs/adr/0001-db-choice.md:26:5. Spring Boot Actuator + Prometheus registry as the metrics exposure baseline
+docs/adr/0001-db-choice.md:50:### Why expose `/actuator/prometheus`
+docs/adr/0001-db-choice.md:59:- `/actuator/prometheus` returns scrapeable metrics text
+docs/adr/0002-auth-strategy.md:7:Week05 has already landed the PostgreSQL + Flyway + RepositoryIT + `/actuator/prometheus` baseline.
+docs/weekly/2026-04-03_week01_java.md:15:- 暴露 `/health` 与 `/actuator/health`
+docs/weekly/2026-04-03_week01_java.md:51:- 没有 metrics / tracing
+docs/weekly/2026-04-03_week01_java.md:66:- `/health` 与 `/actuator/health` 返回结果
+docs/weekly/2026-05-01_stage_s1_java.md:110:- JVM profiling, JFR, GC analysis, or virtual thread benchmark
+docs/weekly/2026-05-01_stage_s1_java.md:132:- Add Actuator / Micrometer metrics for service-level visibility.
+docs/weekly/2026-05-01_stage_s1_java.md:133:- Add JVM observability notes with JFR / JMC.
+docs/weekly/2026-05-01_stage_s1_java.md:136:- Connect service metrics to the Cloud repository's observability and deployment path.
+docs/weekly/2026-04-10_week02_java.md:10:- `/actuator/prometheus` exposure
+docs/weekly/2026-04-10_week02_java.md:18:- `artifacts/logs/week02_java_metrics_smoke.log`
+docs/weekly/2026-04-10_week02_java.md:29:`/actuator/prometheus` returns scrapeable metrics text and is available for Cloud-side Prometheus scraping.
+docs/weekly/2026-04-10_week02_java.md:51:The next phase should use the current DB + metrics baseline as the foundation for service hardening and broader backend capability expansion.
+pom.xml:28:            <artifactId>spring-boot-starter-actuator</artifactId>
+pom.xml:33:            <artifactId>micrometer-registry-prometheus</artifactId>
+
+===== maven wrapper / version =====
+Apache Maven 3.9.14 (996c630dbc656c76214ce58821dcc58be960875b)
+Maven home: /home/GRT/.m2/wrapper/dists/apache-maven-3.9.14/db91789b
+Java version: 21.0.10, vendor: Ubuntu, runtime: /usr/lib/jvm/java-21-openjdk-amd64
+Default locale: zh_CN, platform encoding: UTF-8
+OS name: "linux", version: "6.8.0-107-generic", arch: "amd64", family: "unix"

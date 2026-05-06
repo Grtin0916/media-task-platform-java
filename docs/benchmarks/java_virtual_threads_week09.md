@@ -107,3 +107,52 @@ Deferred:
 - custom Micrometer business metrics;
 - tracing / distributed span evidence;
 - production-grade load testing.
+
+---
+
+## 6. JFR Minimal Recording
+
+### 6.1 Scope
+
+This section records a minimal Java Flight Recorder run for the Week09 `ConcurrencyIT` baseline.
+
+The first attempt used Surefire forked JVM `argLine` with `delay=0s`, which failed before test execution because JFR requires the startup delay to be at least 1 second. The successful path records the Maven JVM through `MAVEN_OPTS`, while running `ConcurrencyIT`.
+
+Evidence files:
+
+- `artifacts/jfr/week09_concurrency_it_maven_jvm_20260506.jfr`
+- `artifacts/logs/week09_concurrency_it_jfr_maven_jvm_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_summary_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_hot_methods_20260506.log`
+
+Command shape:
+
+    MAVEN_OPTS="-XX:StartFlightRecording=filename=artifacts/jfr/week09_concurrency_it_maven_jvm_20260506.jfr,settings=profile,dumponexit=true,disk=true" ./mvnw -Dtest=ConcurrencyIT test
+
+### 6.2 Observed Result
+
+- JFR file size: approximately `779K`
+- Recording duration: approximately `3 s`
+- Maven result: `BUILD SUCCESS`
+- Test result: `Tests run: 1, Failures: 0, Errors: 0, Skipped: 0`
+- Representative JFR events:
+  - `jdk.GCPhaseParallel`
+  - `jdk.ObjectAllocationSample`
+  - `jdk.ExecutionSample`
+  - `jdk.ThreadPark`
+  - `jdk.ThreadStart`
+  - `jdk.CPULoad`
+
+### 6.3 Interpretation Boundary
+
+This JFR evidence proves that the project can capture and preserve JVM runtime evidence during the Week09 concurrency test path.
+
+The current recording is still a minimal entry point:
+
+- it records the Maven test process rather than a long-running production service;
+- hot-method samples are dominated by Maven / test harness activity;
+- virtual-thread-specific JFR events are not yet materially populated in this short run;
+- it does not replace longer JFR/JMC analysis under a service workload.
+
+The next JVM profiling step should use either a longer-running workload or a running Spring Boot process attached through `jcmd JFR.start`, then inspect virtual-thread, blocking, allocation, GC, and method hotspot events.
+

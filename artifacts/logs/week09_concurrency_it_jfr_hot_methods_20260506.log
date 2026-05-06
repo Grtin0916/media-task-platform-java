@@ -1,0 +1,26 @@
+
+                                          Java Methods that Executes the Most
+
+Method                                                                                                  Samples Percent
+------------------------------------------------------------------------------------------------------- ------- -------
+org.codehaus.plexus.util.xml.pull.MXParser.nextImpl()                                                         6  23.08%
+com.google.inject.spi.BindingSourceRestriction.clear(ElementSource)                                           1   3.85%
+java.lang.String.concat(String)                                                                               1   3.85%
+java.util.Formatter.parse(String)                                                                             1   3.85%
+java.nio.DirectByteBuffer.get(int)                                                                            1   3.85%
+org.codehaus.plexus.util.xml.Xpp3DomBuilder.build(...)                                                        1   3.85%
+org.codehaus.plexus.util.xml.pull.MXParser.parseEndTag()                                                      1   3.85%
+org.objectweb.asm.SymbolTable.addConstantFieldref(String, String, String)                                     1   3.85%
+java.util.HashMap.putVal(int, Object, Object, boolean, boolean)                                               1   3.85%
+org.apache.maven.model.io.xpp3.MavenXpp3ReaderEx.parseDeveloper(XmlPullParser, boolean, InputSource)          1   3.85%
+org.eclipse.aether.artifact.AbstractArtifact.hashCode()                                                       1   3.85%
+com.google.inject.internal.AbstractProcessor.lambda$process$0(Errors, Element)                                1   3.85%
+org.apache.maven.model.interpolation.StringVisitorModelInterpolator$ModelVisitor.visit(Model)                 1   3.85%
+java.util.jar.JarFile.match(byte[], byte[], byte[], byte[])                                                   1   3.85%
+org.apache.maven.model.interpolation.StringVisitorModelInterpolator$ModelVisitor.visit(...)                   1   3.85%
+java.util.zip.ZipFile$Source.initCEN(int)                                                                     1   3.85%
+java.lang.String.indexOf(String)                                                                              1   3.85%
+java.util.concurrent.locks.AbstractQueuedSynchronizer.release(int)                                            1   3.85%
+java.util.Locale.forLanguageTag(String)                                                                       1   3.85%
+java.util.concurrent.ConcurrentHashMap.transfer(ConcurrentHashMap$Node[], ConcurrentHashMap$Node[])           1   3.85%
+java.nio.CharBuffer.position(int)                                                                             1   3.85%

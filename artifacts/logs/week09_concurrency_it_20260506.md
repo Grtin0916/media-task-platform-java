@@ -7,7 +7,7 @@ under a blocking-wait workload.
 
 ## Experiment setup
 
-- Date: 2026-05-06T02:49:45.953249675Z
+- Date: 2026-05-06T09:47:13.407738048Z
 - Tasks: 160
 - Blocking sleep per task: 40 ms
 - Platform executor: fixed thread pool, size=8
@@ -18,8 +18,8 @@ under a blocking-wait workload.
 
 | Executor | Completed tasks | Elapsed ms |
 |---|---:|---:|
-| platform-fixed-8 | 160 | 806 |
-| virtual-thread-per-task | 160 | 59 |
+| platform-fixed-8 | 160 | 805 |
+| virtual-thread-per-task | 160 | 46 |
 
 ## Interpretation
 

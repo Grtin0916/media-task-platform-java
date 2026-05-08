@@ -4,6 +4,39 @@
 
 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
 
+
+### Week09 Java observability and virtual thread verified update - 2026-05-08
+
+Verified scope:
+
+- Actuator health and metrics endpoints were captured locally.
+- Prometheus-format metrics were captured from the Spring Boot Actuator Prometheus endpoint.
+- `ConcurrencyIT` compares a fixed platform thread pool with a virtual-thread-per-task executor under a blocking sleep workload.
+- Latest captured concurrency run:
+  - `platform-fixed-8`: 160 tasks, 40 ms blocking sleep, 805 ms elapsed, 198.7578 tasks/sec.
+  - `virtual-thread-per-task`: 160 tasks, 40 ms blocking sleep, 46 ms elapsed, 3478.2609 tasks/sec.
+- JFR evidence was captured for the Maven/JVM test run and summarized in Week09 logs.
+- A minimal `Dockerfile` and `.dockerignore` now provide the Java service containerization entry used by the Week09 Cloud local K8s rollout.
+
+Evidence:
+
+- `src/test/java/com/ryan/media/ConcurrencyIT.java`
+- `docs/benchmarks/java_virtual_threads_week09.md`
+- `artifacts/logs/week09_concurrency_it_20260506.csv`
+- `artifacts/logs/week09_concurrency_it_20260506.md`
+- `artifacts/logs/week09_concurrency_it_test_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_summary_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_hot_methods_20260506.log`
+- `artifacts/jfr/week09_concurrency_it_maven_jvm_20260506.jfr`
+- `artifacts/logs/week09_actuator_health_20260506.json`
+- `artifacts/logs/week09_actuator_prometheus_20260506.txt`
+
+Boundary:
+
+- This experiment demonstrates behavior under a blocking-wait workload.
+- It does not claim virtual threads accelerate CPU-bound computation.
+- It does not yet include production load testing, distributed tracing, or container runtime tuning.
+
 ## Verified Scope
 
 当前仓库已完成并留有证据的范围如下：

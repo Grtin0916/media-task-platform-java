@@ -1,0 +1,315 @@
+openapi: 3.1.0
+info:
+  title: media-task-platform-java API
+  version: 0.10.0-week10
+  summary: Week10 local API contract draft for the media task platform.
+  description: >
+    This OpenAPI document describes the currently verified local API surface for
+    the Java media task platform. It is a contract draft, not a production SLA.
+
+servers:
+  - url: http://127.0.0.1:8080
+    description: Local Spring Boot runtime
+
+tags:
+  - name: Health
+    description: Local health check endpoints
+  - name: Auth
+    description: Minimal authentication endpoints
+  - name: MediaTasks
+    description: Protected media task APIs
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Basic application health check
+      operationId: getBasicHealth
+      responses:
+        "200":
+          description: Application is reachable
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+
+  /actuator/health:
+    get:
+      tags:
+        - Health
+      summary: Spring Boot Actuator health endpoint
+      operationId: getActuatorHealth
+      responses:
+        "200":
+          description: Actuator health status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActuatorHealthResponse"
+
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Minimal local login endpoint
+      operationId: login
+      description: >
+        Current Week10 contract draft keeps the authentication shape explicit
+        but local-only. It does not claim full JWT issuance / verification.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Login accepted in the current minimal auth boundary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /auth/me:
+    get:
+      tags:
+        - Auth
+      summary: Return current local authenticated principal
+      operationId: getCurrentUser
+      responses:
+        "200":
+          description: Current user information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthMeResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/media-tasks:
+    get:
+      tags:
+        - MediaTasks
+      summary: List media tasks
+      operationId: listMediaTasks
+      security:
+        - basicAuth: []
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: Zero-based page index. Week10 contract placeholder; implementation may not be complete yet.
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          required: false
+          description: Page size. Week10 contract placeholder; implementation may not be complete yet.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: sort
+          in: query
+          required: false
+          description: Sort expression such as createdAt,desc. Week10 contract placeholder.
+          schema:
+            type: string
+            example: createdAt,desc
+        - name: status
+          in: query
+          required: false
+          description: Optional task status filter. Week10 contract placeholder.
+          schema:
+            type: string
+            example: CREATED
+      responses:
+        "200":
+          description: Media task list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaTaskListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+    post:
+      tags:
+        - MediaTasks
+      summary: Create a media task
+      operationId: createMediaTask
+      security:
+        - basicAuth: []
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: false
+          description: >
+            Optional future idempotency key. Week10 contract draft only; current
+            implementation may not persist or enforce this header yet.
+          schema:
+            type: string
+            minLength: 8
+            maxLength: 128
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateMediaTaskRequest"
+      responses:
+        "200":
+          description: Created media task
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaTaskResponse"
+        "201":
+          description: Created media task, if implementation later switches to Created semantics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MediaTaskResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+
+  responses:
+    BadRequest:
+      description: Invalid request payload or query parameters
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+    Unauthorized:
+      description: Authentication is missing or invalid
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+    Conflict:
+      description: Conflict, including future idempotency conflict semantics
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+
+  schemas:
+    ActuatorHealthResponse:
+      type: object
+      additionalProperties: true
+      properties:
+        status:
+          type: string
+          example: UP
+
+    AuthResponse:
+      type: object
+      additionalProperties: true
+      description: Minimal current auth response shape. To be tightened after source-level verification.
+
+    AuthMeResponse:
+      type: object
+      additionalProperties: true
+      description: Minimal current authenticated-user response shape. To be tightened after source-level verification.
+
+    CreateMediaTaskRequest:
+      type: object
+      required:
+        - title
+        - mediaType
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: first-task
+        mediaType:
+          type: string
+          minLength: 1
+          maxLength: 64
+          example: audio
+
+    MediaTaskResponse:
+      type: object
+      additionalProperties: true
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        title:
+          type: string
+          example: first-task
+        mediaType:
+          type: string
+          example: audio
+        status:
+          type: string
+          example: CREATED
+        createdAt:
+          type: string
+          format: date-time
+
+    MediaTaskListResponse:
+      oneOf:
+        - type: array
+          items:
+            $ref: "#/components/schemas/MediaTaskResponse"
+        - type: object
+          additionalProperties: true
+          description: Future paged response shape if Pageable is introduced.
+
+    ProblemDetail:
+      type: object
+      description: RFC 9457-style problem detail response.
+      required:
+        - type
+        - title
+        - status
+        - detail
+        - instance
+      properties:
+        type:
+          type: string
+          format: uri
+          example: about:blank
+        title:
+          type: string
+          example: Bad Request
+        status:
+          type: integer
+          example: 400
+        detail:
+          type: string
+          example: Request validation failed.
+        instance:
+          type: string
+          example: /api/media-tasks
+        code:
+          type: string
+          example: MEDIA_TASK_INVALID_REQUEST
+        traceId:
+          type: string
+          example: local-trace-id

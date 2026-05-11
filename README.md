@@ -5,6 +5,32 @@
 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
 
 
+### Week10 Java API contract governance verified update - 2026-05-11
+
+Verified scope:
+
+- Added `docs/api/openapi.yaml` as the Week10 local API contract draft.
+- Added `docs/adr/0004-error-contract.md` to define the API error contract and OpenAPI governance boundary.
+- The OpenAPI contract currently covers `/health`, `/actuator/health`, `/auth/login`, `/auth/me`, and `/api/media-tasks`.
+- The contract draft documents current auth / media-task API boundaries plus placeholders for pagination, sorting, filtering, and `Idempotency-Key`.
+- The error contract ADR defines a ProblemDetail-style target shape for future centralized error handling.
+- `docs/api/openapi.yaml` has been locally parsed as YAML and contains required top-level keys: `openapi`, `info`, `paths`, and `components`.
+
+Evidence:
+
+- `docs/api/openapi.yaml`
+- `docs/adr/0004-error-contract.md`
+
+Boundary:
+
+- This update verifies documentation and contract-governance entry only.
+- It does not yet implement a centralized exception handler.
+- It does not yet add `ContractIT`.
+- It does not claim full JWT issuance / parsing / validation.
+- It does not claim persistent idempotency-key enforcement.
+- It does not claim production-grade API governance or OpenAPI CI validation.
+
+
 ### Week09 Java observability and virtual thread verified update - 2026-05-08
 
 Verified scope:
@@ -85,14 +111,22 @@ Boundary:
 
 ## Next Hard Milestone
 
-1. Week08：收口 SQL explain 证据链
-   * 固定 `V2__indexes.sql`、`QueryPlanIT` 与 `docs/benchmarks/db_explain_week08.md`
-   * 保留 2026-04-28 rerun 证据日志
-   * 明确 Query A / Query C 是当前可引用索引命中证据，Query B 只作为“优化器选择与数据分布相关”的边界案例
+接下来的硬里程碑按顺序是：
 
-2. Week09：转入 Java observability / JVM 可观测预热
-   * 将 Actuator metrics、SQL query evidence 与后续 Java runtime 指标衔接
-   * 不继续无依据堆索引
+1. Week10：从 API contract 文档推进到 ContractIT
+   * 基于 `docs/api/openapi.yaml` 固定 `/auth/login`、`/auth/me`、`GET /api/media-tasks`、`POST /api/media-tasks` 的最小合同测试
+   * 先覆盖 status code、content type、关键字段、认证边界
+   * 不在同一天大改业务逻辑，不把 OpenAPI 占位字段写成已实现功能
+
+2. Week10：收口错误响应实现边界
+   * 基于 `docs/adr/0004-error-contract.md` 设计 ProblemDetail-style 错误响应
+   * 后续再考虑 `@ControllerAdvice` / `ResponseEntityExceptionHandler`
+   * 当前不声明完整生产错误码体系、traceId 贯通或全链路观测闭环
+
+3. Week10：分页 / 排序 / 过滤 / 幂等键分阶段落地
+   * 当前 OpenAPI 已标注 page、size、sort、status 与 `Idempotency-Key` 为 Week10 contract placeholders
+   * 下一步应先读 Controller / Service / Repository 真实实现，再决定是否改接口
+   * 不做空壳式大范围接口扩写
 
 ## Tech Stack
 

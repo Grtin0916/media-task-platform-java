@@ -1,3 +1,7 @@
+===== [README narrative fix verify] =====
+2026-05-12T10:22:46+08:00
+
+===== [README top / milestone excerpt] =====
 # media-task-platform-java
 
 一个面向媒体任务管理场景的 Java / Spring Boot 最小平台骨架项目。
@@ -178,28 +182,118 @@ Boundary:
 ## Quick Verify
 
     curl -s http://127.0.0.1:8080/health
-    curl -s http://127.0.0.1:8080/actuator/health
-    curl -s -X POST http://127.0.0.1:8080/api/media-tasks \
-      -H "Content-Type: application/json" \
-      -d '{"title":"first-task","mediaType":"audio"}'
-    curl -s http://127.0.0.1:8080/api/media-tasks
 
-## Project Structure
+===== [maven full test] =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ryan.media:media-task-platform-java >---------------
+[INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ media-task-platform-java ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
+[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ media-task-platform-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ryan.media.controller.MediaTaskControllerTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+10:22:51.103 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.3.Final
+10:22:51.686 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+10:22:51.686 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+10:22:51.691 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 3 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.019 s -- in com.ryan.media.controller.MediaTaskControllerTest
+[INFO] Running com.ryan.media.AuthSecurityTest
+10:22:51.943 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.AuthSecurityTest]: AuthSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:22:52.133 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.AuthSecurityTest
 
-    src/main/java/com/ryan/media/
-    ├── MediaTaskApplication.java
-    ├── auth
-    │   └── AuthController.java
-    ├── controller
-    │   ├── HealthController.java
-    │   └── MediaTaskController.java
-    ├── model
-    │   ├── CreateMediaTaskRequest.java
-    │   └── MediaTaskResponse.java
-    ├── repository
-    │   └── MediaTaskRepository.java
-    ├── security
-    │   └── SecurityConfig.java
-    └── service
-        └── MediaTaskService.java
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
 
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:22:52.574+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 864650 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:22:52.577+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:22:53.533+08:00  WARN 864650 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: bdae6fa1-89ff-4fd0-8557-e60a0a3ca067
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:22:53.542+08:00  INFO 864650 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:22:53.771+08:00  INFO 864650 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-12T10:22:53.771+08:00  INFO 864650 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-12T10:22:53.772+08:00  INFO 864650 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-05-12T10:22:53.803+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Started AuthSecurityTest in 1.596 seconds (process running for 4.545)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.037 s -- in com.ryan.media.AuthSecurityTest
+[INFO] Running com.ryan.media.SmokeTest
+2026-05-12T10:22:53.935+08:00  INFO 864650 --- [media-task-platform-java] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.ryan.media.SmokeTest]: SmokeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-05-12T10:22:53.942+08:00  INFO 864650 --- [media-task-platform-java] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.SmokeTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:22:53.971+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 864650 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:22:53.971+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:22:54.455+08:00  INFO 864650 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-12T10:22:54.457+08:00  INFO 864650 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-12T10:22:54.479+08:00  INFO 864650 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2026-05-12T10:22:55.231+08:00  INFO 864650 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-05-12T10:22:55.249+08:00  WARN 864650 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b051c2eb-8c33-4a3d-9af6-68cbd1c235ed
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:22:55.250+08:00  INFO 864650 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:22:55.602+08:00  INFO 864650 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Started SmokeTest in 1.652 seconds (process running for 6.344)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.760 s -- in com.ryan.media.SmokeTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.007 s
+[INFO] Finished at: 2026-05-12T10:22:55+08:00
+[INFO] ------------------------------------------------------------------------
+
+===== [post status] =====
+## main...origin/main
+ M README.md
+?? artifacts/logs/week10_readme_contract_narrative_fix_20260512.log
+
+===== [diff stat] =====
+ README.md | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)

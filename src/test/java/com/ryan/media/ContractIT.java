@@ -109,4 +109,22 @@ class ContractIT {
                     """))
             .andExpect(status().isCreated());
     }
+
+    @Test
+    void getMediaTaskByIdShouldReturnProblemDetailWhenMissing() throws Exception {
+        when(mediaTaskService.getById("missing-task"))
+            .thenThrow(new IllegalArgumentException("media task not found: missing-task"));
+
+        mockMvc.perform(get("/api/media-tasks/missing-task")
+                .with(user("week10-contract-user").roles("USER")))
+            .andExpect(status().isNotFound())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PROBLEM_JSON))
+            .andExpect(jsonPath("$.type").value("https://media-task-platform-java/problems/media-task-not-found"))
+            .andExpect(jsonPath("$.title").value("Media task not found"))
+            .andExpect(jsonPath("$.status").value(404))
+            .andExpect(jsonPath("$.detail").value("media task not found: missing-task"))
+            .andExpect(jsonPath("$.instance").value("/api/media-tasks/missing-task"))
+            .andExpect(jsonPath("$.code").value("MEDIA_TASK_NOT_FOUND"));
+    }
+
 }

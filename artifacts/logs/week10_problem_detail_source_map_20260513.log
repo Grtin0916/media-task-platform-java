@@ -1,0 +1,597 @@
+===== date =====
+2026-05-12T15:36:36+08:00
+
+===== git pre-status =====
+## main...origin/main
+?? artifacts/logs/week10_problem_detail_source_map_20260513.log
+0	0
+dd07df4 (HEAD -> main, origin/main) docs(java): align week10 contract closure narrative
+688fa6f test(java): verify week10 api contract boundary
+9709b1a docs(java): verify week10 api contract scope
+4b7902f docs(java): start week10 api contract governance
+33ddcd6 docs(java): close week09 summary
+
+===== key files list =====
+docs/adr/0001-db-choice.md
+docs/adr/0002-auth-strategy.md
+docs/adr/0003-eventing-choice.md
+docs/adr/0004-error-contract.md
+docs/api/openapi.yaml
+src/main/java/com/ryan/media/auth/AuthController.java
+src/main/java/com/ryan/media/controller/HealthController.java
+src/main/java/com/ryan/media/controller/MediaTaskController.java
+src/main/java/com/ryan/media/MediaTaskApplication.java
+src/main/java/com/ryan/media/messaging/Consumer.java
+src/main/java/com/ryan/media/messaging/Producer.java
+src/main/java/com/ryan/media/model/CreateMediaTaskRequest.java
+src/main/java/com/ryan/media/model/MediaTaskResponse.java
+src/main/java/com/ryan/media/repository/MediaTaskRepository.java
+src/main/java/com/ryan/media/security/SecurityConfig.java
+src/main/java/com/ryan/media/service/MediaTaskService.java
+src/test/java/com/ryan/media/AuthIT.java
+src/test/java/com/ryan/media/AuthSecurityTest.java
+src/test/java/com/ryan/media/ConcurrencyIT.java
+src/test/java/com/ryan/media/ContractIT.java
+src/test/java/com/ryan/media/controller/MediaTaskControllerTest.java
+src/test/java/com/ryan/media/PostgresSmokeIT.java
+src/test/java/com/ryan/media/QueryPlanIT.java
+src/test/java/com/ryan/media/RepositoryIT.java
+src/test/java/com/ryan/media/SmokeTest.java
+
+===== package / controller / security / error keyword scan =====
+src/main/java/com/ryan/media/model/CreateMediaTaskRequest.java:1:package com.ryan.media.model;
+src/main/java/com/ryan/media/model/MediaTaskResponse.java:1:package com.ryan.media.model;
+src/main/java/com/ryan/media/controller/MediaTaskController.java:1:package com.ryan.media.controller;
+src/main/java/com/ryan/media/controller/MediaTaskController.java:14:@RestController
+src/main/java/com/ryan/media/controller/MediaTaskController.java:16:public class MediaTaskController {
+src/main/java/com/ryan/media/controller/MediaTaskController.java:28:    public MediaTaskResponse create(@Valid @RequestBody CreateMediaTaskRequest request) {
+src/main/java/com/ryan/media/controller/MediaTaskController.java:60:    @ExceptionHandler(IllegalArgumentException.class)
+src/main/java/com/ryan/media/controller/MediaTaskController.java:62:    public Map<String, Object> handleIllegalArgument(IllegalArgumentException ex) {
+src/main/java/com/ryan/media/controller/HealthController.java:1:package com.ryan.media.controller;
+src/main/java/com/ryan/media/controller/HealthController.java:8:@RestController
+src/main/java/com/ryan/media/controller/HealthController.java:9:public class HealthController {
+src/main/java/com/ryan/media/security/SecurityConfig.java:1:package com.ryan.media.security;
+src/main/java/com/ryan/media/security/SecurityConfig.java:19:public class SecurityConfig {
+src/main/java/com/ryan/media/service/MediaTaskService.java:1:package com.ryan.media.service;
+src/main/java/com/ryan/media/service/MediaTaskService.java:50:                .orElseThrow(() -> new IllegalArgumentException("media task not found: " + id));
+src/main/java/com/ryan/media/service/MediaTaskService.java:56:            throw new IllegalArgumentException("media task not found: " + id);
+src/main/java/com/ryan/media/auth/AuthController.java:1:package com.ryan.media.auth;
+src/main/java/com/ryan/media/auth/AuthController.java:9:@RestController
+src/main/java/com/ryan/media/auth/AuthController.java:11:public class AuthController {
+src/main/java/com/ryan/media/MediaTaskApplication.java:1:package com.ryan.media;
+src/main/java/com/ryan/media/messaging/Producer.java:1:package com.ryan.media.messaging;
+src/main/java/com/ryan/media/messaging/Consumer.java:1:package com.ryan.media.messaging;
+src/main/java/com/ryan/media/repository/MediaTaskRepository.java:1:package com.ryan.media.repository;
+src/test/java/com/ryan/media/AuthIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/AuthIT.java:5:import com.ryan.media.security.SecurityConfig;
+src/test/java/com/ryan/media/AuthIT.java:23:@Import(SecurityConfig.class)
+src/test/java/com/ryan/media/controller/MediaTaskControllerTest.java:1:package com.ryan.media.controller;
+src/test/java/com/ryan/media/controller/MediaTaskControllerTest.java:14:class MediaTaskControllerTest {
+src/test/java/com/ryan/media/PostgresSmokeIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/RepositoryIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/QueryPlanIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/SmokeTest.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/AuthSecurityTest.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/AuthSecurityTest.java:6:import com.ryan.media.security.SecurityConfig;
+src/test/java/com/ryan/media/AuthSecurityTest.java:20:@Import(SecurityConfig.class)
+src/test/java/com/ryan/media/AuthSecurityTest.java:21:class AuthSecurityTest {
+src/test/java/com/ryan/media/ConcurrencyIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/ContractIT.java:1:package com.ryan.media;
+src/test/java/com/ryan/media/ContractIT.java:6:import com.ryan.media.security.SecurityConfig;
+src/test/java/com/ryan/media/ContractIT.java:27:@Import(SecurityConfig.class)
+src/test/java/com/ryan/media/ContractIT.java:28:class ContractIT {
+docs/api/openapi.yaml:204:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:210:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:216:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:284:    ProblemDetail:
+docs/adr/0004-error-contract.md:20:- future ContractIT coverage
+docs/adr/0004-error-contract.md:28:Use a ProblemDetail-style error response for API errors.
+docs/adr/0004-error-contract.md:57:- ContractIT can later assert current behavior against `docs/api/openapi.yaml`.
+docs/adr/0004-error-contract.md:88:- ContractIT coverage
+docs/adr/0004-error-contract.md:95:3. Add a minimal `ContractIT`.
+
+===== show likely controller/security files =====
+
+----- src/main/java/com/ryan/media/auth/AuthController.java -----
+package com.ryan.media.auth;
+
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(
+            new LoginResponse(
+                "week06-skeleton",
+                false,
+                null,
+                "JWT issuing is not implemented yet; this endpoint freezes the auth contract boundary first."
+            )
+        );
+    }
+
+    @GetMapping("/me")
+    public Map<String, Object> me(Authentication authentication) {
+        return Map.of(
+            "authenticated", authentication != null && authentication.isAuthenticated(),
+            "name", authentication.getName(),
+            "authorities", authentication.getAuthorities().stream()
+                .map(a -> a.getAuthority())
+                .toList()
+        );
+    }
+
+    public record LoginRequest(String username, String password) {}
+    public record LoginResponse(String mode, boolean issued, String token, String note) {}
+}
+
+----- src/main/java/com/ryan/media/controller/HealthController.java -----
+package com.ryan.media.controller;
+
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HealthController {
+
+    @GetMapping("/health")
+    public Map<String, Object> health() {
+        return Map.of(
+                "status", "ok",
+                "service", "media-task-platform-java");
+    }
+}
+
+----- src/main/java/com/ryan/media/controller/MediaTaskController.java -----
+package com.ryan.media.controller;
+
+import com.ryan.media.messaging.Consumer;
+import com.ryan.media.model.CreateMediaTaskRequest;
+import com.ryan.media.model.MediaTaskResponse;
+import com.ryan.media.service.MediaTaskService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/media-tasks")
+public class MediaTaskController {
+
+    private final MediaTaskService mediaTaskService;
+    private final Consumer consumer;
+
+    public MediaTaskController(MediaTaskService mediaTaskService, Consumer consumer) {
+        this.mediaTaskService = mediaTaskService;
+        this.consumer = consumer;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public MediaTaskResponse create(@Valid @RequestBody CreateMediaTaskRequest request) {
+        return mediaTaskService.create(request);
+    }
+
+    @GetMapping
+    public List<MediaTaskResponse> list() {
+        return mediaTaskService.list();
+    }
+
+    @GetMapping("/{id}")
+    public MediaTaskResponse getById(@PathVariable String id) {
+        return mediaTaskService.getById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable String id) {
+        mediaTaskService.deleteById(id);
+    }
+
+    @PostMapping("/eventing/smoke-consume")
+    public Map<String, Object> smokeConsume() {
+        String result = consumer.consumeOneForWeek07Smoke();
+        return Map.of(
+                "code", "EVENTING_SMOKE_RESULT",
+                "result", result,
+                "streamKey", consumer.streamKey(),
+                "consumerGroup", consumer.consumerGroup(),
+                "consumerName", consumer.consumerName()
+        );
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, Object> handleIllegalArgument(IllegalArgumentException ex) {
+        return Map.of(
+                "code", "MEDIA_TASK_NOT_FOUND",
+                "message", ex.getMessage()
+        );
+    }
+}
+
+----- src/main/java/com/ryan/media/MediaTaskApplication.java -----
+package com.ryan.media;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MediaTaskApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MediaTaskApplication.class, args);
+    }
+}
+
+----- src/main/java/com/ryan/media/security/SecurityConfig.java -----
+package com.ryan.media.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(AbstractHttpConfigurer::disable)
+            .formLogin(AbstractHttpConfigurer::disable)
+            .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/auth/me").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks/eventing/smoke-consume").permitAll()
+                .anyRequest().permitAll());
+
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+----- src/test/java/com/ryan/media/AuthSecurityTest.java -----
+package com.ryan.media;
+
+import com.ryan.media.auth.AuthController;
+import com.ryan.media.controller.MediaTaskController;
+import com.ryan.media.messaging.Consumer;
+import com.ryan.media.security.SecurityConfig;
+import com.ryan.media.service.MediaTaskService;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(controllers = {AuthController.class, MediaTaskController.class})
+@Import(SecurityConfig.class)
+class AuthSecurityTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private MediaTaskService mediaTaskService;
+
+    @MockBean
+    private Consumer consumer;
+
+    @Test
+    void authMeShouldReturn401WhenUnauthenticated() throws Exception {
+        mockMvc.perform(get("/auth/me"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void authMeShouldReturn200WhenAuthenticated() throws Exception {
+        mockMvc.perform(get("/auth/me").with(user("week06-user").roles("USER")))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void listMediaTasksShouldReturn401WhenUnauthenticated() throws Exception {
+        mockMvc.perform(get("/api/media-tasks"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void listMediaTasksShouldReturn200WhenAuthenticated() throws Exception {
+        mockMvc.perform(get("/api/media-tasks").with(user("week06-user").roles("USER")))
+                .andExpect(status().isOk());
+    }
+}
+
+----- src/test/java/com/ryan/media/ContractIT.java -----
+package com.ryan.media;
+
+import com.ryan.media.auth.AuthController;
+import com.ryan.media.controller.MediaTaskController;
+import com.ryan.media.messaging.Consumer;
+import com.ryan.media.security.SecurityConfig;
+import com.ryan.media.service.MediaTaskService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(controllers = {AuthController.class, MediaTaskController.class})
+@Import(SecurityConfig.class)
+class ContractIT {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private MediaTaskService mediaTaskService;
+
+    @MockBean
+    private Consumer consumer;
+
+    @Test
+    void authLoginShouldKeepWeek10SkeletonContract() throws Exception {
+        mockMvc.perform(post("/auth/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "username": "week10-user",
+                      "password": "week10-password"
+                    }
+                    """))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.mode").value("week06-skeleton"))
+            .andExpect(jsonPath("$.issued").value(false))
+            .andExpect(jsonPath("$.note").isString());
+    }
+
+    @Test
+    void authMeShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(get("/auth/me"))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void authMeShouldReturnCurrentPrincipalForAuthenticatedUser() throws Exception {
+        mockMvc.perform(get("/auth/me").with(user("week10-contract-user").roles("USER")))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.authenticated").value(true))
+            .andExpect(jsonPath("$.name").value("week10-contract-user"))
+            .andExpect(jsonPath("$.authorities[0]").value("ROLE_USER"));
+    }
+
+    @Test
+    void listMediaTasksShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(get("/api/media-tasks"))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void listMediaTasksShouldReturnJsonArrayForAuthenticatedUser() throws Exception {
+        when(mediaTaskService.list()).thenReturn(List.of());
+
+        mockMvc.perform(get("/api/media-tasks").with(user("week10-contract-user").roles("USER")))
+            .andExpect(status().isOk())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$").isArray());
+    }
+
+    @Test
+    void createMediaTaskShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(post("/api/media-tasks")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "title": "week10-contract-task",
+                      "mediaType": "audio"
+                    }
+                    """))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void createMediaTaskShouldAcceptAuthenticatedUserAtContractBoundary() throws Exception {
+        mockMvc.perform(post("/api/media-tasks")
+                .with(user("week10-contract-user").roles("USER"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "title": "week10-contract-task",
+                      "mediaType": "audio"
+                    }
+                    """))
+            .andExpect(status().isCreated());
+    }
+}
+
+----- src/test/java/com/ryan/media/controller/MediaTaskControllerTest.java -----
+package com.ryan.media.controller;
+
+import com.ryan.media.service.MediaTaskService;
+import com.ryan.media.messaging.Consumer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Mockito.mock;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+class MediaTaskControllerTest {
+
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp() {
+        MediaTaskService mediaTaskService = mock(MediaTaskService.class);
+        Consumer consumer = mock(Consumer.class);
+        MediaTaskController controller = new MediaTaskController(mediaTaskService, consumer);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+    }
+
+    @Test
+    void list_shouldReturn200() throws Exception {
+        mockMvc.perform(get("/api/media-tasks"))
+            .andExpect(status().isOk());
+    }
+}
+
+===== current OpenAPI ProblemDetail schema =====
+3:  title: media-task-platform-java API
+35:                type: string
+66:              type: object
+75:        "400":
+77:        "401":
+93:        "401":
+110:            type: integer
+118:            type: integer
+127:            type: string
+134:            type: string
+143:        "400":
+145:        "401":
+163:            type: string
+185:        "400":
+187:        "401":
+195:      type: http
+204:            $ref: "#/components/schemas/ProblemDetail"
+210:            $ref: "#/components/schemas/ProblemDetail"
+216:            $ref: "#/components/schemas/ProblemDetail"
+220:      type: object
+223:        status:
+224:          type: string
+228:      type: object
+233:      type: object
+238:      type: object
+243:        title:
+244:          type: string
+249:          type: string
+255:      type: object
+259:          type: integer
+262:        title:
+263:          type: string
+266:          type: string
+268:        status:
+269:          type: string
+272:          type: string
+277:        - type: array
+280:        - type: object
+284:    ProblemDetail:
+285:      type: object
+294:        type:
+295:          type: string
+298:        title:
+299:          type: string
+301:        status:
+302:          type: integer
+303:          example: 400
+304:        detail:
+305:          type: string
+307:        instance:
+308:          type: string
+311:          type: string
+314:          type: string
+
+===== current error ADR key section =====
+20:- future ContractIT coverage
+24:## Decision
+28:Use a ProblemDetail-style error response for API errors.
+34:| type | URI or stable problem type | yes |
+35:| title | short human-readable summary | yes |
+36:| status | HTTP status code | yes |
+37:| detail | specific error detail | yes |
+38:| instance | request path or problem instance | yes |
+44:| Code | HTTP status | Meaning |
+52:## Consequences
+57:- ContractIT can later assert current behavior against `docs/api/openapi.yaml`.
+67:## Current Week10 Boundary
+88:- ContractIT coverage
+95:3. Add a minimal `ContractIT`.
+
+===== run current contract/security tests =====
+15:36:43.775 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.ContractIT]: ContractIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:36:43.944 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.ContractIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T15:36:44.332+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 1061423 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T15:36:44.333+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : No active profile set, falling back to 1 default profile: "default"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-05-12T15:36:46.376+08:00  WARN 1061423 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f5b7b0c0-f8bd-4b41-b3f9-c9b46b67ff93
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T15:36:46.383+08:00  INFO 1061423 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T15:36:46.729+08:00  INFO 1061423 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-12T15:36:46.729+08:00  INFO 1061423 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-12T15:36:46.731+08:00  INFO 1061423 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-05-12T15:36:46.760+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Started ContractIT in 2.752 seconds (process running for 4.113)
+2026-05-12T15:36:49.477+08:00  INFO 1061423 --- [media-task-platform-java] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.ryan.media.AuthSecurityTest]: AuthSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-05-12T15:36:49.496+08:00  INFO 1061423 --- [media-task-platform-java] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.AuthSecurityTest
+
+===== post-status =====
+## main...origin/main
+?? artifacts/logs/week10_problem_detail_source_map_20260513.log

@@ -95,3 +95,18 @@ Not yet verified:
 3. Add a minimal `ContractIT`.
 4. Introduce a centralized exception handler only after the documented error shape is agreed.
 5. Add a local OpenAPI validation command or Maven plugin later, not in this first Week10 entry.
+
+## Week10 Follow-up: Minimal ProblemDetail Implementation
+
+Implemented and verified on 2026-05-13:
+
+- `IllegalArgumentException` raised by the missing media-task path is handled by `ApiExceptionHandler`.
+- The local response shape is ProblemDetail-style and currently includes `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+- `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` fixes this behavior as the first implementation-backed error contract.
+
+Current boundary:
+
+- This is not a complete production error taxonomy.
+- Security-layer `401/403` responses remain handled by Spring Security.
+- Validation errors, malformed JSON, traceId propagation, pagination, sorting, filtering, and idempotency remain future work.
+

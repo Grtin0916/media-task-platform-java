@@ -1,0 +1,198 @@
+===== README Week10 sections =====
+8:### Week10 Java ProblemDetail error response verified update - 2026-05-13
+10:Verified scope:
+14:- Added `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` to freeze the missing media-task error response.
+15:- Verified `IllegalArgumentException` from `GET /api/media-tasks/{id}` returns a ProblemDetail-style `404` response with `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+18:Evidence:
+27:Boundary:
+29:- This verifies one local ProblemDetail-style missing-task error path only.
+31:- It does not claim Spring Security `401/403` responses are converted to ProblemDetail.
+32:- It does not claim validation `400`, malformed JSON, traceId propagation, JWT, pagination, sorting, filtering, or persistent idempotency-key enforcement is complete.
+37:Verified scope:
+46:Evidence:
+57:Boundary:
+60:- It does not claim full JWT issuance / parsing / validation.
+61:- Superseded by the 2026-05-13 follow-up: one missing-task `ProblemDetail` error path is now implemented and tested.
+63:- Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
+68:Verified scope:
+73:- The contract draft documents current auth / media-task API boundaries plus placeholders for pagination, sorting, filtering, and `Idempotency-Key`.
+74:- The error contract ADR defines a ProblemDetail-style target shape for future centralized error handling.
+77:Evidence:
+82:Boundary:
+87:- It does not claim full JWT issuance / parsing / validation.
+89:- It does not claim production-grade API governance or OpenAPI CI validation.
+94:Verified scope:
+105:Evidence:
+118:Boundary:
+170:## Next Hard Milestone
+176:   * 已补一个 missing-task `ProblemDetail` 风格错误响应与对应 ContractIT；下一步再分阶段补 validation 400 / malformed JSON / page-size-sort-filter 合同
+177:   * page / size / sort / status / `Idempotency-Key` 当前仍是 OpenAPI placeholder，不能写成已完整实现
+180:   * 基于 `docs/adr/0004-error-contract.md` 设计 ProblemDetail-style 错误响应
+185:   * 当前 OpenAPI 已标注 page、size、sort、status 与 `Idempotency-Key` 为 Week10 contract placeholders
+
+===== ADR ProblemDetail follow-up =====
+17:- validation error shape
+19:- idempotency-key placeholder
+20:- future ContractIT coverage
+28:Use a ProblemDetail-style error response for API errors.
+46:| AUTH_UNAUTHORIZED | 401 | Missing or invalid authentication |
+49:| MEDIA_TASK_CONFLICT | 409 | Conflict or future idempotency conflict |
+57:- ContractIT can later assert current behavior against `docs/api/openapi.yaml`.
+59:- Pagination, sorting, filtering, and idempotency can be introduced incrementally.
+83:- full JWT issuance / parsing / validation
+85:- persistent idempotency key enforcement
+88:- ContractIT coverage
+89:- OpenAPI CI validation
+95:3. Add a minimal `ContractIT`.
+97:5. Add a local OpenAPI validation command or Maven plugin later, not in this first Week10 entry.
+99:## Week10 Follow-up: Minimal ProblemDetail Implementation
+103:- `IllegalArgumentException` raised by the missing media-task path is handled by `ApiExceptionHandler`.
+104:- The local response shape is ProblemDetail-style and currently includes `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+105:- `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` fixes this behavior as the first implementation-backed error contract.
+107:Current boundary:
+110:- Security-layer `401/403` responses remain handled by Spring Security.
+111:- Validation errors, malformed JSON, traceId propagation, pagination, sorting, filtering, and idempotency remain future work.
+
+===== diff stat =====
+ README.md                                          | 31 ++++++++++++++++++++--
+ docs/adr/0004-error-contract.md                    | 15 +++++++++++
+ .../ryan/media/controller/MediaTaskController.java |  8 ------
+ src/test/java/com/ryan/media/ContractIT.java       | 18 +++++++++++++
+ 4 files changed, 62 insertions(+), 10 deletions(-)
+
+===== diff preview =====
+diff --git a/README.md b/README.md
+index 630d9cd..49a2354 100644
+--- a/README.md
++++ b/README.md
+@@ -5,6 +5,33 @@
+ 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
+ 
+ 
++### Week10 Java ProblemDetail error response verified update - 2026-05-13
++
++Verified scope:
++
++- Added `src/main/java/com/ryan/media/controller/ApiExceptionHandler.java` as the minimal centralized API exception handler.
++- Removed the local `IllegalArgumentException` handler from `MediaTaskController` so the missing-task path is handled by the centralized handler.
++- Added `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` to freeze the missing media-task error response.
++- Verified `IllegalArgumentException` from `GET /api/media-tasks/{id}` returns a ProblemDetail-style `404` response with `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
++- Re-ran `ContractIT`, `AuthSecurityTest`, and the full Maven test suite locally.
++
++Evidence:
++
++- `src/main/java/com/ryan/media/controller/ApiExceptionHandler.java`
++- `src/main/java/com/ryan/media/controller/MediaTaskController.java`
++- `src/test/java/com/ryan/media/ContractIT.java`
++- `artifacts/logs/week10_problem_detail_source_map_20260513.log`
++- `artifacts/logs/week10_problem_detail_contract_20260513.log`
++- `artifacts/logs/week10_problem_detail_full_test_20260513.log`
++
++Boundary:
++
++- This verifies one local ProblemDetail-style missing-task error path only.
++- It does not claim a complete production error-code taxonomy.
++- It does not claim Spring Security `401/403` responses are converted to ProblemDetail.
++- It does not claim validation `400`, malformed JSON, traceId propagation, JWT, pagination, sorting, filtering, or persistent idempotency-key enforcement is complete.
++
++
+ ### Week10 Java API contract boundary verified update - 2026-05-12
+ 
+ Verified scope:
+@@ -31,7 +58,7 @@ Boundary:
+ 
+ - This verifies the local API contract boundary only.
+ - It does not claim full JWT issuance / parsing / validation.
+-- It does not claim centralized `ProblemDetail` exception handling is implemented.
++- Superseded by the 2026-05-13 follow-up: one missing-task `ProblemDetail` error path is now implemented and tested.
+ - It does not claim persistent idempotency-key enforcement.
+ - Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
+ 
+@@ -146,7 +173,7 @@ Boundary:
+ 
+ 1. Week10：从 ContractIT 继续推进到错误响应与分页合同实现
+    * `ContractIT` 已固定 `/auth/login`、`/auth/me`、`GET /api/media-tasks`、`POST /api/media-tasks` 的最小合同边界
+-   * 下一步优先补 `ProblemDetail` 风格错误响应与对应测试
++   * 已补一个 missing-task `ProblemDetail` 风格错误响应与对应 ContractIT；下一步再分阶段补 validation 400 / malformed JSON / page-size-sort-filter 合同
+    * page / size / sort / status / `Idempotency-Key` 当前仍是 OpenAPI placeholder，不能写成已完整实现
+ 
+ 2. Week10：收口错误响应实现边界
+diff --git a/docs/adr/0004-error-contract.md b/docs/adr/0004-error-contract.md
+index 5ba39ff..5cb8cc5 100644
+--- a/docs/adr/0004-error-contract.md
++++ b/docs/adr/0004-error-contract.md
+@@ -95,3 +95,18 @@ Not yet verified:
+ 3. Add a minimal `ContractIT`.
+ 4. Introduce a centralized exception handler only after the documented error shape is agreed.
+ 5. Add a local OpenAPI validation command or Maven plugin later, not in this first Week10 entry.
++
++## Week10 Follow-up: Minimal ProblemDetail Implementation
++
++Implemented and verified on 2026-05-13:
++
++- `IllegalArgumentException` raised by the missing media-task path is handled by `ApiExceptionHandler`.
++- The local response shape is ProblemDetail-style and currently includes `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
++- `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` fixes this behavior as the first implementation-backed error contract.
++
++Current boundary:
++
++- This is not a complete production error taxonomy.
++- Security-layer `401/403` responses remain handled by Spring Security.
++- Validation errors, malformed JSON, traceId propagation, pagination, sorting, filtering, and idempotency remain future work.
++
+diff --git a/src/main/java/com/ryan/media/controller/MediaTaskController.java b/src/main/java/com/ryan/media/controller/MediaTaskController.java
+index a1b9c8d..10404f5 100644
+--- a/src/main/java/com/ryan/media/controller/MediaTaskController.java
++++ b/src/main/java/com/ryan/media/controller/MediaTaskController.java
+@@ -57,12 +57,4 @@ public class MediaTaskController {
+         );
+     }
+ 
+-    @ExceptionHandler(IllegalArgumentException.class)
+-    @ResponseStatus(HttpStatus.NOT_FOUND)
+-    public Map<String, Object> handleIllegalArgument(IllegalArgumentException ex) {
+-        return Map.of(
+-                "code", "MEDIA_TASK_NOT_FOUND",
+-                "message", ex.getMessage()
+-        );
+-    }
+ }
+diff --git a/src/test/java/com/ryan/media/ContractIT.java b/src/test/java/com/ryan/media/ContractIT.java
+index 6a447bc..10d4f0a 100644
+--- a/src/test/java/com/ryan/media/ContractIT.java
++++ b/src/test/java/com/ryan/media/ContractIT.java
+@@ -109,4 +109,22 @@ class ContractIT {
+                     """))
+             .andExpect(status().isCreated());
+     }
++
++    @Test
++    void getMediaTaskByIdShouldReturnProblemDetailWhenMissing() throws Exception {
++        when(mediaTaskService.getById("missing-task"))
++            .thenThrow(new IllegalArgumentException("media task not found: missing-task"));
++
++        mockMvc.perform(get("/api/media-tasks/missing-task")
++                .with(user("week10-contract-user").roles("USER")))
++            .andExpect(status().isNotFound())
++            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_PROBLEM_JSON))
++            .andExpect(jsonPath("$.type").value("https://media-task-platform-java/problems/media-task-not-found"))
++            .andExpect(jsonPath("$.title").value("Media task not found"))
++            .andExpect(jsonPath("$.status").value(404))
++            .andExpect(jsonPath("$.detail").value("media task not found: missing-task"))
++            .andExpect(jsonPath("$.instance").value("/api/media-tasks/missing-task"))
++            .andExpect(jsonPath("$.code").value("MEDIA_TASK_NOT_FOUND"));
++    }
++
+ }
+
+===== status =====
+## main...origin/main
+ M README.md
+ M docs/adr/0004-error-contract.md
+ M src/main/java/com/ryan/media/controller/MediaTaskController.java
+ M src/test/java/com/ryan/media/ContractIT.java
+?? artifacts/logs/week10_problem_detail_contract_20260513.log
+?? artifacts/logs/week10_problem_detail_final_verify_20260513.log
+?? artifacts/logs/week10_problem_detail_full_test_20260513.log
+?? artifacts/logs/week10_problem_detail_source_map_20260513.log
+?? src/main/java/com/ryan/media/controller/ApiExceptionHandler.java

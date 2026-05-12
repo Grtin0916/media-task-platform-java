@@ -5,6 +5,33 @@
 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
 
 
+### Week10 Java ProblemDetail error response verified update - 2026-05-13
+
+Verified scope:
+
+- Added `src/main/java/com/ryan/media/controller/ApiExceptionHandler.java` as the minimal centralized API exception handler.
+- Removed the local `IllegalArgumentException` handler from `MediaTaskController` so the missing-task path is handled by the centralized handler.
+- Added `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` to freeze the missing media-task error response.
+- Verified `IllegalArgumentException` from `GET /api/media-tasks/{id}` returns a ProblemDetail-style `404` response with `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+- Re-ran `ContractIT`, `AuthSecurityTest`, and the full Maven test suite locally.
+
+Evidence:
+
+- `src/main/java/com/ryan/media/controller/ApiExceptionHandler.java`
+- `src/main/java/com/ryan/media/controller/MediaTaskController.java`
+- `src/test/java/com/ryan/media/ContractIT.java`
+- `artifacts/logs/week10_problem_detail_source_map_20260513.log`
+- `artifacts/logs/week10_problem_detail_contract_20260513.log`
+- `artifacts/logs/week10_problem_detail_full_test_20260513.log`
+
+Boundary:
+
+- This verifies one local ProblemDetail-style missing-task error path only.
+- It does not claim a complete production error-code taxonomy.
+- It does not claim Spring Security `401/403` responses are converted to ProblemDetail.
+- It does not claim validation `400`, malformed JSON, traceId propagation, JWT, pagination, sorting, filtering, or persistent idempotency-key enforcement is complete.
+
+
 ### Week10 Java API contract boundary verified update - 2026-05-12
 
 Verified scope:
@@ -31,7 +58,7 @@ Boundary:
 
 - This verifies the local API contract boundary only.
 - It does not claim full JWT issuance / parsing / validation.
-- It does not claim centralized `ProblemDetail` exception handling is implemented.
+- Superseded by the 2026-05-13 follow-up: one missing-task `ProblemDetail` error path is now implemented and tested.
 - It does not claim persistent idempotency-key enforcement.
 - Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
 
@@ -146,7 +173,7 @@ Boundary:
 
 1. Week10：从 ContractIT 继续推进到错误响应与分页合同实现
    * `ContractIT` 已固定 `/auth/login`、`/auth/me`、`GET /api/media-tasks`、`POST /api/media-tasks` 的最小合同边界
-   * 下一步优先补 `ProblemDetail` 风格错误响应与对应测试
+   * 已补一个 missing-task `ProblemDetail` 风格错误响应与对应 ContractIT；下一步再分阶段补 validation 400 / malformed JSON / page-size-sort-filter 合同
    * page / size / sort / status / `Idempotency-Key` 当前仍是 OpenAPI placeholder，不能写成已完整实现
 
 2. Week10：收口错误响应实现边界

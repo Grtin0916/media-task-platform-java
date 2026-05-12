@@ -57,12 +57,4 @@ public class MediaTaskController {
         );
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, Object> handleIllegalArgument(IllegalArgumentException ex) {
-        return Map.of(
-                "code", "MEDIA_TASK_NOT_FOUND",
-                "message", ex.getMessage()
-        );
-    }
 }

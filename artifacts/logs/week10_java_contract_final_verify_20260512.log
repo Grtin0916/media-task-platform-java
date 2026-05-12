@@ -1,0 +1,273 @@
+===== [final verify] =====
+2026-05-12T10:05:21+08:00
+
+===== [README top] =====
+# media-task-platform-java
+
+一个面向媒体任务管理场景的 Java / Spring Boot 最小平台骨架项目。
+
+当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
+
+
+### Week10 Java API contract boundary verified update - 2026-05-12
+
+Verified scope:
+
+- Aligned `SecurityConfig` so `GET /api/media-tasks` and `POST /api/media-tasks` now require authentication.
+- Fixed `AuthSecurityTest` WebMvc slice dependencies by adding a mocked `Consumer` collaborator for `MediaTaskController`.
+- Added `src/test/java/com/ryan/media/ContractIT.java` to freeze the Week10 local API contract boundary with MockMvc.
+- `ContractIT` currently covers `/auth/login`, `/auth/me`, anonymous rejection for protected APIs, authenticated list contract, and authenticated create boundary.
+- Re-ran `AuthSecurityTest`, `ContractIT`, and the full Maven test suite locally.
+- Latest local full test result: `Tests run: 6, Failures: 0, Errors: 0, Skipped: 0`.
+
+Evidence:
+
+- `src/main/java/com/ryan/media/security/SecurityConfig.java`
+- `src/test/java/com/ryan/media/AuthSecurityTest.java`
+- `src/test/java/com/ryan/media/ContractIT.java`
+- `artifacts/logs/week10_auth_security_fix_20260512.log`
+- `artifacts/logs/week10_security_contract_align_20260512.log`
+- `artifacts/logs/week10_java_test_after_security_contract_20260512.log`
+- `artifacts/logs/week10_contract_it_20260512.log`
+- `artifacts/logs/week10_contract_closure_check_20260512.log`
+
+Boundary:
+
+- This verifies the local API contract boundary only.
+- It does not claim full JWT issuance / parsing / validation.
+- It does not claim centralized `ProblemDetail` exception handling is implemented.
+- It does not claim persistent idempotency-key enforcement.
+- Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
+
+
+### Week10 Java API contract governance verified update - 2026-05-11
+
+Verified scope:
+
+- Added `docs/api/openapi.yaml` as the Week10 local API contract draft.
+- Added `docs/adr/0004-error-contract.md` to define the API error contract and OpenAPI governance boundary.
+- The OpenAPI contract currently covers `/health`, `/actuator/health`, `/auth/login`, `/auth/me`, and `/api/media-tasks`.
+- The contract draft documents current auth / media-task API boundaries plus placeholders for pagination, sorting, filtering, and `Idempotency-Key`.
+- The error contract ADR defines a ProblemDetail-style target shape for future centralized error handling.
+- `docs/api/openapi.yaml` has been locally parsed as YAML and contains required top-level keys: `openapi`, `info`, `paths`, and `components`.
+
+Evidence:
+
+- `docs/api/openapi.yaml`
+- `docs/adr/0004-error-contract.md`
+
+Boundary:
+
+- This update verifies documentation and contract-governance entry only.
+- It does not yet implement a centralized exception handler.
+- It does not yet add `ContractIT`.
+- It does not claim full JWT issuance / parsing / validation.
+- It does not claim persistent idempotency-key enforcement.
+- It does not claim production-grade API governance or OpenAPI CI validation.
+
+
+### Week09 Java observability and virtual thread verified update - 2026-05-08
+
+Verified scope:
+
+- Actuator health and metrics endpoints were captured locally.
+- Prometheus-format metrics were captured from the Spring Boot Actuator Prometheus endpoint.
+- `ConcurrencyIT` compares a fixed platform thread pool with a virtual-thread-per-task executor under a blocking sleep workload.
+- Latest captured concurrency run:
+  - `platform-fixed-8`: 160 tasks, 40 ms blocking sleep, 805 ms elapsed, 198.7578 tasks/sec.
+  - `virtual-thread-per-task`: 160 tasks, 40 ms blocking sleep, 46 ms elapsed, 3478.2609 tasks/sec.
+- JFR evidence was captured for the Maven/JVM test run and summarized in Week09 logs.
+- A minimal `Dockerfile` and `.dockerignore` now provide the Java service containerization entry used by the Week09 Cloud local K8s rollout.
+
+Evidence:
+
+- `src/test/java/com/ryan/media/ConcurrencyIT.java`
+- `docs/benchmarks/java_virtual_threads_week09.md`
+- `artifacts/logs/week09_concurrency_it_20260506.csv`
+- `artifacts/logs/week09_concurrency_it_20260506.md`
+- `artifacts/logs/week09_concurrency_it_test_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_summary_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_hot_methods_20260506.log`
+- `artifacts/jfr/week09_concurrency_it_maven_jvm_20260506.jfr`
+- `artifacts/logs/week09_actuator_health_20260506.json`
+- `artifacts/logs/week09_actuator_prometheus_20260506.txt`
+
+Boundary:
+
+- This experiment demonstrates behavior under a blocking-wait workload.
+- It does not claim virtual threads accelerate CPU-bound computation.
+- It does not yet include production load testing, distributed tracing, or container runtime tuning.
+
+## Verified Scope
+
+当前仓库已完成并留有证据的范围如下：
+
+- 已完成 PostgreSQL + Flyway 的最小数据库地基
+- 已完成媒体任务最小 CRUD 路径
+- 已完成 Spring Security 最小认证壳
+- 已完成 `POST /auth/login` 与 `GET /auth/me`
+- 已将 `GET /api/media-tasks` 与 `POST /api/media-tasks` 切入受保护边界
+- 已保留 `AuthIT` 与 Week06 认证相关日志证据
+- 已新增 Redis 依赖（`spring-boot-starter-data-redis`）
+- 已补 eventing 选型 ADR（`docs/adr/0003-eventing-choice.md`）
+- 已新增 `messaging/Producer.java`，定义 `MediaTaskCreated` 事件与最小 stream append 骨架
+- 已新增 `messaging/Consumer.java`，固定 stream key / consumer group / consumer name，并保留 Week07 TODO
+
+- 已完成 1 次本地 Redis Streams event-flow smoke，保留了 create / XRANGE / consume / ack 相关日志证据
+
+- 已验证在 consumer group 存在后，新进入 stream 的 `MediaTaskCreated` 事件可被 consume 并 ack
+
+一句话说，当前仓库已经从“数据库地基”推进到“数据库地基 + 最小认证壳 + 安全测试”阶段，并在 Week07 开始进入最小 eventing skeleton 阶段；当前仓库已经不再只是认证壳，而是开始具备“任务创建 -> 事件发布 -> consume / ack”的最小异步链路入口。
+
+- 已完成 Week08 DB EXPLAIN baseline：`docs/benchmarks/db_explain_week08.md` 已记录 Query A / Query B / Query C 三类查询形态、索引选择、Planning Time、Execution Time 与证据边界。
+- 已完成 Week08 索引迁移：`src/main/resources/db/migration/V2__indexes.sql` 新增 `idx_media_task_created_at_desc`、`idx_media_task_status_created_at_desc`、`idx_media_asset_task_id_created_at_desc`，并明确每个索引必须绑定具体 EXPLAIN-backed query。
+- 已完成 Week08 `QueryPlanIT` 集成测试：`src/test/java/com/ryan/media/QueryPlanIT.java` 可通过 Testcontainers PostgreSQL 16-alpine seed 数据、执行 `ANALYZE`、输出三组 `EXPLAIN ANALYZE` 日志。
+
+===== [git status before test] =====
+## main...origin/main
+ M README.md
+ M src/main/java/com/ryan/media/security/SecurityConfig.java
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_closure_check_20260512.log
+?? artifacts/logs/week10_contract_it_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_java_contract_final_verify_20260512.log
+?? artifacts/logs/week10_java_test_after_security_contract_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+?? src/test/java/com/ryan/media/ContractIT.java
+
+===== [changed/untracked files] =====
+ README.md                                          | 31 ++++++++++++++++++++++
+ .../com/ryan/media/security/SecurityConfig.java    |  4 +--
+ src/test/java/com/ryan/media/AuthSecurityTest.java |  4 +++
+ 3 files changed, 37 insertions(+), 2 deletions(-)
+artifacts/logs/week10_auth_security_fix_20260512.log
+artifacts/logs/week10_contract_closure_check_20260512.log
+artifacts/logs/week10_contract_it_20260512.log
+artifacts/logs/week10_contract_it_preflight_20260512.log
+artifacts/logs/week10_java_contract_final_verify_20260512.log
+artifacts/logs/week10_java_test_after_security_contract_20260512.log
+artifacts/logs/week10_security_contract_align_20260512.log
+src/test/java/com/ryan/media/ContractIT.java
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ryan.media:media-task-platform-java >---------------
+[INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ media-task-platform-java ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
+[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ media-task-platform-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ryan.media.controller.MediaTaskControllerTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+10:05:26.432 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.3.Final
+10:05:27.057 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+10:05:27.057 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+10:05:27.061 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 3 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.092 s -- in com.ryan.media.controller.MediaTaskControllerTest
+[INFO] Running com.ryan.media.AuthSecurityTest
+10:05:27.260 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.AuthSecurityTest]: AuthSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:05:27.406 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.AuthSecurityTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:05:27.831+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 853373 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:05:27.833+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:05:28.719+08:00  WARN 853373 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 728a2cd8-d267-4397-bc37-fa5d2c266c52
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:05:28.725+08:00  INFO 853373 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:05:28.946+08:00  INFO 853373 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-12T10:05:28.946+08:00  INFO 853373 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-12T10:05:28.948+08:00  INFO 853373 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-05-12T10:05:28.976+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Started AuthSecurityTest in 1.516 seconds (process running for 4.475)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.897 s -- in com.ryan.media.AuthSecurityTest
+[INFO] Running com.ryan.media.SmokeTest
+2026-05-12T10:05:29.118+08:00  INFO 853373 --- [media-task-platform-java] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.ryan.media.SmokeTest]: SmokeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-05-12T10:05:29.123+08:00  INFO 853373 --- [media-task-platform-java] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.SmokeTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:05:29.158+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 853373 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:05:29.159+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:05:29.638+08:00  INFO 853373 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-12T10:05:29.640+08:00  INFO 853373 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-12T10:05:29.661+08:00  INFO 853373 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2026-05-12T10:05:30.478+08:00  INFO 853373 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-05-12T10:05:30.496+08:00  WARN 853373 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ec0b648a-2b66-4f9c-9399-b25b3fafe4be
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:05:30.497+08:00  INFO 853373 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:05:30.796+08:00  INFO 853373 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Started SmokeTest in 1.665 seconds (process running for 6.294)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.786 s -- in com.ryan.media.SmokeTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.042 s
+[INFO] Finished at: 2026-05-12T10:05:31+08:00
+[INFO] ------------------------------------------------------------------------
+
+===== [post status] =====
+## main...origin/main
+ M README.md
+ M src/main/java/com/ryan/media/security/SecurityConfig.java
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_closure_check_20260512.log
+?? artifacts/logs/week10_contract_it_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_java_contract_final_verify_20260512.log
+?? artifacts/logs/week10_java_test_after_security_contract_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+?? src/test/java/com/ryan/media/ContractIT.java
+
+===== [final log path] =====
+-rw-rw-r-- 1 GRT GRT 18K  5月 12 10:05 artifacts/logs/week10_java_contract_final_verify_20260512.log

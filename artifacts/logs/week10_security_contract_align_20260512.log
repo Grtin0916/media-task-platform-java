@@ -1,0 +1,209 @@
+===== [before SecurityConfig patch] =====
+## main...origin/main
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+package com.ryan.media.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(AbstractHttpConfigurer::disable)
+            .formLogin(AbstractHttpConfigurer::disable)
+            .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/auth/me").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/media-tasks").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks/eventing/smoke-consume").permitAll()
+                .anyRequest().permitAll());
+
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+===== [after SecurityConfig patch] =====
+package com.ryan.media.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(AbstractHttpConfigurer::disable)
+            .formLogin(AbstractHttpConfigurer::disable)
+            .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/auth/me").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks/eventing/smoke-consume").permitAll()
+                .anyRequest().permitAll());
+
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+===== [run AuthSecurityTest only] =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ryan.media:media-task-platform-java >---------------
+[INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ media-task-platform-java ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ media-task-platform-java ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 11 source files with javac [debug parameters release 21] to target/classes
+[INFO] /home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/messaging/Consumer.java: /home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/messaging/Consumer.java使用了未经检查或不安全的操作。
+[INFO] /home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/messaging/Consumer.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
+[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug parameters release 21] to target/test-classes
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthIT.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthIT.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthIT.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthIT.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthIT.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[26,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[26,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[26,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[26,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[26,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/AuthSecurityTest.java:[29,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/SmokeTest.java:[15,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/SmokeTest.java:[15,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/SmokeTest.java:[15,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/SmokeTest.java:[15,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[WARNING] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/SmokeTest.java:[15,6] org.springframework.boot.test.mock.mockito 中的 org.springframework.boot.test.mock.mockito.MockBean 已过时, 且标记为待删除
+[INFO] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/PostgresSmokeIT.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/PostgresSmokeIT.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ media-task-platform-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ryan.media.AuthSecurityTest
+09:57:35.396 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.AuthSecurityTest]: AuthSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:57:35.779 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.AuthSecurityTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T09:57:36.221+08:00  INFO 846260 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 846260 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T09:57:36.222+08:00  INFO 846260 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-05-12T09:57:38.186+08:00  WARN 846260 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: dc7eef52-49f6-4fe5-a06d-93abc8faee95
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T09:57:38.192+08:00  INFO 846260 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T09:57:38.465+08:00  INFO 846260 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-12T09:57:38.465+08:00  INFO 846260 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-12T09:57:38.466+08:00  INFO 846260 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-05-12T09:57:38.487+08:00  INFO 846260 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Started AuthSecurityTest in 2.617 seconds (process running for 3.811)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.428 s -- in com.ryan.media.AuthSecurityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.413 s
+[INFO] Finished at: 2026-05-12T09:57:38+08:00
+[INFO] ------------------------------------------------------------------------
+
+===== [post status] =====
+## main...origin/main
+ M src/main/java/com/ryan/media/security/SecurityConfig.java
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+
+===== [log path] =====
+-rw-rw-r-- 1 GRT GRT 16K  5月 12 09:57 artifacts/logs/week10_security_contract_align_20260512.log

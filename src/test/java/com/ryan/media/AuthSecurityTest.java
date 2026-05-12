@@ -2,6 +2,7 @@ package com.ryan.media;
 
 import com.ryan.media.auth.AuthController;
 import com.ryan.media.controller.MediaTaskController;
+import com.ryan.media.messaging.Consumer;
 import com.ryan.media.security.SecurityConfig;
 import com.ryan.media.service.MediaTaskService;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,9 @@ class AuthSecurityTest {
 
     @MockBean
     private MediaTaskService mediaTaskService;
+
+    @MockBean
+    private Consumer consumer;
 
     @Test
     void authMeShouldReturn401WhenUnauthenticated() throws Exception {

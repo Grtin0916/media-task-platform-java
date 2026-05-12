@@ -31,8 +31,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/auth/me").authenticated()
-                .requestMatchers(HttpMethod.GET, "/api/media-tasks").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/media-tasks").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").authenticated()
                 .requestMatchers(HttpMethod.POST, "/api/media-tasks/eventing/smoke-consume").permitAll()
                 .anyRequest().permitAll());
 

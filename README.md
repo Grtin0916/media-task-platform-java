@@ -5,6 +5,37 @@
 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
 
 
+### Week10 Java API contract boundary verified update - 2026-05-12
+
+Verified scope:
+
+- Aligned `SecurityConfig` so `GET /api/media-tasks` and `POST /api/media-tasks` now require authentication.
+- Fixed `AuthSecurityTest` WebMvc slice dependencies by adding a mocked `Consumer` collaborator for `MediaTaskController`.
+- Added `src/test/java/com/ryan/media/ContractIT.java` to freeze the Week10 local API contract boundary with MockMvc.
+- `ContractIT` currently covers `/auth/login`, `/auth/me`, anonymous rejection for protected APIs, authenticated list contract, and authenticated create boundary.
+- Re-ran `AuthSecurityTest`, `ContractIT`, and the full Maven test suite locally.
+- Latest local full test result: `Tests run: 6, Failures: 0, Errors: 0, Skipped: 0`.
+
+Evidence:
+
+- `src/main/java/com/ryan/media/security/SecurityConfig.java`
+- `src/test/java/com/ryan/media/AuthSecurityTest.java`
+- `src/test/java/com/ryan/media/ContractIT.java`
+- `artifacts/logs/week10_auth_security_fix_20260512.log`
+- `artifacts/logs/week10_security_contract_align_20260512.log`
+- `artifacts/logs/week10_java_test_after_security_contract_20260512.log`
+- `artifacts/logs/week10_contract_it_20260512.log`
+- `artifacts/logs/week10_contract_closure_check_20260512.log`
+
+Boundary:
+
+- This verifies the local API contract boundary only.
+- It does not claim full JWT issuance / parsing / validation.
+- It does not claim centralized `ProblemDetail` exception handling is implemented.
+- It does not claim persistent idempotency-key enforcement.
+- Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
+
+
 ### Week10 Java API contract governance verified update - 2026-05-11
 
 Verified scope:

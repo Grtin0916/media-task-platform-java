@@ -1,0 +1,475 @@
+===== [contract closure check] =====
+2026-05-12T10:03:29+08:00
+
+===== [git status] =====
+## main...origin/main
+ M src/main/java/com/ryan/media/security/SecurityConfig.java
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_closure_check_20260512.log
+?? artifacts/logs/week10_contract_it_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_java_test_after_security_contract_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+?? src/test/java/com/ryan/media/ContractIT.java
+
+===== [diff stat] =====
+ src/main/java/com/ryan/media/security/SecurityConfig.java | 4 ++--
+ src/test/java/com/ryan/media/AuthSecurityTest.java        | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+===== [SecurityConfig auth boundary] =====
+package com.ryan.media.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(AbstractHttpConfigurer::disable)
+            .formLogin(AbstractHttpConfigurer::disable)
+            .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(ex ->
+                ex.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/auth/me").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/media-tasks/eventing/smoke-consume").permitAll()
+                .anyRequest().permitAll());
+
+        return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+
+===== [AuthSecurityTest] =====
+package com.ryan.media;
+
+import com.ryan.media.auth.AuthController;
+import com.ryan.media.controller.MediaTaskController;
+import com.ryan.media.messaging.Consumer;
+import com.ryan.media.security.SecurityConfig;
+import com.ryan.media.service.MediaTaskService;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(controllers = {AuthController.class, MediaTaskController.class})
+@Import(SecurityConfig.class)
+class AuthSecurityTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private MediaTaskService mediaTaskService;
+
+    @MockBean
+    private Consumer consumer;
+
+    @Test
+    void authMeShouldReturn401WhenUnauthenticated() throws Exception {
+        mockMvc.perform(get("/auth/me"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void authMeShouldReturn200WhenAuthenticated() throws Exception {
+        mockMvc.perform(get("/auth/me").with(user("week06-user").roles("USER")))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void listMediaTasksShouldReturn401WhenUnauthenticated() throws Exception {
+        mockMvc.perform(get("/api/media-tasks"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void listMediaTasksShouldReturn200WhenAuthenticated() throws Exception {
+        mockMvc.perform(get("/api/media-tasks").with(user("week06-user").roles("USER")))
+                .andExpect(status().isOk());
+    }
+}
+
+===== [ContractIT] =====
+package com.ryan.media;
+
+import com.ryan.media.auth.AuthController;
+import com.ryan.media.controller.MediaTaskController;
+import com.ryan.media.messaging.Consumer;
+import com.ryan.media.security.SecurityConfig;
+import com.ryan.media.service.MediaTaskService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(controllers = {AuthController.class, MediaTaskController.class})
+@Import(SecurityConfig.class)
+class ContractIT {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private MediaTaskService mediaTaskService;
+
+    @MockBean
+    private Consumer consumer;
+
+    @Test
+    void authLoginShouldKeepWeek10SkeletonContract() throws Exception {
+        mockMvc.perform(post("/auth/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "username": "week10-user",
+                      "password": "week10-password"
+                    }
+                    """))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.mode").value("week06-skeleton"))
+            .andExpect(jsonPath("$.issued").value(false))
+            .andExpect(jsonPath("$.note").isString());
+    }
+
+    @Test
+    void authMeShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(get("/auth/me"))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void authMeShouldReturnCurrentPrincipalForAuthenticatedUser() throws Exception {
+        mockMvc.perform(get("/auth/me").with(user("week10-contract-user").roles("USER")))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.authenticated").value(true))
+            .andExpect(jsonPath("$.name").value("week10-contract-user"))
+            .andExpect(jsonPath("$.authorities[0]").value("ROLE_USER"));
+    }
+
+    @Test
+    void listMediaTasksShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(get("/api/media-tasks"))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void listMediaTasksShouldReturnJsonArrayForAuthenticatedUser() throws Exception {
+        when(mediaTaskService.list()).thenReturn(List.of());
+
+        mockMvc.perform(get("/api/media-tasks").with(user("week10-contract-user").roles("USER")))
+            .andExpect(status().isOk())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$").isArray());
+    }
+
+    @Test
+    void createMediaTaskShouldRejectAnonymousUser() throws Exception {
+        mockMvc.perform(post("/api/media-tasks")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "title": "week10-contract-task",
+                      "mediaType": "audio"
+                    }
+                    """))
+            .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void createMediaTaskShouldAcceptAuthenticatedUserAtContractBoundary() throws Exception {
+        mockMvc.perform(post("/api/media-tasks")
+                .with(user("week10-contract-user").roles("USER"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "title": "week10-contract-task",
+                      "mediaType": "audio"
+                    }
+                    """))
+            .andExpect(status().isCreated());
+    }
+}
+
+===== [OpenAPI media task section] =====
+46:          description: Actuator health status
+52:  /auth/login:
+80:  /auth/me:
+96:  /api/media-tasks:
+102:      security:
+103:        - basicAuth: []
+105:        - name: page
+108:          description: Zero-based page index. Week10 contract placeholder; implementation may not be complete yet.
+113:        - name: size
+116:          description: Page size. Week10 contract placeholder; implementation may not be complete yet.
+122:        - name: sort
+129:        - name: status
+132:          description: Optional task status filter. Week10 contract placeholder.
+153:      security:
+154:        - basicAuth: []
+156:        - name: Idempotency-Key
+193:  securitySchemes:
+194:    basicAuth:
+223:        status:
+268:        status:
+282:          description: Future paged response shape if Pageable is introduced.
+290:        - status
+301:        status:
+309:          example: /api/media-tasks
+
+===== [README Week10 section] =====
+# media-task-platform-java
+
+一个面向媒体任务管理场景的 Java / Spring Boot 最小平台骨架项目。
+
+当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
+
+
+### Week10 Java API contract governance verified update - 2026-05-11
+
+Verified scope:
+
+- Added `docs/api/openapi.yaml` as the Week10 local API contract draft.
+- Added `docs/adr/0004-error-contract.md` to define the API error contract and OpenAPI governance boundary.
+- The OpenAPI contract currently covers `/health`, `/actuator/health`, `/auth/login`, `/auth/me`, and `/api/media-tasks`.
+- The contract draft documents current auth / media-task API boundaries plus placeholders for pagination, sorting, filtering, and `Idempotency-Key`.
+- The error contract ADR defines a ProblemDetail-style target shape for future centralized error handling.
+- `docs/api/openapi.yaml` has been locally parsed as YAML and contains required top-level keys: `openapi`, `info`, `paths`, and `components`.
+
+Evidence:
+
+- `docs/api/openapi.yaml`
+- `docs/adr/0004-error-contract.md`
+
+Boundary:
+
+- This update verifies documentation and contract-governance entry only.
+- It does not yet implement a centralized exception handler.
+- It does not yet add `ContractIT`.
+- It does not claim full JWT issuance / parsing / validation.
+- It does not claim persistent idempotency-key enforcement.
+- It does not claim production-grade API governance or OpenAPI CI validation.
+
+
+### Week09 Java observability and virtual thread verified update - 2026-05-08
+
+Verified scope:
+
+- Actuator health and metrics endpoints were captured locally.
+- Prometheus-format metrics were captured from the Spring Boot Actuator Prometheus endpoint.
+- `ConcurrencyIT` compares a fixed platform thread pool with a virtual-thread-per-task executor under a blocking sleep workload.
+- Latest captured concurrency run:
+  - `platform-fixed-8`: 160 tasks, 40 ms blocking sleep, 805 ms elapsed, 198.7578 tasks/sec.
+  - `virtual-thread-per-task`: 160 tasks, 40 ms blocking sleep, 46 ms elapsed, 3478.2609 tasks/sec.
+- JFR evidence was captured for the Maven/JVM test run and summarized in Week09 logs.
+- A minimal `Dockerfile` and `.dockerignore` now provide the Java service containerization entry used by the Week09 Cloud local K8s rollout.
+
+Evidence:
+
+- `src/test/java/com/ryan/media/ConcurrencyIT.java`
+- `docs/benchmarks/java_virtual_threads_week09.md`
+- `artifacts/logs/week09_concurrency_it_20260506.csv`
+- `artifacts/logs/week09_concurrency_it_20260506.md`
+- `artifacts/logs/week09_concurrency_it_test_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_summary_20260506.log`
+- `artifacts/logs/week09_concurrency_it_jfr_hot_methods_20260506.log`
+- `artifacts/jfr/week09_concurrency_it_maven_jvm_20260506.jfr`
+- `artifacts/logs/week09_actuator_health_20260506.json`
+- `artifacts/logs/week09_actuator_prometheus_20260506.txt`
+
+Boundary:
+
+- This experiment demonstrates behavior under a blocking-wait workload.
+- It does not claim virtual threads accelerate CPU-bound computation.
+- It does not yet include production load testing, distributed tracing, or container runtime tuning.
+
+## Verified Scope
+
+当前仓库已完成并留有证据的范围如下：
+
+- 已完成 PostgreSQL + Flyway 的最小数据库地基
+- 已完成媒体任务最小 CRUD 路径
+- 已完成 Spring Security 最小认证壳
+- 已完成 `POST /auth/login` 与 `GET /auth/me`
+- 已将 `GET /api/media-tasks` 与 `POST /api/media-tasks` 切入受保护边界
+- 已保留 `AuthIT` 与 Week06 认证相关日志证据
+- 已新增 Redis 依赖（`spring-boot-starter-data-redis`）
+- 已补 eventing 选型 ADR（`docs/adr/0003-eventing-choice.md`）
+- 已新增 `messaging/Producer.java`，定义 `MediaTaskCreated` 事件与最小 stream append 骨架
+- 已新增 `messaging/Consumer.java`，固定 stream key / consumer group / consumer name，并保留 Week07 TODO
+
+
+===== [evidence logs] =====
+-rw-rw-r-- 1 GRT GRT  18K  5月 12 09:55 artifacts/logs/week10_auth_security_fix_20260512.log
+-rw-rw-r-- 1 GRT GRT  15K  5月 12 10:03 artifacts/logs/week10_contract_closure_check_20260512.log
+-rw-rw-r-- 1 GRT GRT  28K  5月 12 10:00 artifacts/logs/week10_contract_it_20260512.log
+-rw-rw-r-- 1 GRT GRT 202K  5月 12 09:48 artifacts/logs/week10_contract_it_preflight_20260512.log
+-rw-rw-r-- 1 GRT GRT 9.6K  5月 12 09:57 artifacts/logs/week10_java_test_after_security_contract_20260512.log
+-rw-rw-r-- 1 GRT GRT  16K  5月 12 09:57 artifacts/logs/week10_security_contract_align_20260512.log
+
+===== [maven full test rerun] =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ryan.media:media-task-platform-java >---------------
+[INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ media-task-platform-java ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
+[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ media-task-platform-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ryan.media.controller.MediaTaskControllerTest
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+10:03:34.250 [main] INFO org.hibernate.validator.internal.util.Version -- HV000001: Hibernate Validator 8.0.3.Final
+10:03:34.846 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+10:03:34.847 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+10:03:34.850 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 2 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.963 s -- in com.ryan.media.controller.MediaTaskControllerTest
+[INFO] Running com.ryan.media.AuthSecurityTest
+10:03:35.037 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.AuthSecurityTest]: AuthSecurityTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:03:35.182 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.AuthSecurityTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:03:35.611+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 851721 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:03:35.613+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:03:36.488+08:00  WARN 851721 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e993f07b-7474-4d1c-878c-b5a9c95e51aa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:03:36.494+08:00  INFO 851721 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:03:36.731+08:00  INFO 851721 --- [media-task-platform-java] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-05-12T10:03:36.732+08:00  INFO 851721 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-05-12T10:03:36.733+08:00  INFO 851721 --- [media-task-platform-java] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-05-12T10:03:36.763+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Started AuthSecurityTest in 1.502 seconds (process running for 4.302)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.893 s -- in com.ryan.media.AuthSecurityTest
+[INFO] Running com.ryan.media.SmokeTest
+2026-05-12T10:03:36.894+08:00  INFO 851721 --- [media-task-platform-java] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.ryan.media.SmokeTest]: SmokeTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-05-12T10:03:36.901+08:00  INFO 851721 --- [media-task-platform-java] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.SmokeTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-05-12T10:03:36.955+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 851721 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T10:03:36.955+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
+2026-05-12T10:03:37.423+08:00  INFO 851721 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-05-12T10:03:37.426+08:00  INFO 851721 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-05-12T10:03:37.452+08:00  INFO 851721 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2026-05-12T10:03:38.249+08:00  INFO 851721 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-05-12T10:03:38.272+08:00  WARN 851721 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: f04c0dbd-ebf8-447c-a782-d441099a49e8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-05-12T10:03:38.273+08:00  INFO 851721 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-05-12T10:03:38.584+08:00  INFO 851721 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Started SmokeTest in 1.676 seconds (process running for 6.121)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.792 s -- in com.ryan.media.SmokeTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.903 s
+[INFO] Finished at: 2026-05-12T10:03:38+08:00
+[INFO] ------------------------------------------------------------------------
+
+===== [post status] =====
+## main...origin/main
+ M src/main/java/com/ryan/media/security/SecurityConfig.java
+ M src/test/java/com/ryan/media/AuthSecurityTest.java
+?? artifacts/logs/week10_auth_security_fix_20260512.log
+?? artifacts/logs/week10_contract_closure_check_20260512.log
+?? artifacts/logs/week10_contract_it_20260512.log
+?? artifacts/logs/week10_contract_it_preflight_20260512.log
+?? artifacts/logs/week10_java_test_after_security_contract_20260512.log
+?? artifacts/logs/week10_security_contract_align_20260512.log
+?? src/test/java/com/ryan/media/ContractIT.java
+
+===== [log path] =====
+-rw-rw-r-- 1 GRT GRT 25K  5月 12 10:03 artifacts/logs/week10_contract_closure_check_20260512.log

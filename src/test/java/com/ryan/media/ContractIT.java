@@ -127,8 +127,6 @@ class ContractIT {
             .andExpect(jsonPath("$.code").value("MEDIA_TASK_NOT_FOUND"));
     }
 
-}
-\n
     @Test
     void createMediaTaskShouldAcceptIdempotencyKeyHeaderAsContractBoundary() throws Exception {
         mockMvc.perform(post("/api/media-tasks")
@@ -144,4 +142,4 @@ class ContractIT {
             .andExpect(status().isCreated());
     }
 
-}\n
+}

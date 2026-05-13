@@ -1,0 +1,123 @@
+===== Week10 Java API contract closure index =====
+Planned closure date: 2026-05-15
+Note: Maven test logs may show host/runtime timestamp from the local machine; filenames follow the Week10 Friday closure naming.
+2026年 05月 13日 星期三 15:43:21 CST
+aurora-Super-Server
+/home/GRT/work/media-task-platform-java
+
+===== git state =====
+0	0
+## main...origin/main
+?? artifacts/logs/week10_auth_security_closure_20260515.log
+?? artifacts/logs/week10_contract_it_closure_20260515.log
+?? artifacts/logs/week10_java_contract_closure_index_20260515.log
+?? artifacts/logs/week10_java_full_test_closure_20260515.log
+c920e74 (HEAD -> main, origin/main) fix(java): repair week10 idempotency contract test
+f554d60 test(java): add week10 idempotency key contract boundary
+5af9532 feat(java): add week10 problem detail error contract
+dd07df4 docs(java): align week10 contract closure narrative
+688fa6f test(java): verify week10 api contract boundary
+9709b1a docs(java): verify week10 api contract scope
+4b7902f docs(java): start week10 api contract governance
+33ddcd6 docs(java): close week09 summary
+
+===== closure logs =====
+-rw-rw-r-- 1 GRT GRT 5.4K  5月 13 15:37 artifacts/logs/week10_auth_security_closure_20260515.log
+-rw-rw-r-- 1 GRT GRT 5.3K  5月 13 15:37 artifacts/logs/week10_contract_it_closure_20260515.log
+-rw-rw-r-- 1 GRT GRT 9.0K  5月 13 15:37 artifacts/logs/week10_java_full_test_closure_20260515.log
+
+===== test result summary =====
+artifacts/logs/week10_contract_it_closure_20260515.log:27:[INFO] Running com.ryan.media.ContractIT
+artifacts/logs/week10_contract_it_closure_20260515.log:59:[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.804 s -- in com.ryan.media.ContractIT
+artifacts/logs/week10_contract_it_closure_20260515.log:63:[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+artifacts/logs/week10_contract_it_closure_20260515.log:66:[INFO] BUILD SUCCESS
+artifacts/logs/week10_auth_security_closure_20260515.log:27:[INFO] Running com.ryan.media.AuthSecurityTest
+artifacts/logs/week10_auth_security_closure_20260515.log:59:[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.460 s -- in com.ryan.media.AuthSecurityTest
+artifacts/logs/week10_auth_security_closure_20260515.log:63:[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+artifacts/logs/week10_auth_security_closure_20260515.log:66:[INFO] BUILD SUCCESS
+artifacts/logs/week10_java_full_test_closure_20260515.log:38:[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.125 s -- in com.ryan.media.controller.MediaTaskControllerTest
+artifacts/logs/week10_java_full_test_closure_20260515.log:39:[INFO] Running com.ryan.media.AuthSecurityTest
+artifacts/logs/week10_java_full_test_closure_20260515.log:65:[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.703 s -- in com.ryan.media.AuthSecurityTest
+artifacts/logs/week10_java_full_test_closure_20260515.log:93:[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.382 s -- in com.ryan.media.SmokeTest
+artifacts/logs/week10_java_full_test_closure_20260515.log:97:[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+artifacts/logs/week10_java_full_test_closure_20260515.log:100:[INFO] BUILD SUCCESS
+
+===== API contract boundary summary =====
+docs/api/openapi.yaml:1:openapi: 3.1.0
+docs/api/openapi.yaml:8:    the Java media task platform. It is a contract draft, not a production SLA.
+docs/api/openapi.yaml:52:  /auth/login:
+docs/api/openapi.yaml:60:        but local-only. It does not claim full JWT issuance / verification.
+docs/api/openapi.yaml:80:  /auth/me:
+docs/api/openapi.yaml:96:  /api/media-tasks:
+docs/api/openapi.yaml:156:        - name: Idempotency-Key
+docs/api/openapi.yaml:204:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:210:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:216:            $ref: "#/components/schemas/ProblemDetail"
+docs/api/openapi.yaml:284:    ProblemDetail:
+docs/api/openapi.yaml:309:          example: /api/media-tasks
+docs/adr/0004-error-contract.md:18:- pagination / sorting / filtering placeholders
+docs/adr/0004-error-contract.md:28:Use a ProblemDetail-style error response for API errors.
+docs/adr/0004-error-contract.md:59:- Pagination, sorting, filtering, and idempotency can be introduced incrementally.
+docs/adr/0004-error-contract.md:73:- `/auth/login`
+docs/adr/0004-error-contract.md:74:- `/auth/me`
+docs/adr/0004-error-contract.md:75:- `GET /api/media-tasks`
+docs/adr/0004-error-contract.md:76:- `POST /api/media-tasks`
+docs/adr/0004-error-contract.md:78:- pagination / sorting / filtering placeholders
+docs/adr/0004-error-contract.md:79:- optional `Idempotency-Key` header placeholder
+docs/adr/0004-error-contract.md:83:- full JWT issuance / parsing / validation
+docs/adr/0004-error-contract.md:84:- production auth policy
+docs/adr/0004-error-contract.md:85:- persistent idempotency key enforcement
+docs/adr/0004-error-contract.md:99:## Week10 Follow-up: Minimal ProblemDetail Implementation
+docs/adr/0004-error-contract.md:104:- The local response shape is ProblemDetail-style and currently includes `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+docs/adr/0004-error-contract.md:105:- `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` fixes this behavior as the first implementation-backed error contract.
+docs/adr/0004-error-contract.md:109:- This is not a complete production error taxonomy.
+docs/adr/0004-error-contract.md:111:- Validation errors, malformed JSON, traceId propagation, pagination, sorting, filtering, and idempotency remain future work.
+docs/adr/0005-idempotency-key-strategy.md:1:# ADR-0005: Idempotency-Key Strategy for Media Task Creation
+docs/adr/0005-idempotency-key-strategy.md:11:The Java service already has a Week10 API contract baseline, OpenAPI documentation, ContractIT coverage, and ProblemDetail-style error responses.
+docs/adr/0005-idempotency-key-strategy.md:17:Use the request header `Idempotency-Key` as the public API contract for future idempotent media task creation.
+docs/adr/0005-idempotency-key-strategy.md:21:- `Idempotency-Key` is documented as an optional request header for task creation.
+docs/adr/0005-idempotency-key-strategy.md:24:- The current implementation does not claim persistent deduplication.
+docs/adr/0005-idempotency-key-strategy.md:41:The server should reject reuse of the same key with a different request fingerprint after persistent idempotency is implemented.
+docs/adr/0005-idempotency-key-strategy.md:61:- ContractIT request with `Idempotency-Key`
+docs/adr/0005-idempotency-key-strategy.md:65:This keeps the repository honest: the API contract is prepared, but production-grade idempotency is not yet claimed.
+README.md:8:### Week10 Java Idempotency-Key contract boundary verified update - 2026-05-14
+README.md:10:- Added `docs/adr/0005-idempotency-key-strategy.md` to define the Week10 `Idempotency-Key` boundary for media task creation.
+README.md:11:- Added a `ContractIT` request that sends `Idempotency-Key` to `POST /api/media-tasks` and verifies the current API layer accepts the request for an authenticated user.
+README.md:12:- This is a contract-boundary check only: persistent deduplication, response replay, request fingerprint conflict detection, expiration, and exactly-once semantics are still not verified.
+README.md:19:### Week10 Java ProblemDetail error response verified update - 2026-05-13
+README.md:25:- Added `ContractIT#getMediaTaskByIdShouldReturnProblemDetailWhenMissing` to freeze the missing media-task error response.
+README.md:26:- Verified `IllegalArgumentException` from `GET /api/media-tasks/{id}` returns a ProblemDetail-style `404` response with `type`, `title`, `status`, `detail`, `instance`, and extension field `code`.
+README.md:40:- This verifies one local ProblemDetail-style missing-task error path only.
+README.md:41:- It does not claim a complete production error-code taxonomy.
+README.md:42:- It does not claim Spring Security `401/403` responses are converted to ProblemDetail.
+README.md:43:- It does not claim validation `400`, malformed JSON, traceId propagation, JWT, pagination, sorting, filtering, or persistent idempotency-key enforcement is complete.
+README.md:50:- Aligned `SecurityConfig` so `GET /api/media-tasks` and `POST /api/media-tasks` now require authentication.
+README.md:53:- `ContractIT` currently covers `/auth/login`, `/auth/me`, anonymous rejection for protected APIs, authenticated list contract, and authenticated create boundary.
+README.md:71:- It does not claim full JWT issuance / parsing / validation.
+README.md:72:- Superseded by the 2026-05-13 follow-up: one missing-task `ProblemDetail` error path is now implemented and tested.
+README.md:73:- It does not claim persistent idempotency-key enforcement.
+README.md:74:- Pagination, sorting, filtering, and `Idempotency-Key` remain Week10 contract placeholders until backed by implementation tests.
+README.md:83:- The OpenAPI contract currently covers `/health`, `/actuator/health`, `/auth/login`, `/auth/me`, and `/api/media-tasks`.
+README.md:84:- The contract draft documents current auth / media-task API boundaries plus placeholders for pagination, sorting, filtering, and `Idempotency-Key`.
+README.md:85:- The error contract ADR defines a ProblemDetail-style target shape for future centralized error handling.
+README.md:98:- It does not claim full JWT issuance / parsing / validation.
+README.md:99:- It does not claim persistent idempotency-key enforcement.
+README.md:100:- It does not claim production-grade API governance or OpenAPI CI validation.
+README.md:133:- It does not yet include production load testing, distributed tracing, or container runtime tuning.
+README.md:142:- 已完成 `POST /auth/login` 与 `GET /auth/me`
+README.md:143:- 已将 `GET /api/media-tasks` 与 `POST /api/media-tasks` 切入受保护边界
+README.md:170:- 完整 JWT 签发 / 解析 / 校验闭环
+README.md:186:   * `ContractIT` 已固定 `/auth/login`、`/auth/me`、`GET /api/media-tasks`、`POST /api/media-tasks` 的最小合同边界
+README.md:187:   * 已补一个 missing-task `ProblemDetail` 风格错误响应与对应 ContractIT；下一步再分阶段补 validation 400 / malformed JSON / page-size-sort-filter 合同
+README.md:188:   * page / size / sort / status / `Idempotency-Key` 当前仍是 OpenAPI placeholder，不能写成已完整实现
+README.md:191:   * 基于 `docs/adr/0004-error-contract.md` 设计 ProblemDetail-style 错误响应
+README.md:196:   * 当前 OpenAPI 已标注 page、size、sort、status 与 `Idempotency-Key` 为 Week10 contract placeholders
+README.md:220:    curl -s -X POST http://127.0.0.1:8080/api/media-tasks \
+README.md:223:    curl -s http://127.0.0.1:8080/api/media-tasks
+
+===== final diff =====
+## main...origin/main
+?? artifacts/logs/week10_auth_security_closure_20260515.log
+?? artifacts/logs/week10_contract_it_closure_20260515.log
+?? artifacts/logs/week10_java_contract_closure_index_20260515.log
+?? artifacts/logs/week10_java_full_test_closure_20260515.log

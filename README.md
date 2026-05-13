@@ -5,6 +5,17 @@
 当前目标不是一次性做成完整平台，而是先建立可运行、可测试、可扩展的后端工程基线，为后续数据库、鉴权、可观测、异步任务流打底。
 
 
+### Week10 Java Idempotency-Key contract boundary verified update - 2026-05-14
+
+- Added `docs/adr/0005-idempotency-key-strategy.md` to define the Week10 `Idempotency-Key` boundary for media task creation.
+- Added a `ContractIT` request that sends `Idempotency-Key` to `POST /api/media-tasks` and verifies the current API layer accepts the request for an authenticated user.
+- This is a contract-boundary check only: persistent deduplication, response replay, request fingerprint conflict detection, expiration, and exactly-once semantics are still not verified.
+
+Evidence:
+- `docs/adr/0005-idempotency-key-strategy.md`
+- `src/test/java/com/ryan/media/ContractIT.java`
+- `artifacts/logs/week10_idempotency_contract_20260514.log`
+
 ### Week10 Java ProblemDetail error response verified update - 2026-05-13
 
 Verified scope:

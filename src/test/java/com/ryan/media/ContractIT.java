@@ -128,3 +128,20 @@ class ContractIT {
     }
 
 }
+\n
+    @Test
+    void createMediaTaskShouldAcceptIdempotencyKeyHeaderAsContractBoundary() throws Exception {
+        mockMvc.perform(post("/api/media-tasks")
+                .with(user("week10-contract-user").roles("USER"))
+                .header("Idempotency-Key", "week10-idempotency-key-001")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                    {
+                      "title": "week10-idempotency-contract-task",
+                      "mediaType": "audio"
+                    }
+                    """))
+            .andExpect(status().isCreated());
+    }
+
+}\n

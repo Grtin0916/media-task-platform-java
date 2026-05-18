@@ -2,13 +2,13 @@ package com.ryan.media.controller;
 
 import com.ryan.media.messaging.Consumer;
 import com.ryan.media.model.CreateMediaTaskRequest;
+import com.ryan.media.model.MediaTaskListResponse;
 import com.ryan.media.model.MediaTaskResponse;
 import com.ryan.media.service.MediaTaskService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,8 +30,13 @@ public class MediaTaskController {
     }
 
     @GetMapping
-    public List<MediaTaskResponse> list() {
-        return mediaTaskService.list();
+    public MediaTaskListResponse list(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) String status,
+            @RequestParam(defaultValue = "created_at_desc") String sort
+    ) {
+        return mediaTaskService.list(page, size, status, sort);
     }
 
     @GetMapping("/{id}")
@@ -56,5 +61,4 @@ public class MediaTaskController {
                 "consumerName", consumer.consumerName()
         );
     }
-
 }

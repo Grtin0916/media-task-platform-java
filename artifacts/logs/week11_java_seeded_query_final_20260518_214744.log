@@ -1,0 +1,50 @@
+===== readiness =====
+READY=1
+APP_PID=409257
+APP_LOG=artifacts/logs/week11_java_app_start_k6_seeded_final_20260518_214744.log
+
+===== app log signs =====
+43:2026-05-18T21:47:49.202+08:00  INFO 409539 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+52:2026-05-18T21:47:50.296+08:00  INFO 409539 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name k6UserDetailsService
+53:2026-05-18T21:47:50.726+08:00  INFO 409539 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+54:2026-05-18T21:47:50.739+08:00  INFO 409539 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Started MediaTaskApplication in 3.44 seconds (process running for 3.709)
+55:2026-05-18T21:47:51.401+08:00  INFO 409539 --- [media-task-platform-java] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+56:2026-05-18T21:47:51.402+08:00  INFO 409539 --- [media-task-platform-java] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+57:2026-05-18T21:47:51.403+08:00  INFO 409539 --- [media-task-platform-java] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+
+===== health =====
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    15    0    15    0     0   1382      0 --:--:-- --:--:-- --:--:--  1500
+HTTP/1.1 200 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/vnd.spring-boot.actuator.v3+json
+Transfer-Encoding: chunked
+Date: Mon, 18 May 2026 13:47:51 GMT
+
+{"status":"UP"}
+===== authenticated seeded query =====
+{
+    "content": [
+        {
+            "id": "week11-k6-seed-created-001",
+            "title": "Week11 K6 Seed Created Task",
+            "mediaType": "video",
+            "status": "CREATED",
+            "createdAt": "2099-05-17T16:00:01Z"
+        }
+    ],
+    "page": 0,
+    "size": 5,
+    "totalElements": 1,
+    "status": "CREATED",
+    "sort": "created_at_desc"
+}
+
+===== assert seeded task =====
+seeded_query_ok=true

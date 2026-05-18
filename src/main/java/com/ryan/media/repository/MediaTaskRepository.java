@@ -64,6 +64,62 @@ public class MediaTaskRepository {
                 .list();
     }
 
+    public List<MediaTaskResponse> findPage(String status, int size, int offset, String sort) {
+        String orderBy = switch (sort) {
+            case "created_at_asc" -> "created_at asc";
+            case "created_at_desc" -> "created_at desc";
+            default -> throw new IllegalArgumentException("unsupported sort: " + sort);
+        };
+
+        String whereClause = status == null ? "" : " where status = :status";
+        String sql = """
+                select id, title, media_type, status, created_at
+                from media_task%s
+                order by %s
+                limit :size offset :offset
+                """.formatted(whereClause, orderBy);
+
+        var spec = jdbcClient.sql(sql)
+                .param("size", size)
+                .param("offset", offset);
+
+        if (status != null) {
+            spec = spec.param("status", status);
+        }
+
+        return spec.query((rs, rowNum) -> new MediaTaskResponse(
+                        rs.getString("id"),
+                        rs.getString("title"),
+                        rs.getString("media_type"),
+                        rs.getString("status"),
+                        rs.getTimestamp("created_at").toInstant()
+                ))
+                .list();
+    }
+
+    public long count(String status) {
+        if (status == null) {
+            Long value = jdbcClient.sql("""
+                    select count(*)
+                    from media_task
+                    """)
+                    .query(Long.class)
+                    .single();
+            return value == null ? 0L : value;
+        }
+
+        Long value = jdbcClient.sql("""
+                select count(*)
+                from media_task
+                where status = :status
+                """)
+                .param("status", status)
+                .query(Long.class)
+                .single();
+
+        return value == null ? 0L : value;
+    }
+
     public Optional<MediaTaskResponse> findById(String id) {
         return jdbcClient.sql("""
                 select id, title, media_type, status, created_at

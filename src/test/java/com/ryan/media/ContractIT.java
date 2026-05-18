@@ -4,6 +4,7 @@ import com.ryan.media.auth.AuthController;
 import com.ryan.media.controller.MediaTaskController;
 import com.ryan.media.messaging.Consumer;
 import com.ryan.media.security.SecurityConfig;
+import com.ryan.media.model.MediaTaskListResponse;
 import com.ryan.media.service.MediaTaskService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,13 +75,35 @@ class ContractIT {
     }
 
     @Test
-    void listMediaTasksShouldReturnJsonArrayForAuthenticatedUser() throws Exception {
-        when(mediaTaskService.list()).thenReturn(List.of());
+    void listMediaTasksShouldReturnPagedResponseForAuthenticatedUser() throws Exception {
+        when(mediaTaskService.list(0, 5, "CREATED", "created_at_desc"))
+                .thenReturn(new MediaTaskListResponse(List.of(), 0, 5, 0L, "CREATED", "created_at_desc"));
 
-        mockMvc.perform(get("/api/media-tasks").with(user("week10-contract-user").roles("USER")))
+        mockMvc.perform(get("/api/media-tasks")
+                .with(user("week10-contract-user").roles("USER"))
+                .param("page", "0")
+                .param("size", "5")
+                .param("status", "CREATED")
+                .param("sort", "created_at_desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$").isArray());
+            .andExpect(jsonPath("$.content").isArray())
+            .andExpect(jsonPath("$.page").value(0))
+            .andExpect(jsonPath("$.size").value(5))
+            .andExpect(jsonPath("$.totalElements").value(0))
+            .andExpect(jsonPath("$.status").value("CREATED"))
+            .andExpect(jsonPath("$.sort").value("created_at_desc"));
+    }
+
+    @Test
+    void listMediaTasksShouldRejectUnsupportedSort() throws Exception {
+        when(mediaTaskService.list(0, 20, null, "bad_sort"))
+                .thenThrow(new IllegalArgumentException("unsupported sort: bad_sort"));
+
+        mockMvc.perform(get("/api/media-tasks")
+                .with(user("week10-contract-user").roles("USER"))
+                .param("sort", "bad_sort"))
+            .andExpect(status().is4xxClientError());
     }
 
     @Test

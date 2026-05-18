@@ -2,6 +2,7 @@ package com.ryan.media.service;
 
 import com.ryan.media.messaging.Producer;
 import com.ryan.media.model.CreateMediaTaskRequest;
+import com.ryan.media.model.MediaTaskListResponse;
 import com.ryan.media.model.MediaTaskResponse;
 import com.ryan.media.repository.MediaTaskRepository;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,30 @@ public class MediaTaskService {
 
     public List<MediaTaskResponse> list() {
         return mediaTaskRepository.findAll();
+    }
+
+    public MediaTaskListResponse list(int page, int size, String status, String sort) {
+        if (page < 0) {
+            throw new IllegalArgumentException("page must be >= 0");
+        }
+        if (size < 1 || size > 100) {
+            throw new IllegalArgumentException("size must be between 1 and 100");
+        }
+        if (sort == null || sort.isBlank()) {
+            sort = "created_at_desc";
+        }
+        if (!sort.equals("created_at_desc") && !sort.equals("created_at_asc")) {
+            throw new IllegalArgumentException("unsupported sort: " + sort);
+        }
+        if (status != null && status.isBlank()) {
+            status = null;
+        }
+
+        int offset = page * size;
+        var content = mediaTaskRepository.findPage(status, size, offset, sort);
+        long totalElements = mediaTaskRepository.count(status);
+
+        return new MediaTaskListResponse(content, page, size, totalElements, status, sort);
     }
 
     public MediaTaskResponse getById(String id) {

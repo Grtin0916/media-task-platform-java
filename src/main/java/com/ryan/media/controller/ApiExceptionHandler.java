@@ -25,7 +25,7 @@ public class ApiExceptionHandler {
         } else {
             problem.setType(URI.create("https://media-task-platform-java/problems/invalid-request"));
             problem.setTitle("Invalid request");
-            problem.setProperty("code", "INVALID_REQUEST");
+            problem.setProperty("code", "MEDIA_TASK_INVALID_REQUEST");
         }
 
         if (request != null) {

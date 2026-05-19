@@ -105,6 +105,7 @@ class ContractIT {
                 .param("sort", "bad_sort"))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.code").value("MEDIA_TASK_INVALID_REQUEST"))
             .andExpect(jsonPath("$.detail").value("unsupported sort: bad_sort"));
     }
 
@@ -177,6 +178,7 @@ class ContractIT {
                 .param("page", "-1"))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.code").value("MEDIA_TASK_INVALID_REQUEST"))
             .andExpect(jsonPath("$.detail").value("page must be >= 0"));
     }
 
@@ -190,6 +192,7 @@ class ContractIT {
                 .param("size", "0"))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.code").value("MEDIA_TASK_INVALID_REQUEST"))
             .andExpect(jsonPath("$.detail").value("size must be between 1 and 100"));
     }
 
@@ -203,6 +206,7 @@ class ContractIT {
                 .param("size", "101"))
             .andExpect(status().isBadRequest())
             .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.code").value("MEDIA_TASK_INVALID_REQUEST"))
             .andExpect(jsonPath("$.detail").value("size must be between 1 and 100"));
     }
 

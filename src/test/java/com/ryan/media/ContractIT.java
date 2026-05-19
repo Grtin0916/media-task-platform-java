@@ -96,14 +96,16 @@ class ContractIT {
     }
 
     @Test
-    void listMediaTasksShouldRejectUnsupportedSort() throws Exception {
+    void queryBadSortShouldReturnProblemDetail() throws Exception {
         when(mediaTaskService.list(0, 20, null, "bad_sort"))
                 .thenThrow(new IllegalArgumentException("unsupported sort: bad_sort"));
 
         mockMvc.perform(get("/api/media-tasks")
-                .with(user("week10-contract-user").roles("USER"))
+                .with(user("contract-user"))
                 .param("sort", "bad_sort"))
-            .andExpect(status().is4xxClientError());
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.detail").value("unsupported sort: bad_sort"));
     }
 
     @Test
@@ -163,6 +165,45 @@ class ContractIT {
                     }
                     """))
             .andExpect(status().isCreated());
+    }
+
+    @Test
+    void queryNegativePageShouldReturnProblemDetail() throws Exception {
+        when(mediaTaskService.list(-1, 20, null, "created_at_desc"))
+                .thenThrow(new IllegalArgumentException("page must be >= 0"));
+
+        mockMvc.perform(get("/api/media-tasks")
+                .with(user("contract-user"))
+                .param("page", "-1"))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.detail").value("page must be >= 0"));
+    }
+
+    @Test
+    void queryZeroSizeShouldReturnProblemDetail() throws Exception {
+        when(mediaTaskService.list(0, 0, null, "created_at_desc"))
+                .thenThrow(new IllegalArgumentException("size must be between 1 and 100"));
+
+        mockMvc.perform(get("/api/media-tasks")
+                .with(user("contract-user"))
+                .param("size", "0"))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.detail").value("size must be between 1 and 100"));
+    }
+
+    @Test
+    void queryOversizedPageShouldReturnProblemDetail() throws Exception {
+        when(mediaTaskService.list(0, 101, null, "created_at_desc"))
+                .thenThrow(new IllegalArgumentException("size must be between 1 and 100"));
+
+        mockMvc.perform(get("/api/media-tasks")
+                .with(user("contract-user"))
+                .param("size", "101"))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.status").value(400))
+            .andExpect(jsonPath("$.detail").value("size must be between 1 and 100"));
     }
 
 }

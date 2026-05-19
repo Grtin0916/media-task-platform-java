@@ -313,3 +313,7 @@ components:
         traceId:
           type: string
           example: local-trace-id
+
+# Week11 query boundary note:
+# /api/media-tasks supports page >= 0, 1 <= size <= 100, sort in [created_at_desc, created_at_asc].
+# Invalid query parameters are returned as HTTP 400 ProblemDetail responses.

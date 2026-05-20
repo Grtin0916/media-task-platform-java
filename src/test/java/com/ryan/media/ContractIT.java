@@ -1,10 +1,12 @@
 package com.ryan.media;
 
+import java.time.Instant;
 import com.ryan.media.auth.AuthController;
 import com.ryan.media.controller.MediaTaskController;
 import com.ryan.media.messaging.Consumer;
 import com.ryan.media.security.SecurityConfig;
 import com.ryan.media.model.MediaTaskListResponse;
+import com.ryan.media.model.MediaTaskResponse;
 import com.ryan.media.service.MediaTaskService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -208,6 +210,41 @@ class ContractIT {
             .andExpect(jsonPath("$.status").value(400))
             .andExpect(jsonPath("$.code").value("MEDIA_TASK_INVALID_REQUEST"))
             .andExpect(jsonPath("$.detail").value("size must be between 1 and 100"));
+    }
+
+
+    @Test
+    void listMediaTasksShouldExposeEvalArtifactLinksForWeek11SeedTask() throws Exception {
+        when(mediaTaskService.list(0, 5, "CREATED", "created_at_desc"))
+                .thenReturn(new MediaTaskListResponse(
+                        List.of(new MediaTaskResponse(
+                                "week11-k6-seed-created-001",
+                                "Week11 seeded media task",
+                                "video",
+                                "CREATED",
+                                Instant.parse("2026-05-20T00:00:00Z"),
+                                "mainbase://artifacts/manifests/week11_crossrepo_task_bridge.json",
+                                "mainbase://artifacts/evals/week11_eval_quality_gate_v0.json",
+                                "PASS"
+                        )),
+                        0,
+                        5,
+                        1L,
+                        "CREATED",
+                        "created_at_desc"
+                ));
+
+        mockMvc.perform(get("/api/media-tasks")
+                        .with(user("contract-user").roles("USER"))
+                        .param("page", "0")
+                        .param("size", "5")
+                        .param("status", "CREATED")
+                        .param("sort", "created_at_desc"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[0].id").value("week11-k6-seed-created-001"))
+                .andExpect(jsonPath("$.content[0].artifactUri").value("mainbase://artifacts/manifests/week11_crossrepo_task_bridge.json"))
+                .andExpect(jsonPath("$.content[0].evalSummaryUri").value("mainbase://artifacts/evals/week11_eval_quality_gate_v0.json"))
+                .andExpect(jsonPath("$.content[0].qualityGateStatus").value("PASS"));
     }
 
 }

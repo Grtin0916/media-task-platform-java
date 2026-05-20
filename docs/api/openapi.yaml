@@ -271,6 +271,18 @@ components:
         createdAt:
           type: string
           format: date-time
+        artifactUri:
+          type: string
+          format: uri
+          description: Optional pointer to the Mainbase cross-repo artifact or bridge manifest for this task.
+        evalSummaryUri:
+          type: string
+          format: uri
+          description: Optional pointer to the Mainbase eval or quality-gate summary for this task.
+        qualityGateStatus:
+          type: string
+          enum: [PASS, WARN, FAIL]
+          description: Optional local quality-gate status bound from Mainbase/Cloud evidence.
 
     MediaTaskListResponse:
       oneOf:

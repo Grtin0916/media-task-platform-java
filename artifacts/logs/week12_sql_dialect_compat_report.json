@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "week12.sql-dialect-compat.v1",
+  "generatedAt": "2026-06-02T09:09:48.024452+00:00",
+  "status": "PASS",
+  "checkedFiles": [
+    "src/main/resources/db/migration/V1__init.sql",
+    "src/main/resources/db/migration/V2__indexes.sql"
+  ],
+  "bannedTokenHits": [],
+  "purpose": "Prevent PostgreSQL-only timestamptz abbreviation from breaking H2-backed Flyway runtime tests.",
+  "doesNotClaim": [
+    "full PostgreSQL migration verification",
+    "Java runtime HTTP success",
+    "Spring application context startup success"
+  ]
+}

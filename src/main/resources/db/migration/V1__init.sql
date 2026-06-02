@@ -3,8 +3,8 @@ create table if not exists media_task (
     title varchar(100) not null,
     media_type varchar(30) not null,
     status varchar(20) not null,
-    created_at timestamptz not null default now(),
-    updated_at timestamptz not null default now()
+    created_at timestamp with time zone not null default CURRENT_TIMESTAMP,
+    updated_at timestamp with time zone not null default CURRENT_TIMESTAMP
 );
 
 create table if not exists media_asset (
@@ -12,14 +12,14 @@ create table if not exists media_asset (
     task_id varchar(36) not null references media_task(id) on delete cascade,
     asset_path varchar(512) not null,
     asset_kind varchar(30) not null,
-    created_at timestamptz not null default now()
+    created_at timestamp with time zone not null default CURRENT_TIMESTAMP
 );
 
 create table if not exists media_tag (
     id varchar(36) primary key,
     task_id varchar(36) not null references media_task(id) on delete cascade,
     tag_name varchar(50) not null,
-    created_at timestamptz not null default now()
+    created_at timestamp with time zone not null default CURRENT_TIMESTAMP
 );
 
 create index if not exists idx_media_asset_task_id on media_asset(task_id);

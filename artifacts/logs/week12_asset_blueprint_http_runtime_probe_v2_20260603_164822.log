@@ -1,0 +1,6 @@
+endpoint=/api/media-tasks/task-week12-001/asset-blueprint
+healthCode=200
+httpCode=200
+bodyFile=artifacts/runtime/week12_asset_blueprint_http_runtime_body_v2_20260603_164822.json
+healthBody=artifacts/runtime/week12_health_v2_20260603_164822.json
+appLog=artifacts/logs/week12_asset_blueprint_http_runtime_app_v2_20260603_164822.log

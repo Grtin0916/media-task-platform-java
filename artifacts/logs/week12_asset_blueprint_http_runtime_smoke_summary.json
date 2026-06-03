@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "week12.asset-blueprint-http-runtime-smoke.v2",
+  "generatedAt": "2026-06-03T08:48:30.881223+00:00",
+  "status": "PASS",
+  "selectedEndpoint": "/api/media-tasks/task-week12-001/asset-blueprint",
+  "httpCode": "200",
+  "healthCode": "200",
+  "healthIsDiagnosticOnly": true,
+  "redisHealthDisabledForSmoke": true,
+  "missingFields": [],
+  "requiredFields": [
+    "taskId",
+    "inputAssetUri",
+    "blueprintArtifactUri",
+    "blueprintId",
+    "timelineArtifactUri",
+    "qualityGateStatus",
+    "qualityGatePassed",
+    "blueprintManifestLinked",
+    "timelineArtifactLinked"
+  ],
+  "body": {
+    "taskId": "task-week12-001",
+    "inputAssetUri": "file://samples/week12/city_walk.mp4",
+    "blueprintArtifactUri": "artifacts/manifests/week12_blueprint_v1_manifest.json#blueprint_v1_66d315251e",
+    "blueprintId": "blueprint_v1_66d315251e",
+    "timelineArtifactUri": "artifacts/manifests/week12_event_timeline.jsonl",
+    "qualityGateStatus": "PASS",
+    "qualityGatePassed": true,
+    "blueprintManifestLinked": true,
+    "timelineArtifactLinked": true
+  },
+  "bodyParseError": null,
+  "healthBody": {
+    "status": "UP"
+  },
+  "appLog": "artifacts/logs/week12_asset_blueprint_http_runtime_app_v2_20260603_164822.log",
+  "probeLog": "artifacts/logs/week12_asset_blueprint_http_runtime_probe_v2_20260603_164822.log",
+  "bodyFile": "artifacts/runtime/week12_asset_blueprint_http_runtime_body_v2_20260603_164822.json",
+  "doesNotClaim": [
+    "production deployment",
+    "durable artifact registry",
+    "object storage lifecycle",
+    "full Redis-backed readiness",
+    "production SLO"
+  ]
+}

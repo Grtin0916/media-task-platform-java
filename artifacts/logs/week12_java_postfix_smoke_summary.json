@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "week12.java-postfix-smoke.v1",
+  "generatedAt": "2026-06-03T06:50:09.740270+00:00",
+  "status": "PASS",
+  "head": "eb2f045",
+  "testClass": "com.ryan.media.SmokeTest",
+  "surefireXml": "/home/GRT/work/media-task-platform-java/target/surefire-reports/TEST-com.ryan.media.SmokeTest.xml",
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "rcFile": "/home/GRT/work/media-task-platform-java/artifacts/runtime/week12_java_postfix_smoketest_20260602_181616.rc",
+  "logFile": "/home/GRT/work/media-task-platform-java/artifacts/logs/week12_java_postfix_smoketest_20260602_181616.log",
+  "conclusion": "Post-fix minimum Java smoke test passed after replacing PostgreSQL-only timestamptz with timestamp with time zone.",
+  "doesNotClaim": [
+    "asset-blueprint HTTP endpoint runtime success",
+    "full Spring Boot external server startup",
+    "production PostgreSQL migration verification"
+  ]
+}

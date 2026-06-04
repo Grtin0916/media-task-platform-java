@@ -1,0 +1,14 @@
+{
+  "status" : "PASS",
+  "httpCode" : 200,
+  "endpoint" : "/api/media-tasks/week12-demo-task/audio-candidates",
+  "verificationMode" : "SpringBootTest.RANDOM_PORT",
+  "candidateCount" : 10,
+  "audioProbeOkCount" : 10,
+  "semanticFidelityClaimedAny" : false,
+  "mixReadyClaimedAny" : false,
+  "bodyJson" : "artifacts/runtime/week12_audio_candidate_api_http_it_body.json",
+  "firstCandidateId" : "procedural_v0_0001",
+  "firstCandidateEventId" : "evt_001",
+  "firstCandidateDurationSec" : 8.0
+}

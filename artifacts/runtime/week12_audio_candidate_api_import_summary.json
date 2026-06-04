@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-06-04T13:16:35+00:00",
+  "status": "PASS",
+  "sourceQueue": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/evals/week12_audio_audition_review_queue_v0.json",
+  "resourceQueue": "src/main/resources/week12-audio-audition-review-queue-v0.json",
+  "controller": "src/main/java/com/ryan/media/api/MediaTaskAudioCandidateController.java",
+  "test": "src/test/java/com/ryan/media/MediaTaskAudioCandidateControllerTest.java",
+  "doc": "docs/api/week12-audio-candidate-contract.md",
+  "candidateCount": 10,
+  "audioProbeOkCount": 10,
+  "semanticFidelityClaimedAny": false,
+  "mixReadyClaimedAny": false,
+  "endpoint": "/api/media-tasks/{taskId}/audio-candidates",
+  "boundary": [
+    "not_complete_artifact_registry",
+    "not_production_object_storage",
+    "not_human_audition_passed",
+    "not_semantic_audio_quality_passed",
+    "not_mix_ready"
+  ]
+}

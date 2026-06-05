@@ -1,0 +1,52 @@
+09:43:36.375 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.week12.Week12AudioTimingRuntimeContractIT]: Week12AudioTimingRuntimeContractIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+09:43:36.516 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.week12.Week12AudioTimingRuntimeContractIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-06-05T09:43:36.825+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : Starting Week12AudioTimingRuntimeContractIT using Java 21.0.10 with PID 1652414 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-05T09:43:36.826+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : No active profile set, falling back to 1 default profile: "default"
+2026-06-05T09:43:37.634+08:00  INFO 1652414 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-06-05T09:43:37.636+08:00  INFO 1652414 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-06-05T09:43:37.660+08:00  INFO 1652414 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2026-06-05T09:43:38.171+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-06-05T09:43:38.185+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-05T09:43:38.185+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-06-05T09:43:38.221+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-05T09:43:38.223+08:00  INFO 1652414 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1370 ms
+2026-06-05T09:43:38.522+08:00  INFO 1652414 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-05T09:43:38.656+08:00  INFO 1652414 --- [media-task-platform-java] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:1411cf03-5015-46ef-aeb3-8627f145df4c user=SA
+2026-06-05T09:43:38.658+08:00  INFO 1652414 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-05T09:43:38.694+08:00  INFO 1652414 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:1411cf03-5015-46ef-aeb3-8627f145df4c (H2 2.3)
+2026-06-05T09:43:38.721+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+2026-06-05T09:43:38.723+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.011s)
+2026-06-05T09:43:38.728+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2026-06-05T09:43:38.761+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2026-06-05T09:43:38.767+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - init"
+2026-06-05T09:43:38.781+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "2 - indexes"
+2026-06-05T09:43:38.790+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema "PUBLIC", now at version v2 (execution time 00:00.009s)
+2026-06-05T09:43:39.285+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-06-05T09:43:39.319+08:00  WARN 1652414 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fdfa98cc-32cf-44cc-804f-645bb124182c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-06-05T09:43:39.325+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-06-05T09:43:39.851+08:00  INFO 1652414 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 34651 (http) with context path '/'
+2026-06-05T09:43:39.867+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : Started Week12AudioTimingRuntimeContractIT in 3.258 seconds (process running for 4.017)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-06-05T09:43:40.549+08:00  INFO 1652414 --- [media-task-platform-java] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-05T09:43:40.549+08:00  INFO 1652414 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-05T09:43:40.551+08:00  INFO 1652414 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

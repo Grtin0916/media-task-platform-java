@@ -1,0 +1,27 @@
+{
+  "status": "GENERATED",
+  "scope": "java_exposes_week12_audio_timing_runtime_contract",
+  "applicationPackage": "com.ryan.media",
+  "week12Package": "com.ryan.media.week12",
+  "source": {
+    "cloudPath": "/home/GRT/work/ai-job-platform-cloud",
+    "cloudCommit": "a1f7159",
+    "cloudOriginMain": "a1f7159",
+    "cloudRuntimeIndex": "/home/GRT/work/ai-job-platform-cloud/artifacts/manifests/week12_cloud_mainbase_audio_timing_runtime_index.json"
+  },
+  "generated": {
+    "resource": "src/main/resources/week12/week12_cloud_mainbase_audio_timing_runtime_index.json",
+    "controller": "src/main/java/com/ryan/media/week12/Week12AudioTimingRuntimeContractController.java",
+    "integrationTest": "src/test/java/com/ryan/media/week12/Week12AudioTimingRuntimeContractIT.java"
+  },
+  "contractFields": [
+    "assetTimeModeCounts",
+    "eventLocalPlacementOffsets",
+    "placementRequired",
+    "expectedStartSec",
+    "expectedEndSec",
+    "peakGlobalSec",
+    "runtimeWarnings"
+  ],
+  "boundaryStatement": "Java exposes Cloud-consumed Mainbase timing semantics as a week12 HTTP contract. This does not implement a durable artifact registry, mixer, worker, semantic quality validation, or human audition."
+}

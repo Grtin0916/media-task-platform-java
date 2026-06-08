@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "scope": "java_exposes_week13_audio_artifact_registry_contract_v0",
+  "generatedAtUtc": "2026-06-08T09:01:32.524485+00:00",
+  "sourceRepo": {
+    "path": "/home/GRT/work/media-task-platform-java",
+    "head": "88d8d28"
+  },
+  "mainbaseEvidence": {
+    "dryRunStatus": "PASS",
+    "candidateCount": 10,
+    "assetTimeModeCounts": {
+      "full_clip": 5,
+      "event_local": 5
+    },
+    "fixedPlacementMisplacedCount": 0,
+    "naiveZeroWouldMisplaceCount": 5
+  },
+  "endpoints": [
+    "GET /api/week13/audio-artifacts",
+    "GET /api/week13/audio-artifacts/{candidateId}"
+  ],
+  "contractFields": [
+    "candidateId",
+    "audioUri",
+    "sourceType",
+    "assetTimeMode",
+    "expectedStartSec",
+    "expectedEndSec",
+    "globalStartSec",
+    "globalEndSec",
+    "placementOffsetSec",
+    "placementRequired",
+    "status"
+  ],
+  "test": {
+    "name": "Week13AudioArtifactRegistryTest",
+    "log": "artifacts/logs/week13_audio_artifact_registry_it.log",
+    "surefire": {
+      "surefireDirExists": true,
+      "targetXmlCount": 1,
+      "reports": [
+        {
+          "file": "target/surefire-reports/TEST-com.ryan.media.week13.Week13AudioArtifactRegistryTest.xml",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      ],
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    "passed": true
+  },
+  "boundaryStatement": "Java exposes Mainbase Week13 placement/dry-run candidate artifacts as an in-memory API contract. This does not implement durable object storage, database-backed registry, final mixer, semantic quality validation, human audition, or production readiness.",
+  "blockers": []
+}

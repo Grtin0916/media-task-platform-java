@@ -1,0 +1,16 @@
+{
+  "status": "GENERATED",
+  "rows": 10,
+  "sourceMainbaseDryrunStatus": "PASS",
+  "written": [
+    "/home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/week13/AudioArtifactRegistryItem.java",
+    "/home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/week13/AudioArtifactRegistryResponse.java",
+    "/home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/week13/AudioArtifactRegistryService.java",
+    "/home/GRT/work/media-task-platform-java/src/main/java/com/ryan/media/week13/AudioArtifactRegistryController.java",
+    "/home/GRT/work/media-task-platform-java/src/test/java/com/ryan/media/week13/Week13AudioArtifactRegistryIT.java",
+    "/home/GRT/work/media-task-platform-java/docs/api/week13-audio-artifact-registry-contract.md",
+    "/home/GRT/work/media-task-platform-java/scripts/week13_write_audio_artifact_registry_report.py",
+    "/home/GRT/work/media-task-platform-java/artifacts/fixtures/week13_mainbase_mix_global_placement_table.csv",
+    "/home/GRT/work/media-task-platform-java/artifacts/fixtures/week13_mainbase_mix_preview_manifest.json"
+  ]
+}

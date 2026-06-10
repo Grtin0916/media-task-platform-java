@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "scope": "week13_materialized_readiness_api_contract_v1",
+  "sourceReadinessReport": "artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json",
+  "endpoint": "/api/week13/audio-artifact-registry/materialized-readiness",
+  "testClass": "Week13MaterializedAudioRegistryControllerIT",
+  "candidateCount": 10,
+  "readyCount": 10,
+  "assetTimeModeCounts": {
+    "full_clip": 5,
+    "event_local": 5
+  },
+  "requiredFields": [
+    "candidateId",
+    "materializedStorageStatus",
+    "podPath",
+    "localObjectPath",
+    "sha256",
+    "sizeBytes",
+    "audioReadable",
+    "sampleRateHz",
+    "channels",
+    "durationSec"
+  ],
+  "blockers": [],
+  "boundary": [
+    "read-only report-backed API",
+    "not durable registry persistence",
+    "not worker orchestration",
+    "not production object storage"
+  ]
+}

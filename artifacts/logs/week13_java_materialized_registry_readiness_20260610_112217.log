@@ -1,0 +1,13 @@
+{
+  "report": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json",
+  "status": "PASS",
+  "candidateCount": 10,
+  "readyCount": 10,
+  "assetTimeModeCounts": {
+    "full_clip": 5,
+    "event_local": 5
+  },
+  "missingInJavaCount": 0,
+  "missingInCloudCount": 0,
+  "blockers": []
+}

@@ -50,7 +50,7 @@ class Week13CandidateBankDemoReadinessControllerIT {
         assertThat(blockers).isEmpty();
 
         List<?> boundary = (List<?>) body.get("boundary");
-        assertThat(boundary).contains(
+        assertThat(boundary.stream().map(Object::toString).toList()).contains(
                 "does_not_claim_semantic_audio_quality",
                 "does_not_claim_human_audition_pass",
                 "does_not_claim_final_mix_readiness",

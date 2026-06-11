@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "week13.java_candidate_bank_demo_readiness_api_contract.v1",
+  "generatedAt": "2026-06-11T16:27:57",
+  "status": "PASS",
+  "scope": "java-http-api-contract-report",
+  "endpoint": "/api/week13/candidate-bank-demo-readiness",
+  "testClass": "Week13CandidateBankDemoReadinessControllerIT",
+  "testMode": "SpringBootTest.RANDOM_PORT",
+  "sourceConsumptionReport": "artifacts/manifests/week13_java_candidate_bank_demo_consumption_report.json",
+  "testLog": "artifacts/logs/week13_candidate_bank_demo_readiness_api_it_rerun_20260611_162529.log",
+  "testReportDir": "artifacts/test-reports/week13_candidate_bank_demo_readiness_api",
+  "testReportFiles": [],
+  "testSummary": {
+    "testsRun": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "consumedCounts": {
+    "candidateCount": 10,
+    "placementTableRows": 10,
+    "materializedCount": 10,
+    "mountReadableCount": 10,
+    "workerReadyCount": 10,
+    "workerSuccessCount": 10,
+    "feedbackReadyForPlatformConsumptionCount": 10
+  },
+  "javaStatuses": {
+    "javaRegistryContract": "PASS",
+    "javaMaterializedReadiness": "PASS",
+    "javaReadinessApiContract": "PASS"
+  },
+  "boundary": [
+    "does_not_claim_semantic_audio_quality",
+    "does_not_claim_human_audition_pass",
+    "does_not_claim_final_mix_readiness",
+    "does_not_claim_production_kubernetes_job",
+    "does_not_claim_s3_minio_csi_or_cloud_object_storage",
+    "does_not_claim_durable_java_registry"
+  ],
+  "hardChecks": {
+    "sourceConsumptionReportPass": true,
+    "apiItRanAtLeastOneTest": true,
+    "apiItNoFailures": true,
+    "apiItNoErrors": true,
+    "candidateCountIsTen": true,
+    "workerSuccessCountIsTen": true,
+    "noSourceBlockers": true,
+    "testEvidencePresent": true
+  },
+  "blockers": [],
+  "platformDecision": "PASS: Java exposes the Week13 candidate bank demo readiness over a focused HTTP API verified by RANDOM_PORT IT.",
+  "nextRecommendedStep": "Let Cloud consume this Java API contract report as a dashboard-ready platform readiness gate."
+}

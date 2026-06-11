@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "week13.java_candidate_bank_demo_consumption.v1",
+  "generatedAt": "2026-06-11T16:07:57",
+  "status": "PASS",
+  "scope": "java-platform-consumption-report-only",
+  "sourceMainbaseDemoIndex": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/manifests/week13_candidate_bank_demo_index.json",
+  "fixtureCopy": "artifacts/fixtures/week13_candidate_bank_demo_index.json",
+  "javaEvidence": {
+    "registryContractReport": "artifacts/manifests/week13_java_audio_artifact_registry_contract_report.json",
+    "materializedReadinessReport": "artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json",
+    "readinessApiContractReport": "artifacts/manifests/week13_materialized_readiness_api_contract_report.json"
+  },
+  "consumedCounts": {
+    "candidateCount": 10,
+    "placementTableRows": 10,
+    "materializedCount": 10,
+    "mountReadableCount": 10,
+    "workerReadyCount": 10,
+    "workerSuccessCount": 10,
+    "feedbackReadyForPlatformConsumptionCount": 10
+  },
+  "consumedStatuses": {
+    "mainbasePlacement": "PASS",
+    "mainbaseCloudFeedback": "PASS",
+    "javaRegistryContract": "PASS",
+    "javaMaterializedReadiness": "PASS",
+    "javaReadinessApiContract": "PASS",
+    "cloudMaterializedArtifacts": "PASS",
+    "cloudMountReadContract": "PASS",
+    "cloudWorkerInput": "PASS",
+    "cloudWorkerSmoke": "PASS"
+  },
+  "javaStatuses": {
+    "javaRegistryContract": "PASS",
+    "javaMaterializedReadiness": "PASS",
+    "javaReadinessApiContract": "PASS"
+  },
+  "boundary": [
+    "does_not_claim_semantic_audio_quality",
+    "does_not_claim_human_audition_pass",
+    "does_not_claim_final_mix_readiness",
+    "does_not_claim_production_kubernetes_job",
+    "does_not_claim_s3_minio_csi_or_cloud_object_storage",
+    "does_not_claim_durable_java_registry"
+  ],
+  "hardChecks": {
+    "mainbaseDemoIndexPass": true,
+    "javaRegistryContractPass": true,
+    "javaMaterializedReadinessPass": true,
+    "javaReadinessApiContractPass": true,
+    "candidateCountIsTen": true,
+    "placementTableRowsIsTen": true,
+    "materializedCountIsTen": true,
+    "mountReadableCountIsTen": true,
+    "workerReadyCountIsTen": true,
+    "workerSuccessCountIsTen": true,
+    "allExpectedBoundaryPresent": true,
+    "noBlockers": true
+  },
+  "blockers": [],
+  "platformDecision": "PASS: Java platform can consume the Week13 candidate bank demo index as a local fixture-backed contract.",
+  "nextRecommendedStep": "Expose a focused Java endpoint or controller IT for this fixture only after preserving the local-demo boundary."
+}

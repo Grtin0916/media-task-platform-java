@@ -1,0 +1,17 @@
+{
+  "schemaVersion" : "week15.temporal_alignment_remediation_api_contract_report.v1",
+  "status" : "PASS",
+  "endpoint" : "/api/week15/temporal-alignment-remediation",
+  "testsRun" : 1,
+  "failures" : 0,
+  "errors" : 0,
+  "candidateCount" : 10,
+  "originalFailCount" : 2,
+  "remediatedFailCount" : 0,
+  "originalEventLocalPassCount" : 3,
+  "remediatedEventLocalPassCount" : 5,
+  "eventLocalPassDelta" : 2,
+  "failCountDelta" : -2,
+  "remediatedCandidateIds" : [ "procedural_v0_0004", "procedural_v0_0010" ],
+  "boundary" : [ "api_contract_only", "consumes_mainbase_artifact_evidence", "does_not_score_semantic_audio_quality", "does_not_claim_human_audition_passed", "does_not_claim_final_mix_readiness", "does_not_claim_production_slo" ]
+}

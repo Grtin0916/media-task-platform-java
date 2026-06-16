@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "week15.java-temporal-alignment-review-state-contract.v0",
+  "endpoint": "GET /api/week15/temporal-alignment-review-state",
+  "platformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
+  "claimBoundaryOk": true,
+  "qualityGateLiteStatus": "SEMANTIC_REVIEW_READY",
+  "reviewBoundary": {
+    "humanReviewStatus": "HUMAN_REVIEW_PARTIAL",
+    "auditionStatus": "NOT_PERFORMED",
+    "semanticQualityReviewStatus": "NOT_PERFORMED",
+    "finalMixReadiness": "NOT_CLAIMED"
+  },
+  "riskSummary": {
+    "candidateCount": 10,
+    "candidatesWithAnyAudio": 10,
+    "candidatesWithOriginalAudio": 10,
+    "candidatesWithRemediatedAudio": 2,
+    "riskyCandidateCount": 4,
+    "riskCandidateIds": [
+      "procedural_v0_0002",
+      "procedural_v0_0003",
+      "procedural_v0_0004",
+      "procedural_v0_0007"
+    ]
+  },
+  "artifactLinks": {
+    "mainbaseSemanticQualityReviewJson": "mainbase:artifacts/reviews/week15_temporal_alignment_semantic_quality_review_v0.json",
+    "cloudSemanticQualityPlatformIndex": "cloud:loadtest/reports/week15_temporal_alignment_semantic_quality_platform_index.json",
+    "cloudSemanticQualityPrometheusMetrics": "cloud:observability/prometheus/week15_temporal_alignment_semantic_quality_metrics.prom"
+  },
+  "blockedClaims": [
+    "Do not claim human audition PASS.",
+    "Do not claim semantic audio quality PASS.",
+    "Do not claim final mix readiness.",
+    "Do not claim live Grafana import or production SLO."
+  ]
+}

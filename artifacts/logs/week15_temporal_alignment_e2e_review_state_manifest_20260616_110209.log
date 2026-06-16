@@ -1,0 +1,15 @@
+{
+  "decision": "PASS_E2E_REVIEW_STATE_CHAIN",
+  "mainbaseHead": "11bde43",
+  "javaHead": "ac84ff6",
+  "cloudHead": "0e36d4c",
+  "cloudPlatformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
+  "javaEndpoint": "GET /api/week15/temporal-alignment-review-state",
+  "riskCandidateIds": [
+    "procedural_v0_0002",
+    "procedural_v0_0003",
+    "procedural_v0_0004",
+    "procedural_v0_0007"
+  ],
+  "out": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week15_temporal_alignment_semantic_quality_e2e_manifest.json"
+}

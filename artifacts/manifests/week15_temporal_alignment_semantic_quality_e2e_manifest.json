@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "week15.temporal-alignment-semantic-quality-e2e-manifest.v0",
+  "generatedAtUtc": "2026-06-16T03:02:09.593541+00:00",
+  "decision": "PASS_E2E_REVIEW_STATE_CHAIN",
+  "repositories": {
+    "mainbase": {
+      "path": "/home/GRT/work/audio_engineering_repo_skeleton_v1",
+      "head": "11bde43",
+      "originMain": "11bde43",
+      "aheadBehind": "0\t0",
+      "statusPorcelain": ""
+    },
+    "java": {
+      "path": "/home/GRT/work/media-task-platform-java",
+      "head": "ac84ff6",
+      "originMain": "ac84ff6",
+      "aheadBehind": "0\t0",
+      "statusPorcelain": "?? artifacts/logs/week15_temporal_alignment_e2e_review_state_manifest_20260616_110209.log"
+    },
+    "cloud": {
+      "path": "/home/GRT/work/ai-job-platform-cloud",
+      "head": "0e36d4c",
+      "originMain": "0e36d4c",
+      "aheadBehind": "0\t0",
+      "statusPorcelain": ""
+    }
+  },
+  "chain": {
+    "mainbase": {
+      "artifact": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/reviews/week15_temporal_alignment_semantic_quality_review_v0.json",
+      "qualityGateLiteStatus": "SEMANTIC_REVIEW_READY",
+      "humanReviewStatus": "HUMAN_REVIEW_PARTIAL",
+      "auditionStatus": "NOT_PERFORMED",
+      "semanticQualityReviewStatus": "NOT_PERFORMED",
+      "finalMixReadiness": "NOT_CLAIMED"
+    },
+    "cloud": {
+      "platformIndex": "/home/GRT/work/ai-job-platform-cloud/loadtest/reports/week15_temporal_alignment_semantic_quality_platform_index.json",
+      "prometheusMetrics": "/home/GRT/work/ai-job-platform-cloud/observability/prometheus/week15_temporal_alignment_semantic_quality_metrics.prom",
+      "platformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
+      "claimBoundaryOk": true,
+      "summary": {
+        "candidateCount": 10,
+        "candidatesWithAnyAudio": 10,
+        "candidatesWithOriginalAudio": 10,
+        "candidatesWithRemediatedAudio": 2,
+        "riskyCandidateCount": 4,
+        "riskCandidateIds": [
+          "procedural_v0_0002",
+          "procedural_v0_0003",
+          "procedural_v0_0004",
+          "procedural_v0_0007"
+        ]
+      }
+    },
+    "java": {
+      "contractReport": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week15_java_temporal_alignment_review_state_contract_report.json",
+      "endpoint": "GET /api/week15/temporal-alignment-review-state",
+      "platformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
+      "claimBoundaryOk": true,
+      "riskCandidateIds": [
+        "procedural_v0_0002",
+        "procedural_v0_0003",
+        "procedural_v0_0004",
+        "procedural_v0_0007"
+      ]
+    }
+  },
+  "blockedClaims": [
+    "Do not claim human audition PASS.",
+    "Do not claim semantic audio quality PASS.",
+    "Do not claim final mix readiness.",
+    "Do not claim live Grafana import or production SLO."
+  ],
+  "nextEngineeringMove": {
+    "recommended": "Move Java review-state from static contract response toward task-result/artifact-registry backed state.",
+    "notRecommendedToday": "Do not create more waveform evidence, dashboard variants, or audit README files."
+  }
+}

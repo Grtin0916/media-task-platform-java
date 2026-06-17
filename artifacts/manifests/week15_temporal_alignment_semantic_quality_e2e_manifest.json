@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "week15.temporal-alignment-semantic-quality-e2e-manifest.v0",
+  "schemaVersion": "week15.temporal-alignment-semantic-quality-e2e-manifest.v1",
   "generatedAtUtc": "2026-06-16T03:02:09.593541+00:00",
   "decision": "PASS_E2E_REVIEW_STATE_CHAIN",
   "repositories": {
@@ -75,5 +75,11 @@
   "nextEngineeringMove": {
     "recommended": "Move Java review-state from static contract response toward task-result/artifact-registry backed state.",
     "notRecommendedToday": "Do not create more waveform evidence, dashboard variants, or audit README files."
-  }
+  },
+  "statusPorcelainPreWrite": "",
+  "javaHead": "5ac0e6e",
+  "javaInputHead": "5ac0e6e",
+  "originMainHead": "5ac0e6e",
+  "manifestNormalizedAtUtc": "2026-06-17T09:24:11.343195+00:00",
+  "manifestNormalizationReason": "upgrade v0 manifest to v1 clean snapshot before registry-backed review-state implementation"
 }

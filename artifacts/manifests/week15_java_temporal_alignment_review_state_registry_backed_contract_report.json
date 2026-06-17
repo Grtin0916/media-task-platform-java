@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "week15.java.temporal-alignment-review-state.registry-backed-contract.v1",
+  "generatedAtUtc": "2026-06-17T09:24:38.641829+00:00",
+  "javaHead": "5ac0e6e",
+  "decision": "PASS_REGISTRY_BACKED_REVIEW_STATE_CONTRACT",
+  "sourceType": "ARTIFACT_REGISTRY_BACKED",
+  "artifactRegistryBacked": true,
+  "riskCandidateIds": [
+    "procedural_v0_0002",
+    "procedural_v0_0003",
+    "procedural_v0_0004",
+    "procedural_v0_0007"
+  ],
+  "requiredRiskCandidatePresent": true,
+  "claimBoundaryPreserved": true,
+  "artifactLinks": {
+    "semanticQualityE2eManifest": "artifacts/manifests/week15_temporal_alignment_semantic_quality_e2e_manifest.json",
+    "previousReviewStateContractReport": "artifacts/manifests/week15_java_temporal_alignment_review_state_contract_report.json",
+    "focusedItLogs": [
+      "artifacts/logs/week15_java_review_state_registry_backed_20260617_172411.log"
+    ]
+  },
+  "checkedAtUtc": "2026-06-17T09:49:40.641862+00:00",
+  "javaInputHeadBeforeCommit": "5ac0e6e",
+  "resourceSafeCheckMode": "LIGHTWEIGHT_REGISTRY_CONTRACT",
+  "registryBackedLoaderContractChecked": true,
+  "springBootRandomPortCompatibilityChecked": false,
+  "springBootRandomPortCompatibilityStatus": "DEFERRED_TERMINAL_SESSION_CRASHED_TWICE",
+  "legacyReviewStateItChecked": false,
+  "registryBackedReviewStateItChecked": false,
+  "lightweightRegistryContractLog": "artifacts/logs/week15_java_review_state_registry_lightweight_contract_20260617_174930.log",
+  "notes": [
+    "RANDOM_PORT IT was deferred because terminal/session crashed twice during Maven execution; current gate verifies artifact-backed loader behavior without starting the Spring Boot server."
+  ]
+}

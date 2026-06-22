@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "week15.java.explicit_risk_contract.runtime_smoke.v2",
+  "generatedAtUtc": "2026-06-22T14:26:51.916427+00:00",
+  "decision": "PASS_LOCAL_JAVA_EXPLICIT_RISK_CONTRACT_RUNTIME_SMOKE",
+  "decisionErrors": [],
+  "runtime": {
+    "testClass": "Week15TemporalAlignmentExplicitRiskContractIT",
+    "apiEndpoint": "/api/week15/temporal-alignment/explicit-risk-contract",
+    "mavenExitCode": 0,
+    "randomHttpPort": 42049,
+    "springBootVersion": "3.5.13",
+    "javaVersion": "21.0.10",
+    "observedSignals": {
+      "springContextStarted": true,
+      "tomcatStartedOnRandomPort": true,
+      "dispatcherServletInitialized": true,
+      "flywayMigrationsApplied": true,
+      "h2DatasourceStarted": true
+    }
+  },
+  "sourceOfTruth": {
+    "contractMode": "java_explicit_risk_contract",
+    "apiEndpoint": "/api/week15/temporal-alignment/explicit-risk-contract",
+    "upstreamMainbaseContract": "artifacts/evals/week15_temporal_alignment_explicit_risk_contract.json"
+  },
+  "evidenceFiles": {
+    "report": "artifacts/manifests/week15_java_explicit_risk_contract_runtime_smoke_report.json",
+    "log": "artifacts/logs/week15_java_explicit_risk_contract_runtime_smoke_20260622_221450.log"
+  },
+  "git": {
+    "head": "97fa705",
+    "originMain": "97fa705",
+    "aheadBehind": "0\t0",
+    "expectedGeneratedDirtyLines": [
+      "?? artifacts/logs/week15_java_explicit_risk_contract_runtime_smoke_20260622_221450.log",
+      "?? artifacts/manifests/week15_java_explicit_risk_contract_runtime_smoke_report.json"
+    ],
+    "relevantDirtyLines": [],
+    "relevantPorcelainCount": 0
+  },
+  "boundary": [
+    "Local Maven/Spring RANDOM_PORT runtime smoke evidence only.",
+    "No live Java service availability claim.",
+    "No production SLO claim.",
+    "No live Grafana import claim.",
+    "No semantic audio quality pass claim."
+  ],
+  "logTail": "22:14:53.452 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ryan.media.controller.Week15TemporalAlignmentExplicitRiskContractIT]: Week15TemporalAlignmentExplicitRiskContractIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.\n22:14:53.651 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ryan.media.MediaTaskApplication for test class com.ryan.media.controller.Week15TemporalAlignmentExplicitRiskContractIT\n\n  .   ____          _            __ _ _\n /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\n  '  |____| .__|_| |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n\n :: Spring Boot ::               (v3.5.13)\n\n2026-06-22T22:14:54.438+08:00  INFO 453487 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : Starting Week15TemporalAlignmentExplicitRiskContractIT using Java 21.0.10 with PID 453487 (started by GRT in /home/GRT/work/media-task-platform-java)\n2026-06-22T22:14:54.440+08:00  INFO 453487 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : No active profile set, falling back to 1 default profile: \"default\"\n2026-06-22T22:14:55.374+08:00  INFO 453487 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\n2026-06-22T22:14:55.377+08:00  INFO 453487 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\n2026-06-22T22:14:55.415+08:00  INFO 453487 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.\n2026-06-22T22:14:55.998+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)\n2026-06-22T22:14:56.012+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\n2026-06-22T22:14:56.013+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]\n2026-06-22T22:14:56.053+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\n2026-06-22T22:14:56.053+08:00  INFO 453487 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1601 ms\n2026-06-22T22:14:56.416+08:00  INFO 453487 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...\n2026-06-22T22:14:56.587+08:00  INFO 453487 --- [media-task-platform-java] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:97240f04-64d9-4b8a-bae0-5c22d1f9fa79 user=SA\n2026-06-22T22:14:56.588+08:00  INFO 453487 --- [media-task-platform-java] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.\n2026-06-22T22:14:56.631+08:00  INFO 453487 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:97240f04-64d9-4b8a-bae0-5c22d1f9fa79 (H2 2.3)\n2026-06-22T22:14:56.669+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table \"PUBLIC\".\"flyway_schema_history\" does not exist yet\n2026-06-22T22:14:56.671+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.015s)\n2026-06-22T22:14:56.678+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table \"PUBLIC\".\"flyway_schema_history\" ...\n2026-06-22T22:14:56.712+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema \"PUBLIC\": << Empty Schema >>\n2026-06-22T22:14:56.722+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema \"PUBLIC\" to version \"1 - init\"\n2026-06-22T22:14:56.743+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Migrating schema \"PUBLIC\" to version \"2 - indexes\"\n2026-06-22T22:14:56.758+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema \"PUBLIC\", now at version v2 (execution time 00:00.011s)\n2026-06-22T22:14:57.389+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'\n2026-06-22T22:14:57.418+08:00  WARN 453487 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : \n\nUsing generated security password: 5037f8fd-e3ac-464a-a395-bf6322972f14\n\nThis generated password is for development use only. Your security configuration must be updated before running your application in production.\n\n2026-06-22T22:14:57.425+08:00  INFO 453487 --- [media-task-platform-java] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager\n2026-06-22T22:14:57.891+08:00  INFO 453487 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 42049 (http) with context path '/'\n2026-06-22T22:14:57.910+08:00  INFO 453487 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : Started Week15TemporalAlignmentExplicitRiskContractIT in 3.789 seconds (process running for 5.037)\nMockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3\nOpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended\nWARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)\nWARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning\nWARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information\nWARNING: Dynamic loading of agents will be disallowed by default in a future release\n2026-06-22T22:14:58.691+08:00  INFO 453487 --- [media-task-platform-java] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\n2026-06-22T22:14:58.691+08:00  INFO 453487 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\n2026-06-22T22:14:58.692+08:00  INFO 453487 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms"
+}

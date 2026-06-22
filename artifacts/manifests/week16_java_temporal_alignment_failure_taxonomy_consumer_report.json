@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "week16.java.temporal_alignment.failure_taxonomy.consumer_report.v1",
+  "generatedAtUtc": "2026-06-22T14:39:04.026419+00:00",
+  "decision": "PASS_WEEK16_JAVA_TEMPORAL_ALIGNMENT_FAILURE_TAXONOMY_CONSUMER",
+  "decisionErrors": [],
+  "source": {
+    "mainbaseTaxonomyPath": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/evals/week16_temporal_alignment_failure_taxonomy_seed.json",
+    "mainbaseHead": "1fc18a4",
+    "mainbaseOriginMain": "1fc18a4",
+    "upstreamDecision": "PASS_WEEK16_TEMPORAL_ALIGNMENT_FAILURE_TAXONOMY_SEED_V3_SOURCE_CLEAN",
+    "upstreamSchemaVersion": "week16.temporal_alignment.failure_taxonomy_seed.v3"
+  },
+  "javaGit": {
+    "head": "d79cdd9",
+    "originMain": "d79cdd9",
+    "aheadBehind": "0\t0"
+  },
+  "apiCandidate": "/api/week16/temporal-alignment/failure-taxonomy",
+  "payloadPath": "artifacts/manifests/week16_java_temporal_alignment_failure_taxonomy_payload.json",
+  "summary": {
+    "candidateTotal": 10,
+    "bucketCounts": {
+      "pass_low_risk_with_numeric_margin": 7,
+      "timing_drift_actionable_remediated": 2,
+      "warn_near_miss_threshold_margin": 1
+    },
+    "p1RegressionFixtureIds": [
+      "procedural_v0_0004",
+      "procedural_v0_0010"
+    ],
+    "thresholdFixtureIds": [
+      "procedural_v0_0007"
+    ],
+    "passControlCount": 7,
+    "blockedClaims": [
+      "No semantic audio quality pass claim.",
+      "No human-review pass claim.",
+      "No final mix readiness claim.",
+      "No production SLO claim."
+    ]
+  },
+  "boundary": [
+    "Java artifact consumer evidence only.",
+    "Does not claim live Java endpoint availability for W16 yet.",
+    "Does not claim production SLO.",
+    "Does not claim semantic audio quality pass."
+  ]
+}

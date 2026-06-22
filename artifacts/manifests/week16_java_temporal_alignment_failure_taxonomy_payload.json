@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "week16.java.temporal_alignment.failure_taxonomy.payload.v1",
+  "sourceMode": "mainbase_week16_failure_taxonomy_seed",
+  "apiCandidate": "/api/week16/temporal-alignment/failure-taxonomy",
+  "candidateTotal": 10,
+  "bucketCounts": {
+    "pass_low_risk_with_numeric_margin": 7,
+    "timing_drift_actionable_remediated": 2,
+    "warn_near_miss_threshold_margin": 1
+  },
+  "regressionFixtures": [
+    {
+      "candidateId": "procedural_v0_0004",
+      "bucket": "timing_drift_actionable_remediated",
+      "severity": "P1",
+      "originalStatus": "FAIL_DRIFT",
+      "originalAbsOnsetDeltaSec": 2.055000066757202,
+      "remediatedStatus": "PASS",
+      "remediatedAbsOnsetDeltaSec": 0.02500000037252903,
+      "hasWaveformEvidence": true,
+      "recommendedNextAction": "Keep original FAIL and remediated PASS as paired regression fixture; preserve waveform/RMS evidence."
+    },
+    {
+      "candidateId": "procedural_v0_0010",
+      "bucket": "timing_drift_actionable_remediated",
+      "severity": "P1",
+      "originalStatus": "FAIL_DRIFT",
+      "originalAbsOnsetDeltaSec": 1.044999957084656,
+      "remediatedStatus": "PASS",
+      "remediatedAbsOnsetDeltaSec": 0.02500000037252903,
+      "hasWaveformEvidence": true,
+      "recommendedNextAction": "Keep original FAIL and remediated PASS as paired regression fixture; preserve waveform/RMS evidence."
+    }
+  ],
+  "thresholdFixtures": [
+    {
+      "candidateId": "procedural_v0_0007",
+      "bucket": "warn_near_miss_threshold_margin",
+      "severity": "P2",
+      "originalStatus": "WARN_NEAR_MISS",
+      "originalAbsOnsetDeltaSec": 0.3050000071525574,
+      "recommendedNextAction": "Use as threshold-margin fixture; test sensitivity before changing alert thresholds."
+    }
+  ],
+  "passControlFixtures": [
+    {
+      "candidateId": "procedural_v0_0001",
+      "originalAbsOnsetDeltaSec": 0.20499999821186066,
+      "remediatedAbsOnsetDeltaSec": 0.20499999821186066,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0002",
+      "originalAbsOnsetDeltaSec": 0.23499999940395355,
+      "remediatedAbsOnsetDeltaSec": 0.23499999940395355,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0003",
+      "originalAbsOnsetDeltaSec": 0.10499999672174454,
+      "remediatedAbsOnsetDeltaSec": 0.10499999672174454,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0005",
+      "originalAbsOnsetDeltaSec": 0.0949999988079071,
+      "remediatedAbsOnsetDeltaSec": 0.0949999988079071,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0006",
+      "originalAbsOnsetDeltaSec": 0.13500000536441803,
+      "remediatedAbsOnsetDeltaSec": 0.13500000536441803,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0008",
+      "originalAbsOnsetDeltaSec": 0.22499999403953552,
+      "remediatedAbsOnsetDeltaSec": 0.22499999403953552,
+      "severity": "P4"
+    },
+    {
+      "candidateId": "procedural_v0_0009",
+      "originalAbsOnsetDeltaSec": 0.125,
+      "remediatedAbsOnsetDeltaSec": 0.125,
+      "severity": "P4"
+    }
+  ],
+  "blockedClaims": [
+    "No semantic audio quality pass claim.",
+    "No human-review pass claim.",
+    "No final mix readiness claim.",
+    "No production SLO claim."
+  ]
+}

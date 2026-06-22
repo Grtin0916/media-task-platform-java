@@ -1,0 +1,28 @@
+{
+  "decision": "PASS_WEEK16_JAVA_TEMPORAL_ALIGNMENT_FAILURE_TAXONOMY_CONSUMER",
+  "decisionErrors": [],
+  "report": "artifacts/manifests/week16_java_temporal_alignment_failure_taxonomy_consumer_report.json",
+  "payload": "artifacts/manifests/week16_java_temporal_alignment_failure_taxonomy_payload.json",
+  "summary": {
+    "candidateTotal": 10,
+    "bucketCounts": {
+      "pass_low_risk_with_numeric_margin": 7,
+      "timing_drift_actionable_remediated": 2,
+      "warn_near_miss_threshold_margin": 1
+    },
+    "p1RegressionFixtureIds": [
+      "procedural_v0_0004",
+      "procedural_v0_0010"
+    ],
+    "thresholdFixtureIds": [
+      "procedural_v0_0007"
+    ],
+    "passControlCount": 7,
+    "blockedClaims": [
+      "No semantic audio quality pass claim.",
+      "No human-review pass claim.",
+      "No final mix readiness claim.",
+      "No production SLO claim."
+    ]
+  }
+}

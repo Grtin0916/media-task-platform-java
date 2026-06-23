@@ -1,0 +1,47 @@
+{
+  "decision": "PASS_WEEK17_LAYER_MIX_INPUT_READINESS_CONSUMED",
+  "generatedAtUtc": "2026-06-23T09:39:33.158108+00:00",
+  "sourceArtifact": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/evals/week16_s3_to_w17_layer_mix_input.json",
+  "copiedPayload": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week17_layer_mix_input_readiness_mainbase_payload.json",
+  "payloadSha256": "4b32368e05a4c3519ab50ed11ee74ac546b728d85559af4d4a85dc766e7f4a5a",
+  "sourceDecision": "PASS_WEEK16_S3_TO_W17_LAYER_MIX_INPUT_READINESS",
+  "candidateTotal": 10,
+  "candidateIds": [
+    "procedural_v0_0001",
+    "procedural_v0_0002",
+    "procedural_v0_0003",
+    "procedural_v0_0004",
+    "procedural_v0_0005",
+    "procedural_v0_0006",
+    "procedural_v0_0007",
+    "procedural_v0_0008",
+    "procedural_v0_0009",
+    "procedural_v0_0010"
+  ],
+  "mixEligibilityCounts": {
+    "BLOCK_AUTOMIX_REGRESSION_ONLY": 2,
+    "ELIGIBLE_CONTROL_ONLY": 7,
+    "MONITOR_ONLY_THRESHOLD_MARGIN": 1
+  },
+  "fixtureRoleCounts": {
+    "P1_PAIRED_REGRESSION_FIXTURE": 2,
+    "P2_THRESHOLD_MARGIN_FIXTURE": 1,
+    "P4_NUMERIC_MARGIN_CONTROL": 7
+  },
+  "readOnlyApiEndpoint": "/api/week16/temporal-alignment/layer-mix-input-readiness",
+  "artifactContractVersion": "week17.layer_mix_input_readiness.v0",
+  "realMixerTriggered": false,
+  "realWorkerTriggered": false,
+  "previousS3EvidencePreserved": true,
+  "blockedClaims": [
+    "automatic layer mix eligibility",
+    "exactly-once rerun",
+    "final mix readiness",
+    "human review pass",
+    "live Java service availability",
+    "production auth boundary",
+    "production mixer availability",
+    "real layer mixer executed",
+    "semantic audio quality pass"
+  ]
+}

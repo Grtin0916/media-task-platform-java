@@ -1,0 +1,14 @@
+{
+  "decision": "GENERATED_WEEK17_LAYER_MIX_V0_RESULT_PREVIEW_API",
+  "sourceMainbaseHead": "d9a6df0",
+  "apiPath": "/api/week17/layer-mix-v0/result-preview",
+  "trackTotal": 7,
+  "finalClipRateBeforeClip": 0.0,
+  "createdFiles": [
+    "src/main/java/com/ryan/media/controller/Week17LayerMixV0ResultPreviewController.java",
+    "src/test/java/com/ryan/media/controller/Week17LayerMixV0ResultPreviewIT.java",
+    "artifacts/manifests/week17_layer_mix_v0_result_mainbase_payload.json",
+    "artifacts/manifests/week17_layer_mix_v0_result_preview_api_report.json",
+    "docs/api/week17-layer-mix-v0-result-preview.md"
+  ]
+}

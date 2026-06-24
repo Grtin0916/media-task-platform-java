@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "week17.layer_mix_v0.result_preview_api_report.v1",
+  "generatedAtUtc": "2026-06-24T02:17:27.709781+00:00",
+  "decision": "PASS_WEEK17_LAYER_MIX_V0_RESULT_PREVIEW_API",
+  "javaHeadBeforeCommit": "5718325",
+  "sourceMainbaseHead": "d9a6df0",
+  "apiPath": "/api/week17/layer-mix-v0/result-preview",
+  "createdFiles": [
+    "src/main/java/com/ryan/media/controller/Week17LayerMixV0ResultPreviewController.java",
+    "src/test/java/com/ryan/media/controller/Week17LayerMixV0ResultPreviewIT.java",
+    "artifacts/manifests/week17_layer_mix_v0_result_mainbase_payload.json",
+    "artifacts/manifests/week17_layer_mix_v0_result_preview_api_report.json",
+    "docs/api/week17-layer-mix-v0-result-preview.md"
+  ],
+  "mainbaseDecision": "PASS_WEEK17_LAYER_MIX_V0_PLACEHOLDER_CONTROL",
+  "trackTotal": 7,
+  "mixArtifactPath": "artifacts/audio/week17_layer_mix_v0/week17_layer_mix_v0_placeholder_control_mix.wav",
+  "finalClipRateBeforeClip": 0.0,
+  "platformConsumable": true,
+  "readOnlyPreview": true,
+  "realWorkerTriggered": false,
+  "databasePersistenceClaimed": false,
+  "blockedClaimsPreserved": true,
+  "focusedIT": "Week17LayerMixV0ResultPreviewIT",
+  "focusedITPassed": true,
+  "updatedAtUtc": "2026-06-24T02:19:08.315552+00:00"
+}

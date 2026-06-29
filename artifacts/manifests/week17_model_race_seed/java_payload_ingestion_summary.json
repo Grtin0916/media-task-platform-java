@@ -1,0 +1,9 @@
+{
+  "source": "mainbase",
+  "model_race_decision": "PASS_WITH_REPAIR_QUEUE",
+  "repair_decision": "PASS_REPAIR_CLOSED_QUEUE",
+  "model_race_result_count": 6,
+  "repair_result_count": 1,
+  "repair_closed": true,
+  "java_next_action": "Expose these payloads through Week17 model race seed and repair seed API controllers."
+}

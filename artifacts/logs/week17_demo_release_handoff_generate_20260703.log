@@ -1,0 +1,7 @@
+{
+  "releaseHandoffReady": true,
+  "report": "artifacts/manifests/week17_demo_release_handoff/week17_demo_release_handoff_report.json",
+  "releaseZipSizeBytes": 316311,
+  "safeTrueMmaudioRecordCount": 1,
+  "boundaryPreserved": true
+}

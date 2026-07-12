@@ -25,6 +25,7 @@ import org.springframework.context.annotation.Import;
 )
 @Import({
         W18TaskLifecycleConfiguration.class,
+        W18TaskLifecycleMetricsConfiguration.class,
         W18TaskLifecycleController.class,
         W18TaskLifecycleBatchOrchestrator.class,
         W18TaskLifecycleBatchController.class,

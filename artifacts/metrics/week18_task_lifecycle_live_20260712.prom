@@ -1,0 +1,8 @@
+# HELP media_week18_lifecycle_snapshot Current Week18 artifact-backed task lifecycle state
+# TYPE media_week18_lifecycle_snapshot gauge
+media_week18_lifecycle_snapshot{category="missing_asset"} 0.0
+media_week18_lifecycle_snapshot{category="repair_applied"} 6.0
+media_week18_lifecycle_snapshot{category="repair_required"} 6.0
+media_week18_lifecycle_snapshot{category="result_bound"} 12.0
+media_week18_lifecycle_snapshot{category="task_total"} 12.0
+media_week18_lifecycle_snapshot{category="winner_succeeded"} 6.0

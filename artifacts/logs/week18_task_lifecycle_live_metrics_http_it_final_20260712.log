@@ -1,0 +1,120 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.ryan.media:media-task-platform-java >---------------
+[INFO] Building media-task-platform-java 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ media-task-platform-java ---
+[INFO] Copying 3 resources from src/main/resources to target/classes
+[INFO] Copying 13 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
+[INFO] Copying 3 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.5:test (default-test) @ media-task-platform-java ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.ryan.media.week18.lifecycle.W18TaskLifecycleHttpIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-07-12T23:35:46.577+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : Starting W18TaskLifecycleHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:46.579+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : No active profile set, falling back to 1 default profile: "default"
+2026-07-12T23:35:47.745+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-07-12T23:35:47.760+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-12T23:35:47.767+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-12T23:35:47.814+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-12T23:35:47.816+08:00  INFO 193319 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1223 ms
+2026-07-12T23:35:48.742+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-07-12T23:35:48.947+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 45161 (http) with context path '/'
+2026-07-12T23:35:48.961+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : Started W18TaskLifecycleHttpIT in 2.694 seconds (process running for 3.563)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/GRT/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-07-12T23:35:49.836+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-12T23:35:49.837+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-12T23:35:49.838+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.188 s -- in com.ryan.media.week18.lifecycle.W18TaskLifecycleHttpIT
+[INFO] Running com.ryan.media.week18.lifecycle.W18TaskLifecycleMetricsHttpIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-07-12T23:35:50.166+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : Starting W18TaskLifecycleMetricsHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:50.166+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : No active profile set, falling back to 1 default profile: "default"
+2026-07-12T23:35:50.428+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-07-12T23:35:50.429+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-12T23:35:50.429+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-12T23:35:50.441+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-07-12T23:35:50.442+08:00  INFO 193319 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 273 ms
+2026-07-12T23:35:50.673+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-07-12T23:35:50.689+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 42549 (http) with context path '/'
+2026-07-12T23:35:50.693+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : Started W18TaskLifecycleMetricsHttpIT in 0.551 seconds (process running for 5.295)
+2026-07-12T23:35:50.707+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-2-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-12T23:35:50.708+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-12T23:35:50.708+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.625 s -- in com.ryan.media.week18.lifecycle.W18TaskLifecycleMetricsHttpIT
+[INFO] Running com.ryan.media.week18.lifecycle.W18TaskLifecycleBatchHttpIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.13)
+
+2026-07-12T23:35:50.778+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : Starting W18TaskLifecycleBatchHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:50.778+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : No active profile set, falling back to 1 default profile: "default"
+2026-07-12T23:35:50.927+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-07-12T23:35:50.929+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-12T23:35:50.930+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-12T23:35:50.939+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-07-12T23:35:50.940+08:00  INFO 193319 --- [media-task-platform-java] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 161 ms
+2026-07-12T23:35:51.093+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-07-12T23:35:51.109+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 37301 (http) with context path '/'
+2026-07-12T23:35:51.112+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : Started W18TaskLifecycleBatchHttpIT in 0.346 seconds (process running for 5.714)
+2026-07-12T23:35:51.126+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-3-exec-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-12T23:35:51.127+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-12T23:35:51.128+08:00  INFO 193319 --- [media-task-platform-java] [o-auto-3-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.413 s -- in com.ryan.media.week18.lifecycle.W18TaskLifecycleBatchHttpIT
+[INFO] Running com.ryan.media.week18.lifecycle.W18TaskLifecycleServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in com.ryan.media.week18.lifecycle.W18TaskLifecycleServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.800 s
+[INFO] Finished at: 2026-07-12T23:35:51+08:00
+[INFO] ------------------------------------------------------------------------

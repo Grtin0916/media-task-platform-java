@@ -29,7 +29,7 @@ from pathlib import Path
 JAVA_ROOT = Path(".").resolve()
 MAINBASE = Path(os.environ.get(
     "MAINBASE",
-    str(Path.home() / "work" / "audio_engineering_repo_skeleton_v1")
+    str(Path.home() / "work" / "grt_work" / "audio_engineering_repo_skeleton_v1")
 )).resolve()
 
 SOURCE_QUEUE = MAINBASE / "artifacts/evals/week12_audio_audition_review_queue_v0.json"

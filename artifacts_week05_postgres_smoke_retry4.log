@@ -31,7 +31,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T10:38:22.437+08:00  INFO 64832 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 64832 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:38:22.437+08:00  INFO 64832 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 64832 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T10:38:22.439+08:00  INFO 64832 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : No active profile set, falling back to 1 default profile: "default"
 2026-04-11T10:38:24.438+08:00  INFO 64832 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:35477/test?loggerLevel=OFF (PostgreSQL 16.13)
 2026-04-11T10:38:24.494+08:00  INFO 64832 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet

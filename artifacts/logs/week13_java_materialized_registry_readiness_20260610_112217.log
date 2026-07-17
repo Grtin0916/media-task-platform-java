@@ -1,5 +1,5 @@
 {
-  "report": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json",
+  "report": "/home/GRT/work/grt_work/media-task-platform-java/artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json",
   "status": "PASS",
   "candidateCount": 10,
   "readyCount": 10,

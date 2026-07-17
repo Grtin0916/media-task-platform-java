@@ -3,7 +3,7 @@
   "generatedAt": "2026-06-11T16:07:57",
   "status": "PASS",
   "scope": "java-platform-consumption-report-only",
-  "sourceMainbaseDemoIndex": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/manifests/week13_candidate_bank_demo_index.json",
+  "sourceMainbaseDemoIndex": "/home/GRT/work/grt_work/audio_engineering_repo_skeleton_v1/artifacts/manifests/week13_candidate_bank_demo_index.json",
   "fixtureCopy": "artifacts/fixtures/week13_candidate_bank_demo_index.json",
   "javaEvidence": {
     "registryContractReport": "artifacts/manifests/week13_java_audio_artifact_registry_contract_report.json",

@@ -1,7 +1,7 @@
 {
-  "out": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week13_java_candidate_bank_demo_consumption_report.json",
+  "out": "/home/GRT/work/grt_work/media-task-platform-java/artifacts/manifests/week13_java_candidate_bank_demo_consumption_report.json",
   "status": "PASS",
-  "fixtureCopy": "/home/GRT/work/media-task-platform-java/artifacts/fixtures/week13_candidate_bank_demo_index.json",
+  "fixtureCopy": "/home/GRT/work/grt_work/media-task-platform-java/artifacts/fixtures/week13_candidate_bank_demo_index.json",
   "failedChecks": [],
   "blockers": [],
   "consumedCounts": {

@@ -37,7 +37,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-17T17:36:48.941+08:00  INFO 26604 --- [media-task-platform-java] [           main] oralAlignmentReviewStateRegistryBackedIT : Starting Week15TemporalAlignmentReviewStateRegistryBackedIT using Java 21.0.10 with PID 26604 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-17T17:36:48.941+08:00  INFO 26604 --- [media-task-platform-java] [           main] oralAlignmentReviewStateRegistryBackedIT : Starting Week15TemporalAlignmentReviewStateRegistryBackedIT using Java 21.0.10 with PID 26604 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-17T17:36:48.943+08:00  INFO 26604 --- [media-task-platform-java] [           main] oralAlignmentReviewStateRegistryBackedIT : No active profile set, falling back to 1 default profile: "default"
 2026-06-17T17:36:49.890+08:00  INFO 26604 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-17T17:36:49.892+08:00  INFO 26604 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
@@ -110,7 +110,7 @@ expected: "week15.temporal-alignment-review-state.v0"
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.5:test (default-test) on project media-task-platform-java: There are test failures.
 [ERROR] 
-[ERROR] See /home/GRT/work/media-task-platform-java/target/surefire-reports for the individual test results.
+[ERROR] See /home/GRT/work/grt_work/media-task-platform-java/target/surefire-reports for the individual test results.
 [ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
 [ERROR] -> [Help 1]
 [ERROR] 

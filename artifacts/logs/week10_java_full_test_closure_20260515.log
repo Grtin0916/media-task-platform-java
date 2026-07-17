@@ -13,7 +13,7 @@
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
-[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] skip non existing resourceDirectory /home/GRT/work/grt_work/media-task-platform-java/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
 [INFO] Nothing to compile - all classes are up to date.
@@ -49,7 +49,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-13T15:37:37.490+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 145854 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-13T15:37:37.490+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 145854 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-13T15:37:37.492+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
 2026-05-13T15:37:38.300+08:00  WARN 145854 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
@@ -76,7 +76,7 @@ This generated password is for development use only. Your security configuration
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-13T15:37:38.666+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 145854 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-13T15:37:38.666+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 145854 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-13T15:37:38.667+08:00  INFO 145854 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
 2026-05-13T15:37:40.121+08:00  INFO 145854 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-05-13T15:37:40.153+08:00  INFO 145854 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

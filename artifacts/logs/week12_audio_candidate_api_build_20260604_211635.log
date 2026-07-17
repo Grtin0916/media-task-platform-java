@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-06-04T13:16:35+00:00",
   "status": "PASS",
-  "sourceQueue": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/evals/week12_audio_audition_review_queue_v0.json",
+  "sourceQueue": "/home/GRT/work/grt_work/audio_engineering_repo_skeleton_v1/artifacts/evals/week12_audio_audition_review_queue_v0.json",
   "resourceQueue": "src/main/resources/week12-audio-audition-review-queue-v0.json",
   "controller": "src/main/java/com/ryan/media/api/MediaTaskAudioCandidateController.java",
   "test": "src/test/java/com/ryan/media/MediaTaskAudioCandidateControllerTest.java",

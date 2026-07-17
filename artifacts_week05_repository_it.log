@@ -31,7 +31,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T10:44:29.493+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 66366 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:44:29.493+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 66366 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T10:44:29.495+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : No active profile set, falling back to 1 default profile: "default"
 2026-04-11T10:44:31.090+08:00  INFO 66366 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:38871/test?loggerLevel=OFF (PostgreSQL 16.13)
 2026-04-11T10:44:31.145+08:00  INFO 66366 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet
@@ -65,7 +65,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T10:44:36.390+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 66366 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:44:36.390+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 66366 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T10:44:36.391+08:00  INFO 66366 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : No active profile set, falling back to 1 default profile: "default"
 2026-04-11T10:44:36.867+08:00  INFO 66366 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:39547/test?loggerLevel=OFF (PostgreSQL 16.13)
 2026-04-11T10:44:36.907+08:00  INFO 66366 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet

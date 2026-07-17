@@ -13,7 +13,7 @@ JAVA_ROOT = Path.cwd()
 MAINBASE = Path(
     os.environ.get(
         "MAINBASE",
-        str(Path.home() / "work" / "audio_engineering_repo_skeleton_v1"),
+        str(Path.home() / "work" / "grt_work" / "audio_engineering_repo_skeleton_v1"),
     )
 )
 

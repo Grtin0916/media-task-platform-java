@@ -13,7 +13,7 @@
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
-[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] skip non existing resourceDirectory /home/GRT/work/grt_work/media-task-platform-java/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
 [INFO] Nothing to compile - all classes are up to date.
@@ -58,7 +58,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-26T15:01:10.792+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 358694 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-26T15:01:10.792+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 358694 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-26T15:01:10.794+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : No active profile set, falling back to 1 default profile: "default"
 2026-04-26T15:01:12.735+08:00  INFO 358694 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-04-26T15:01:12.737+08:00  INFO 358694 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
@@ -99,7 +99,7 @@ This generated password is for development use only. Your security configuration
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-26T15:01:20.982+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 358694 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-26T15:01:20.982+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : Starting PostgresSmokeIT using Java 21.0.10 with PID 358694 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-26T15:01:20.983+08:00  INFO 358694 --- [media-task-platform-java] [           main] com.ryan.media.PostgresSmokeIT           : No active profile set, falling back to 1 default profile: "default"
 2026-04-26T15:01:21.288+08:00  INFO 358694 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-04-26T15:01:21.288+08:00  INFO 358694 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

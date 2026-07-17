@@ -570,7 +570,7 @@ class MediaTaskControllerTest {
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-12T15:36:44.332+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 1061423 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T15:36:44.332+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 1061423 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-12T15:36:44.333+08:00  INFO 1061423 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : No active profile set, falling back to 1 default profile: "default"
 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended

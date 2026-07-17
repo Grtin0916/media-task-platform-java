@@ -21,7 +21,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMerge
 	at java.base/java.util.Optional.orElseGet(Optional.java:364)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskController' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/controller/MediaTaskController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskService' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/service/MediaTaskService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskController' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/controller/MediaTaskController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskService' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/service/MediaTaskService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
 --------------------------
 SQL State  : HY004
 Error Code : 50004
@@ -34,7 +34,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -67,7 +67,7 @@ Statement  : Run Flyway with -X option to see the actual statement causing the p
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
 	... 19 more
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskService' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/service/MediaTaskService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskService' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/service/MediaTaskService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
 --------------------------
 SQL State  : HY004
 Error Code : 50004
@@ -80,7 +80,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -99,7 +99,7 @@ Statement  : Run Flyway with -X option to see the actual statement causing the p
 	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
 	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
 	... 46 more
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mediaTaskRepository' defined in file [/home/GRT/work/grt_work/media-task-platform-java/target/classes/com/ryan/media/repository/MediaTaskRepository.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__init.sql failed
 --------------------------
 SQL State  : HY004
 Error Code : 50004
@@ -112,7 +112,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -144,7 +144,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -175,7 +175,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -212,7 +212,7 @@ create table if not exists media_task (
     created_at timestamptz not null default now(),
     updated_at timestamptz not null default now()
 ) [50004-232]
-Location   : db/migration/V1__init.sql (/home/GRT/work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
+Location   : db/migration/V1__init.sql (/home/GRT/work/grt_work/media-task-platform-java/target/classes/db/migration/V1__init.sql)
 Line       : 1
 Statement  : Run Flyway with -X option to see the actual statement causing the problem
 
@@ -266,7 +266,7 @@ create table if not exists media_task (
 [ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.5:test (default-test) on project media-task-platform-java: 
 [ERROR] 
-[ERROR] See /home/GRT/work/media-task-platform-java/target/surefire-reports for the individual test results.
+[ERROR] See /home/GRT/work/grt_work/media-task-platform-java/target/surefire-reports for the individual test results.
 [ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
 [ERROR] -> [Help 1]
 [ERROR] 

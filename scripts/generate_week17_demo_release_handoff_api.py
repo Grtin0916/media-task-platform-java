@@ -24,7 +24,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--mainbase",
-        default=str(Path.home() / "work/audio_engineering_repo_skeleton_v1"),
+        default=str(Path.home() / "work/grt_work/audio_engineering_repo_skeleton_v1"),
     )
     parser.add_argument(
         "--out-dir",

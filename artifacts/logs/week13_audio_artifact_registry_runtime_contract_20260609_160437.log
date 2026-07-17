@@ -37,7 +37,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-09T16:04:42.105+08:00  INFO 847418 --- [media-task-platform-java] [           main] c.r.m.w.Week13AudioArtifactRegistryTest  : Starting Week13AudioArtifactRegistryTest using Java 21.0.10 with PID 847418 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-09T16:04:42.105+08:00  INFO 847418 --- [media-task-platform-java] [           main] c.r.m.w.Week13AudioArtifactRegistryTest  : Starting Week13AudioArtifactRegistryTest using Java 21.0.10 with PID 847418 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-09T16:04:42.107+08:00  INFO 847418 --- [media-task-platform-java] [           main] c.r.m.w.Week13AudioArtifactRegistryTest  : No active profile set, falling back to 1 default profile: "default"
 2026-06-09T16:04:43.207+08:00  INFO 847418 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-09T16:04:43.210+08:00  INFO 847418 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

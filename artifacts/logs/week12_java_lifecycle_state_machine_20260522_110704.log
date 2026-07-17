@@ -1,5 +1,5 @@
 ===== Week12 Java lifecycle state machine test =====
-repo=/home/GRT/work/media-task-platform-java
+repo=/home/GRT/work/grt_work/media-task-platform-java
 mvn=./mvnw
 java_version_start
 openjdk version "21.0.10" 2026-01-20

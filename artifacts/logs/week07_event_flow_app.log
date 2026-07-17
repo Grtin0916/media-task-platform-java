@@ -37,7 +37,7 @@ Progress (1): 249 B                   Downloaded from central: https://repo.ma
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
-[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] skip non existing resourceDirectory /home/GRT/work/grt_work/media-task-platform-java/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
 [INFO] Nothing to compile - all classes are up to date.
@@ -58,7 +58,7 @@ Picked up JAVA_TOOL_OPTIONS:
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-23T13:53:10.371+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 972102 (/home/GRT/work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-23T13:53:10.371+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 972102 (/home/GRT/work/grt_work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-23T13:53:10.373+08:00  INFO 972102 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : No active profile set, falling back to 1 default profile: "default"
 2026-04-23T13:53:11.137+08:00  INFO 972102 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-04-23T13:53:11.139+08:00  INFO 972102 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

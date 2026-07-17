@@ -13,7 +13,7 @@
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
-[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] skip non existing resourceDirectory /home/GRT/work/grt_work/media-task-platform-java/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
 [INFO] Nothing to compile - all classes are up to date.
@@ -37,7 +37,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-13T13:54:21.711+08:00  INFO 96202 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 96202 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-13T13:54:21.711+08:00  INFO 96202 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 96202 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-13T13:54:21.712+08:00  INFO 96202 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : No active profile set, falling back to 1 default profile: "default"
 2026-05-13T13:54:24.300+08:00  WARN 96202 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 

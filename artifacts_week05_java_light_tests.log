@@ -10,7 +10,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T10:42:42.558+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : Starting MediaTaskControllerTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:42:42.558+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : Starting MediaTaskControllerTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T10:42:42.560+08:00  INFO 65750 --- [media-task-platform-java] [           main] c.r.m.c.MediaTaskControllerTest          : No active profile set, falling back to 1 default profile: "default"
 Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
@@ -34,7 +34,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T10:42:44.869+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T10:42:44.869+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 65750 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T10:42:44.869+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
 2026-04-11T10:42:46.026+08:00  INFO 65750 --- [media-task-platform-java] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
 2026-04-11T10:42:46.085+08:00  INFO 65750 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Started SmokeTest in 1.254 seconds (process running for 4.807)

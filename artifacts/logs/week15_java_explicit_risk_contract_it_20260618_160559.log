@@ -10,7 +10,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-18T16:06:07.547+08:00  INFO 252287 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : Starting Week15TemporalAlignmentExplicitRiskContractIT using Java 21.0.10 with PID 252287 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-18T16:06:07.547+08:00  INFO 252287 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : Starting Week15TemporalAlignmentExplicitRiskContractIT using Java 21.0.10 with PID 252287 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-18T16:06:07.549+08:00  INFO 252287 --- [media-task-platform-java] [           main] 5TemporalAlignmentExplicitRiskContractIT : No active profile set, falling back to 1 default profile: "default"
 2026-06-18T16:06:08.515+08:00  INFO 252287 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-18T16:06:08.517+08:00  INFO 252287 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(".")
-MAINBASE = Path.home() / "work" / "audio_engineering_repo_skeleton_v1"
+MAINBASE = Path.home() / "work" / "grt_work" / "audio_engineering_repo_skeleton_v1"
 
 ARTIFACT_DIR = ROOT / "artifacts" / "manifests" / "week17_fallback_aware_model_race"
 PAYLOAD_SRC = MAINBASE / "reports" / "week17_model_race_java_payload_20260701.json"

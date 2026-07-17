@@ -53,7 +53,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-12T15:42:57.117+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 1066622 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T15:42:57.117+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : Starting AuthSecurityTest using Java 21.0.10 with PID 1066622 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-12T15:42:57.119+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.AuthSecurityTest          : No active profile set, falling back to 1 default profile: "default"
 2026-05-12T15:42:58.046+08:00  WARN 1066622 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
@@ -78,7 +78,7 @@ This generated password is for development use only. Your security configuration
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-12T15:42:58.480+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 1066622 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-12T15:42:58.480+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : Starting SmokeTest using Java 21.0.10 with PID 1066622 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-12T15:42:58.481+08:00  INFO 1066622 --- [media-task-platform-java] [           main] com.ryan.media.SmokeTest                 : No active profile set, falling back to 1 default profile: "default"
 2026-05-12T15:42:58.993+08:00  INFO 1066622 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-05-12T15:42:58.996+08:00  INFO 1066622 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

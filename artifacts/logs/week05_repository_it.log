@@ -31,7 +31,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-04-11T15:28:05.642+08:00  INFO 103483 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 103483 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-04-11T15:28:05.642+08:00  INFO 103483 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : Starting RepositoryIT using Java 21.0.10 with PID 103483 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-04-11T15:28:05.644+08:00  INFO 103483 --- [media-task-platform-java] [           main] com.ryan.media.RepositoryIT              : No active profile set, falling back to 1 default profile: "default"
 2026-04-11T15:28:07.247+08:00  INFO 103483 --- [media-task-platform-java] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:42343/test?loggerLevel=OFF (PostgreSQL 16.13)
 2026-04-11T15:28:07.313+08:00  INFO 103483 --- [media-task-platform-java] [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "public"."flyway_schema_history" does not exist yet

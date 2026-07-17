@@ -4,21 +4,21 @@
   "decision": "PASS_E2E_REVIEW_STATE_CHAIN",
   "repositories": {
     "mainbase": {
-      "path": "/home/GRT/work/audio_engineering_repo_skeleton_v1",
+      "path": "/home/GRT/work/grt_work/audio_engineering_repo_skeleton_v1",
       "head": "11bde43",
       "originMain": "11bde43",
       "aheadBehind": "0\t0",
       "statusPorcelain": ""
     },
     "java": {
-      "path": "/home/GRT/work/media-task-platform-java",
+      "path": "/home/GRT/work/grt_work/media-task-platform-java",
       "head": "ac84ff6",
       "originMain": "ac84ff6",
       "aheadBehind": "0\t0",
       "statusPorcelain": "?? artifacts/logs/week15_temporal_alignment_e2e_review_state_manifest_20260616_110209.log"
     },
     "cloud": {
-      "path": "/home/GRT/work/ai-job-platform-cloud",
+      "path": "/home/GRT/work/grt_work/ai-job-platform-cloud",
       "head": "0e36d4c",
       "originMain": "0e36d4c",
       "aheadBehind": "0\t0",
@@ -27,7 +27,7 @@
   },
   "chain": {
     "mainbase": {
-      "artifact": "/home/GRT/work/audio_engineering_repo_skeleton_v1/artifacts/reviews/week15_temporal_alignment_semantic_quality_review_v0.json",
+      "artifact": "/home/GRT/work/grt_work/audio_engineering_repo_skeleton_v1/artifacts/reviews/week15_temporal_alignment_semantic_quality_review_v0.json",
       "qualityGateLiteStatus": "SEMANTIC_REVIEW_READY",
       "humanReviewStatus": "HUMAN_REVIEW_PARTIAL",
       "auditionStatus": "NOT_PERFORMED",
@@ -35,8 +35,8 @@
       "finalMixReadiness": "NOT_CLAIMED"
     },
     "cloud": {
-      "platformIndex": "/home/GRT/work/ai-job-platform-cloud/loadtest/reports/week15_temporal_alignment_semantic_quality_platform_index.json",
-      "prometheusMetrics": "/home/GRT/work/ai-job-platform-cloud/observability/prometheus/week15_temporal_alignment_semantic_quality_metrics.prom",
+      "platformIndex": "/home/GRT/work/grt_work/ai-job-platform-cloud/loadtest/reports/week15_temporal_alignment_semantic_quality_platform_index.json",
+      "prometheusMetrics": "/home/GRT/work/grt_work/ai-job-platform-cloud/observability/prometheus/week15_temporal_alignment_semantic_quality_metrics.prom",
       "platformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
       "claimBoundaryOk": true,
       "summary": {
@@ -54,7 +54,7 @@
       }
     },
     "java": {
-      "contractReport": "/home/GRT/work/media-task-platform-java/artifacts/manifests/week15_java_temporal_alignment_review_state_contract_report.json",
+      "contractReport": "/home/GRT/work/grt_work/media-task-platform-java/artifacts/manifests/week15_java_temporal_alignment_review_state_contract_report.json",
       "endpoint": "GET /api/week15/temporal-alignment-review-state",
       "platformDecision": "SEMANTIC_REVIEW_READY_FOR_PLATFORM",
       "claimBoundaryOk": true,

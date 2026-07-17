@@ -8,7 +8,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-03T16:48:25.908+08:00  INFO 94453 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 94453 (/home/GRT/work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-03T16:48:25.908+08:00  INFO 94453 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 94453 (/home/GRT/work/grt_work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-03T16:48:25.910+08:00  INFO 94453 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : The following 1 profile is active: "k6-smoke"
 2026-06-03T16:48:26.817+08:00  INFO 94453 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-03T16:48:26.819+08:00  INFO 94453 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

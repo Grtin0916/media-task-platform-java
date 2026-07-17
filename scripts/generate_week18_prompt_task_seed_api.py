@@ -39,7 +39,7 @@ def copy_input(src: Path, dst_dir: Path) -> str:
 
 
 def main() -> int:
-    mainbase = Path.home() / "work/audio_engineering_repo_skeleton_v1"
+    mainbase = Path.home() / "work/grt_work/audio_engineering_repo_skeleton_v1"
     out_dir = Path("artifacts/manifests/week18_prompt_task_seed")
     inputs_dir = out_dir / "inputs"
     out_dir.mkdir(parents=True, exist_ok=True)

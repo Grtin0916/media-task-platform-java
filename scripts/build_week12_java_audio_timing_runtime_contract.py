@@ -12,7 +12,7 @@ from typing import Any, Dict
 JAVA_ROOT = Path(__file__).resolve().parents[1]
 CLOUD_ROOT = Path(os.environ.get(
     "CLOUD_PATH",
-    str(Path.home() / "work/ai-job-platform-cloud")
+    str(Path.home() / "work/grt_work/ai-job-platform-cloud")
 )).expanduser().resolve()
 
 CLOUD_RUNTIME_INDEX = CLOUD_ROOT / "artifacts/manifests/week12_cloud_mainbase_audio_timing_runtime_index.json"

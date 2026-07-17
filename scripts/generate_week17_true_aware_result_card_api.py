@@ -8,7 +8,7 @@ from typing import Any
 
 
 JAVA_ROOT = Path(".").resolve()
-MAINBASE = Path.home() / "work/audio_engineering_repo_skeleton_v1"
+MAINBASE = Path.home() / "work/grt_work/audio_engineering_repo_skeleton_v1"
 
 SRC_BRIDGE = MAINBASE / "reports/week17_true_aware_platform_bridge_payload_20260702.json"
 SRC_CLAIM_GUARD = MAINBASE / "reports/week17_true_aware_claim_guard_20260702.json"

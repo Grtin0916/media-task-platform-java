@@ -10,7 +10,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-05T09:43:36.825+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : Starting Week12AudioTimingRuntimeContractIT using Java 21.0.10 with PID 1652414 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-05T09:43:36.825+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : Starting Week12AudioTimingRuntimeContractIT using Java 21.0.10 with PID 1652414 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-05T09:43:36.826+08:00  INFO 1652414 --- [media-task-platform-java] [           main] r.m.w.Week12AudioTimingRuntimeContractIT : No active profile set, falling back to 1 default profile: "default"
 2026-06-05T09:43:37.634+08:00  INFO 1652414 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-05T09:43:37.636+08:00  INFO 1652414 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

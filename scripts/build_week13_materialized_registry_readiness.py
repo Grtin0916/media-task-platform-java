@@ -11,7 +11,7 @@ from typing import Any
 
 DEFAULT_JAVA_SNAPSHOT = "artifacts/manifests/week13_java_audio_artifact_registry_snapshot.json"
 DEFAULT_OUT = "artifacts/manifests/week13_java_materialized_audio_registry_readiness_report.json"
-DEFAULT_CLOUD = os.environ.get("CLOUD", str(Path.home() / "work/ai-job-platform-cloud"))
+DEFAULT_CLOUD = os.environ.get("CLOUD", str(Path.home() / "work/grt_work/ai-job-platform-cloud"))
 DEFAULT_CLOUD_MATERIALIZED = "loadtest/reports/week13_materialized_audio_artifact_manifest.json"
 DEFAULT_CLOUD_MOUNT = "loadtest/reports/week13_mount_read_contract.json"
 DEFAULT_CLOUD_POD_READ = "loadtest/reports/week13_pod_audio_read_simulation_report.json"

@@ -4,10 +4,10 @@
   "applicationPackage": "com.ryan.media",
   "week12Package": "com.ryan.media.week12",
   "source": {
-    "cloudPath": "/home/GRT/work/ai-job-platform-cloud",
+    "cloudPath": "/home/GRT/work/grt_work/ai-job-platform-cloud",
     "cloudCommit": "a1f7159",
     "cloudOriginMain": "a1f7159",
-    "cloudRuntimeIndex": "/home/GRT/work/ai-job-platform-cloud/artifacts/manifests/week12_cloud_mainbase_audio_timing_runtime_index.json"
+    "cloudRuntimeIndex": "/home/GRT/work/grt_work/ai-job-platform-cloud/artifacts/manifests/week12_cloud_mainbase_audio_timing_runtime_index.json"
   },
   "generated": {
     "resource": "src/main/resources/week12/week12_cloud_mainbase_audio_timing_runtime_index.json",

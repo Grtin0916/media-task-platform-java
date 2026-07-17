@@ -35,7 +35,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-07-12T23:35:46.577+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : Starting W18TaskLifecycleHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:46.577+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : Starting W18TaskLifecycleHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-07-12T23:35:46.579+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleHttpIT         : No active profile set, falling back to 1 default profile: "default"
 2026-07-12T23:35:47.745+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
 2026-07-12T23:35:47.760+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
@@ -66,7 +66,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-07-12T23:35:50.166+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : Starting W18TaskLifecycleMetricsHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:50.166+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : Starting W18TaskLifecycleMetricsHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-07-12T23:35:50.166+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleMetricsHttpIT  : No active profile set, falling back to 1 default profile: "default"
 2026-07-12T23:35:50.428+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
 2026-07-12T23:35:50.429+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
@@ -91,7 +91,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-07-12T23:35:50.778+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : Starting W18TaskLifecycleBatchHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-07-12T23:35:50.778+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : Starting W18TaskLifecycleBatchHttpIT using Java 21.0.10 with PID 193319 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-07-12T23:35:50.778+08:00  INFO 193319 --- [media-task-platform-java] [           main] c.r.m.w.l.W18TaskLifecycleBatchHttpIT    : No active profile set, falling back to 1 default profile: "default"
 2026-07-12T23:35:50.927+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
 2026-07-12T23:35:50.929+08:00  INFO 193319 --- [media-task-platform-java] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]

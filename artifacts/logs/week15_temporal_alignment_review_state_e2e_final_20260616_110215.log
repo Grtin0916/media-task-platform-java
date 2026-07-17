@@ -37,7 +37,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-16T11:02:19.195+08:00  INFO 3653373 --- [media-task-platform-java] [           main] m.c.Week15TemporalAlignmentReviewStateIT : Starting Week15TemporalAlignmentReviewStateIT using Java 21.0.10 with PID 3653373 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-16T11:02:19.195+08:00  INFO 3653373 --- [media-task-platform-java] [           main] m.c.Week15TemporalAlignmentReviewStateIT : Starting Week15TemporalAlignmentReviewStateIT using Java 21.0.10 with PID 3653373 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-16T11:02:19.197+08:00  INFO 3653373 --- [media-task-platform-java] [           main] m.c.Week15TemporalAlignmentReviewStateIT : No active profile set, falling back to 1 default profile: "default"
 2026-06-16T11:02:20.176+08:00  INFO 3653373 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-16T11:02:20.179+08:00  INFO 3653373 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

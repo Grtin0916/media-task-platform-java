@@ -15,7 +15,7 @@
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ media-task-platform-java ---
-[INFO] skip non existing resourceDirectory /home/GRT/work/media-task-platform-java/src/test/resources
+[INFO] skip non existing resourceDirectory /home/GRT/work/grt_work/media-task-platform-java/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ media-task-platform-java ---
 [INFO] Nothing to compile - all classes are up to date.
@@ -35,7 +35,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-18T21:47:47.659+08:00  INFO 409539 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 409539 (/home/GRT/work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-18T21:47:47.659+08:00  INFO 409539 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : Starting MediaTaskApplication using Java 21.0.10 with PID 409539 (/home/GRT/work/grt_work/media-task-platform-java/target/classes started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-18T21:47:47.661+08:00  INFO 409539 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskApplication      : The following 1 profile is active: "k6"
 2026-05-18T21:47:48.580+08:00  INFO 409539 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-05-18T21:47:48.583+08:00  INFO 409539 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

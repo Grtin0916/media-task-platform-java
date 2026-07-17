@@ -10,7 +10,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-21T10:44:22.794+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskQueryHttpIT      : Starting MediaTaskQueryHttpIT using Java 21.0.10 with PID 1833381 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-21T10:44:22.794+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskQueryHttpIT      : Starting MediaTaskQueryHttpIT using Java 21.0.10 with PID 1833381 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-21T10:44:22.795+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.MediaTaskQueryHttpIT      : No active profile set, falling back to 1 default profile: "default"
 2026-05-21T10:44:23.584+08:00  INFO 1833381 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-05-21T10:44:23.587+08:00  INFO 1833381 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
@@ -48,7 +48,7 @@ This generated password is for development use only. Your security configuration
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-05-21T10:44:27.007+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 1833381 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-05-21T10:44:27.007+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : Starting ContractIT using Java 21.0.10 with PID 1833381 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-05-21T10:44:27.007+08:00  INFO 1833381 --- [media-task-platform-java] [           main] com.ryan.media.ContractIT                : No active profile set, falling back to 1 default profile: "default"
 2026-05-21T10:44:27.238+08:00  WARN 1833381 --- [media-task-platform-java] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 

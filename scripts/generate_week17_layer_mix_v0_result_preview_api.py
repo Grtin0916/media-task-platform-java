@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 JAVA_REPO = Path(__file__).resolve().parents[1]
-MAINBASE = Path.home() / "work/audio_engineering_repo_skeleton_v1"
+MAINBASE = Path.home() / "work/grt_work/audio_engineering_repo_skeleton_v1"
 
 SRC_MANIFEST = MAINBASE / "artifacts/evals/week17_layer_mix_v0_manifest.json"
 PAYLOAD_OUT = JAVA_REPO / "artifacts/manifests/week17_layer_mix_v0_result_mainbase_payload.json"

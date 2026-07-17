@@ -10,7 +10,7 @@
 
  :: Spring Boot ::               (v3.5.13)
 
-2026-06-04T21:27:54.737+08:00  INFO 1237042 --- [media-task-platform-java] [           main] c.r.media.MediaTaskAudioCandidateHttpIT  : Starting MediaTaskAudioCandidateHttpIT using Java 21.0.10 with PID 1237042 (started by GRT in /home/GRT/work/media-task-platform-java)
+2026-06-04T21:27:54.737+08:00  INFO 1237042 --- [media-task-platform-java] [           main] c.r.media.MediaTaskAudioCandidateHttpIT  : Starting MediaTaskAudioCandidateHttpIT using Java 21.0.10 with PID 1237042 (started by GRT in /home/GRT/work/grt_work/media-task-platform-java)
 2026-06-04T21:27:54.738+08:00  INFO 1237042 --- [media-task-platform-java] [           main] c.r.media.MediaTaskAudioCandidateHttpIT  : No active profile set, falling back to 1 default profile: "default"
 2026-06-04T21:27:55.707+08:00  INFO 1237042 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
 2026-06-04T21:27:55.710+08:00  INFO 1237042 --- [media-task-platform-java] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.

@@ -1,0 +1,10 @@
+PASS case_1 missing key: ''
+PASS case_2 before first: ''
+PASS case_3 exact hit: 'MANUAL_REVIEW'
+PASS case_4 between versions: 'MANUAL_REVIEW'
+PASS case_5 late query: 'RUNNER_UP'
+PASS case_6 multiple versions: 'RUNNER_UP'
+PASS case_7 isolated key: ''
+PASS case_8 empty value: ''
+PASS case_9 non-increasing timestamp rejected
+PASS 9 tests

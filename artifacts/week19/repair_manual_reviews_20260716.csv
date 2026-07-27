@@ -1,0 +1,7 @@
+repair_id,pair_id,preference,reason,confidence,audible_artifact,forbidden_event_status,reviewed_by,reviewed_at,submitted
+fb_001_tuesday_repair,review_01,,,,,,,,false
+fb_002_tuesday_repair,review_02,,,,,,,,false
+fb_003_tuesday_repair,review_03,,,,,,,,false
+fb_006_tuesday_repair,review_04,,,,,,,,false
+fb_007_tuesday_repair,review_05,,,,,,,,false
+fb_009_tuesday_repair,review_06,,,,,,,,false

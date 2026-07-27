@@ -1,0 +1,28 @@
+2026-07-16 W19 Java full Maven regression
+command=./mvnw -q test
+status=FAILED
+testsRun=58
+failures=0
+errors=5
+skipped=0
+
+Repair workflow targeted evidence:
+- RepairWorkflowControllerIT: tests=6 failures=0 errors=0 skipped=0
+- RepairWorkflowStateTest: tests=5 failures=0 errors=0 skipped=0
+
+Pre-existing full-suite failures:
+- SmokeTest.contextLoads
+- Week13AudioArtifactRegistrySnapshotExportTest.exportCandidateLevelSnapshotFromRuntimeRegistry
+- Week13AudioArtifactRegistryTest.shouldExposeMainbaseWeek13PlacementRegistryContract
+- Week13AudioArtifactRegistryTest.shouldReturnNotFoundForUnknownCandidate
+- Week13AudioArtifactRegistryTest.shouldReturnSingleCandidateById
+
+Shared root cause:
+No qualifying bean of type org.springframework.data.redis.core.StringRedisTemplate
+was available while the existing MediaTaskApplication context created Producer.
+
+Boundary:
+The full suite is not claimed green. The W19 artifact-backed repair workflow uses
+an isolated in-memory RANDOM_PORT test application and its 11 targeted tests pass.
+No Redis, Kafka, database, production workflow, or distributed exactly-once
+capability is claimed by the W19 implementation.

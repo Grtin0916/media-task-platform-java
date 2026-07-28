@@ -1,0 +1,261 @@
+{
+  "blockedJobCount" : 2,
+  "jobs" : [ {
+    "jobId" : "job-1bbe0a8f-4c6d-4110-b007-5637d3c38f22",
+    "idempotencyKey" : "mixed-1",
+    "requestFingerprint" : "933d902c8596b6648fbad8e214f4cfaeb0b731795adb4fa9e11477230bfe8c30",
+    "caseId" : "fb_001_tuesday_repair",
+    "mode" : "MIXED",
+    "sourceHandoffDigest" : "9b27ef946ea5b05d838e19ec22656c6877444a67c89bd658c69bbaae4536fc5e",
+    "sourceCommit" : "0334abe",
+    "runnerConfigDigest" : "8d141feb52b119464255b62ca9d1498c5feb234236e84aa7a13f94258d6bf725",
+    "runnerImplementationVersion" : "demo-job-orchestrator-v1",
+    "publishDecision" : "PROVISIONAL_SELECTED",
+    "createdAt" : "2026-07-28T03:30:49.750383735Z",
+    "executionStatus" : "BLOCKED",
+    "currentAttemptId" : null,
+    "version" : 1,
+    "updatedAt" : "2026-07-28T03:30:49.750409492Z",
+    "attempts" : [ ]
+  }, {
+    "jobId" : "job-7afce51c-adbb-47ab-94c8-9d0f4ffd9c8d",
+    "idempotencyKey" : "rejected-1",
+    "requestFingerprint" : "70d32a20e19fb9e20447bd7b15d18b3476790cdaa1608935414531827294bd79",
+    "caseId" : "fb_004_transplant_v1",
+    "mode" : "REPLAY",
+    "sourceHandoffDigest" : "9b27ef946ea5b05d838e19ec22656c6877444a67c89bd658c69bbaae4536fc5e",
+    "sourceCommit" : "0334abe",
+    "runnerConfigDigest" : "8d141feb52b119464255b62ca9d1498c5feb234236e84aa7a13f94258d6bf725",
+    "runnerImplementationVersion" : "demo-job-orchestrator-v1",
+    "publishDecision" : "REPAIR_REJECTED",
+    "createdAt" : "2026-07-28T03:30:49.761294454Z",
+    "executionStatus" : "BLOCKED",
+    "currentAttemptId" : null,
+    "version" : 1,
+    "updatedAt" : "2026-07-28T03:30:49.761314784Z",
+    "attempts" : [ ]
+  }, {
+    "jobId" : "job-c7b7a923-c74b-461d-af34-b2927e8ec033",
+    "idempotencyKey" : "real-replay-1",
+    "requestFingerprint" : "db143e97a1294d5d6bbcbfdfdbaaedc66d5a3ed2c4f8882093b826caf05ca191",
+    "caseId" : "fb_001_tuesday_repair",
+    "mode" : "REPLAY",
+    "sourceHandoffDigest" : "9b27ef946ea5b05d838e19ec22656c6877444a67c89bd658c69bbaae4536fc5e",
+    "sourceCommit" : "0334abe",
+    "runnerConfigDigest" : "8d141feb52b119464255b62ca9d1498c5feb234236e84aa7a13f94258d6bf725",
+    "runnerImplementationVersion" : "demo-job-orchestrator-v1",
+    "publishDecision" : "PROVISIONAL_SELECTED",
+    "createdAt" : "2026-07-28T03:30:49.449498796Z",
+    "executionStatus" : "SUCCEEDED",
+    "currentAttemptId" : "attempt-001",
+    "version" : 7,
+    "updatedAt" : "2026-07-28T03:30:49.586877085Z",
+    "attempts" : [ {
+      "attemptId" : "attempt-001",
+      "attemptNumber" : 1,
+      "status" : "SUCCEEDED",
+      "commandDigest" : "11c9c7332bdf3576677c02cce88b075fc4182bd11ebb3ffd4879b4aa3a526434",
+      "workingDirectory" : "/home/GRT/work/grt_work/audio_engineering_repo_skeleton_v1",
+      "pid" : 91819,
+      "startedAt" : "2026-07-28T03:30:49.458512925Z",
+      "endedAt" : "2026-07-28T03:30:49.586780237Z",
+      "durationMs" : 128,
+      "exitCode" : 0,
+      "stdoutPath" : "artifacts/runtime/demo-jobs/job-c7b7a923-c74b-461d-af34-b2927e8ec033/attempt-001/stdout.log",
+      "stderrPath" : "artifacts/runtime/demo-jobs/job-c7b7a923-c74b-461d-af34-b2927e8ec033/attempt-001/stderr.log",
+      "runManifestPath" : "artifacts/runs/forest_bird_branch_001-20260728T033049Z-db6c56f3-04be94/run_manifest.json",
+      "runManifestDigest" : "def647ecffb99b1644b458b897dc5095e9d266f5e3c6d9247eba013663066872",
+      "resultDigest" : "7b2c027b0faec1bb48c9a1047bc015bf1a5eff04b8e4cc5abf8276b164ebfd7f",
+      "failureCode" : "",
+      "failureReason" : "",
+      "descendantsDiscovered" : 0,
+      "descendantsTerminated" : 0,
+      "descendantsStillAlive" : 0,
+      "stages" : [ {
+        "stageId" : "inventory",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "cases/forest_bird_branch_001/director_sound_script.yaml" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "preflight",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "cases/forest_bird_branch_001/director_sound_script.yaml" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "resolve_case",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "cases/forest_bird_branch_001/director_sound_script.yaml" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "compile_dss",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "cases/forest_bird_branch_001/director_sound_script.yaml" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "acquire_candidates",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "cases/forest_bird_branch_001/director_sound_script.yaml" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "evaluate",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "artifacts/repair/batch_20260714/fb_001/after.wav" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "rerank",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "artifacts/repair/batch_20260714/fb_001/after.wav" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "repair",
+        "status" : "SUCCEEDED",
+        "executionMode" : "REUSE",
+        "reused" : true,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "artifacts/repair/batch_20260714/fb_001/after.wav" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "mix",
+        "status" : "SUCCEEDED",
+        "executionMode" : "EXECUTE",
+        "reused" : false,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "artifacts/runs/forest_bird_branch_001-20260728T033049Z-db6c56f3-04be94/outputs/provisional_mix.wav" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "durationMs" : 1,
+        "failureReason" : ""
+      }, {
+        "stageId" : "report",
+        "status" : "SUCCEEDED",
+        "executionMode" : "EXECUTE",
+        "reused" : false,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : { },
+        "durationMs" : 0,
+        "failureReason" : ""
+      }, {
+        "stageId" : "publish",
+        "status" : "SUCCEEDED",
+        "executionMode" : "EXECUTE",
+        "reused" : false,
+        "inputDigests" : {
+          "input_video" : "sha256:c07ee2f6e97468e7eee13c23fb629c0d4ce99fc72c0519aaf53b97ef973a998a",
+          "dss" : "sha256:b974e74e248cb1d8b272575bfb902a4704ec0217dcf4005f8b87986e380cb323",
+          "before" : "sha256:9a1af8895ee9fcb68f5f0768b9e6c0282a31a7bf3ca617dfc0a32a5236a631d7",
+          "after" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "outputDigests" : {
+          "artifacts/runs/forest_bird_branch_001-20260728T033049Z-db6c56f3-04be94/outputs/provisional_mix.wav" : "sha256:a943c04eee778438d70468bbaa5533faa55ff4c72b426b0c6e71cb3f6e33f85b"
+        },
+        "durationMs" : 1,
+        "failureReason" : ""
+      } ]
+    } ]
+  } ],
+  "distributedExactlyOnceClaimed" : false,
+  "recordCount" : 12,
+  "provisionalCount" : 10,
+  "processLocalIdempotencyOnly" : true,
+  "blockedSeedCount" : 2,
+  "jobCount" : 3,
+  "succeededJobCount" : 1,
+  "manualReviewCompletedCount" : 0,
+  "finalSelectedCount" : 0,
+  "decisionMutationCount" : 0
+}

@@ -1,0 +1,5 @@
+package com.ryan.media.demo;
+public enum DemoJobStatus {
+    ACCEPTED, QUEUED, STARTING, RUNNING, FINALIZING, SUCCEEDED, BLOCKED,
+    FAILED, TIMED_OUT, CANCEL_REQUESTED, CANCELLED
+}

@@ -1,0 +1,2 @@
+rankerVersion,bundleDigest,promotionStatus,modelPresent,oofAvailable,recommendationCount,reviewSubmittedCount,finalSelectedMutationCount
+preference-ranker-v1-20260730,c89a88c5769f42cb184c030c99d20480cb4e0af3f396a1144c2b4dce3dd21e7f,DATA_BLOCKED,false,false,0,0,0
